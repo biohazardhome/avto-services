@@ -1,0 +1,19 @@
+
+header {
+	height: 150px;
+}
+
+
+footer {
+	height: 150px;
+}
+
+main {
+	width: 700px;
+	float: left;
+}
+
+aside {
+	float: left;
+	width: 300px;
+}

@@ -1,0 +1,35 @@
+.catalog-list {
+
+}
+
+
+.catalog-list-item {
+	border: 1px solid gray;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+
+.catalog-list-item h1 {
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.catalog-list-item h1 a {
+	color: black;
+}
+
+.catalog-list-item h1 a:hover {
+	color: #0066cc;
+}
+
+.catalog-list-item address {
+	margin-bottom: 10px;
+}
+
+.catalog-list-item-content {
+
+}
+
+.catalog-list-item-info {
+	margin-top: 10px;
+}
