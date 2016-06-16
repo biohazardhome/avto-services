@@ -19,7 +19,9 @@ class CatalogController extends Controller
 	
 	public function show($slug) {
 		//dd(123);
-		$catalog = Catalog::whereSlug($slug)->first();
+		$catalog = Catalog::whereSlug($slug)
+			->first();
+
 		if ($catalog) {
 			return view('catalog.show', compact('catalog'));
 		}
