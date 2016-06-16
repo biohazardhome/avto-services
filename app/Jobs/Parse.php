@@ -56,7 +56,7 @@ class Parse extends Job implements ShouldQueue
 			$columnInfoNode = $columnNode->filter('.sp-n-rating-content .sp-n-rating-content-lb');
 			
 			$contentNode = $contentNode->filter('.promo-page-content-div');
-			$content = $contentNode->html();
+			$content = $contentNode->count()? $contentNode->html() : '';
 			
 			$address = $columnInfoNode->filter('.sp-n-ads-rate a');
 			$address = $address->count() ? $address->text() : null;
@@ -87,10 +87,11 @@ class Parse extends Job implements ShouldQueue
 			$catalog = $this->createCatalogItem($item);
 			$images = $this->saveImages($images, $catalog->slug, $catalog->id);
 			
-			$content = $this->replaceImageInContent($contentNode, $images);
-			Catalog::find($catalog->id)
-				->update(['content' => $content]);
-			
+			if ($content) {
+				$content = $this->replaceImageInContent($contentNode, $images);
+				Catalog::find($catalog->id)
+					->update(['content' => $content]);
+			}
 		} else {
 			echo 'Not load';
 		}

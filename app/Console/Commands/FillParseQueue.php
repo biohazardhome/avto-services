@@ -56,7 +56,7 @@ class FillParseQueue extends Command
 			//dd(function_exists('dispatch'));
 			foreach ($urls as $url) {
 				dispatch((new Parse($url))->onQueue('parse'));
-				dd();
+				//dd();
 			}
 		}
     }
