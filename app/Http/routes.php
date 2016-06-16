@@ -11,17 +11,18 @@
 |
 */
 
-Route::get('/', function() {
-	$catalog = App\Catalog::whereSlug('vfm-autoservis-45')->first();
-	return view('catalog.show', compact('catalog'));
-});
+Route::get('/', 'Catalog\CatalogController@index');
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => '', */'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
 });
 
-Route::get('/map/{address}', 'MapController@index');
+Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], function() {
+	Route::get('/', 'MapController@index')->name('index');
+	Route::get('/{address}', 'MapController@show')->name('show');
+});
+
 
 //Route::group('as' => 'images', function() {
 	//dd(123);
