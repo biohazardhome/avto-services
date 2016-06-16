@@ -18,9 +18,10 @@ class CreateCatalogTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->longText('content');
-            $table->string('phones');
-            $table->string('email');
-            $table->string('site');
+            $table->string('phones')->nullable();
+            $table->string('address');
+            $table->string('email')->nullable();
+            $table->string('site')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
