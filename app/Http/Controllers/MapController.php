@@ -9,8 +9,11 @@ use App\Http\Requests;
 class MapController extends Controller
 {
     
-    public function index($address) {
-		//dd($address);
+    public function index() { // all avtoservices in map
+		return view('map');
+	}
+
+	public function show($address) {
 		return view('map', compact('address'));
 	}
     
