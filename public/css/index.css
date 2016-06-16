@@ -1,4 +1,9 @@
 
+html, body, main {
+	width: 100%;
+	
+}
+
 header {
 	height: 150px;
 }
@@ -9,11 +14,23 @@ footer {
 }
 
 main {
-	width: 700px;
+	/*width: 700px;*/
 	float: left;
 }
 
 aside {
 	float: left;
 	width: 300px;
+}
+
+
+
+.pagination {
+	display: inline-block;
+    padding: 0;
+}
+
+.pagination li {
+	display: inline-block;
+	padding: 2px;
 }
