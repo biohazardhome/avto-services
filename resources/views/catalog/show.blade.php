@@ -9,17 +9,17 @@
 			@include('catalog.partials.item-header', $catalog->getAttributes(['name', 'slug']))
 			@include('catalog.partials.item-address', ['address' => $catalog->address])
 
-			<div class="catalog-description">{{ $catalog->description }}</div>
+			<div class="catalog-description">{!! $catalog->description !!}</div>
 
 			@include('catalog.partials.item-info', $catalog->getAttributes(['phones', 'site', 'email', 'name']))
 
 			<div class="catalog-content">{!! $catalog->content !!}</div>
 			<div class="catalog-map">
-				<h2>Автосервис {{ $catalog->name }} на карте</h2>
+				<h2 style="text-align: center;">Автосервис "{{ $catalog->name }}" на карте</h2>
 				@include('partials.map', ['address' => $catalog->address])
-				<div id="map" class="map-middle"></div>
+				<!-- <div id="map" class="map-middle"></div> -->
 			</div>
-			
+
 			<div class="catalog-comment"></div>
 		</article>
 	</section>

@@ -20,7 +20,7 @@
 				@include('catalog.partials.item-header', $item->getAttributes(['name', 'slug']))
 				@include('catalog.partials.item-address', ['address' => $item->address])
 				<div class="catalog-item-content" title="Подробнее об автосервисе {{ $item->name }}">
-					{{ $item->description }}
+					{!! $item->description !!}
 				</div>
 				@include('catalog.partials.item-info', $item->getAttributes(['phones', 'site', 'email', 'name']))
 				<a href="#" title="Отзывы о автосервисе {{ $item->name }}">Отзывы</a>
