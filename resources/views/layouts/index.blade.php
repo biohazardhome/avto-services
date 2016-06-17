@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html><head>
 	<title>@yield('title')</title>
 	<meta charset="utf-8">
