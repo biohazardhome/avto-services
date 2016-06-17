@@ -22,6 +22,7 @@ class CreateCatalogTable extends Migration
             $table->string('address');
             $table->string('email')->nullable();
             $table->string('site')->nullable();
+            $table->integer('sort')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
