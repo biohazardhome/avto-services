@@ -18,6 +18,17 @@ Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => ''
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
 });
 
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
+	Route::get('/', 'CatalogController@index')->name('index');
+
+	Route::group(['as' => 'catalog.', 'prefix' => 'catalog', ], function() {
+		Route::get('/', 'CatalogController@index')->name('index');
+		Route::get('/edit/{id}', 'CatalogController@edit')->name('edit');
+		Route::post('/update/{id}', 'CatalogController@update')->name('update');
+		Route::get('/delete/{id}', 'CatalogController@delete')->name('delete');
+	});
+});
+
 Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], function() {
 	Route::get('/', 'MapController@index')->name('index');
 	Route::get('/{address}', 'MapController@show')->name('show');
