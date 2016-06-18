@@ -23,6 +23,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin'], fu
 
 	Route::group(['as' => 'catalog.', 'prefix' => 'catalog', ], function() {
 		Route::get('/', 'CatalogController@index')->name('index');
+		Route::get('/create', 'CatalogController@create')->name('create');
+		Route::put('/store', 'CatalogController@store')->name('store');
 		Route::get('/edit/{id}', 'CatalogController@edit')->name('edit');
 		Route::post('/update/{id}', 'CatalogController@update')->name('update');
 		Route::get('/delete/{id}', 'CatalogController@delete')->name('delete');

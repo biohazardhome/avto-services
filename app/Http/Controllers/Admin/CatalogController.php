@@ -61,18 +61,19 @@ class CatalogController extends Controller
     }
 
     public function store(Request $request) {
-        $this->valudate($request, [
-            'name' => 'required|unique:catalog,id,'. $id .'',
+        $this->validate($request, [
+            'name' => 'required|unique:catalog',
             'phones' => 'required',
             'address' => 'required',
             'email' => 'email',
             'description' => 'required',
-            'sort' => 'nu'
+            'sort' => 'integer',
         ]);
 
         Catalog::create($request->all());
 
-        return route('admin.catalog.create');
+        return redirect()
+            ->route('admin.catalog.create');
     }
 
     public function edit($id) {
@@ -92,6 +93,7 @@ class CatalogController extends Controller
             //'site' => ['regex' => '^((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$'],
             'description' => 'required',
             //'content' => '',
+            'sort' => 'integer',
         ]);
         Catalog::find($id)
             ->update($request->all());
@@ -100,7 +102,8 @@ class CatalogController extends Controller
             ->route('admin.catalog.edit', [$id])/*->withInput()*/;
     }
 
-    public function delete() {
-
+    public function delete($id) {
+        Catalog::destroy($id);
+        return back();
     }
 }
