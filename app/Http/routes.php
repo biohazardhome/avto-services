@@ -11,6 +11,10 @@
 |
 */
 
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
 Route::get('/', 'Catalog\CatalogController@index');
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => '', */'prefix' => 'catalog'], function() {
@@ -18,7 +22,7 @@ Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => ''
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
 });
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
 
 	Route::group(['as' => 'catalog.', 'prefix' => 'catalog', ], function() {
