@@ -37,7 +37,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 
 Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], function() {
 	Route::get('/', 'MapController@index')->name('index');
-	Route::get('/{address}', 'MapController@show')->name('show');
+	Route::get('/{address}', 'MapController@showOld')->name('show.old');
+	Route::get('/{name}/{address}', 'MapController@show')->name('show');
 });
 
 

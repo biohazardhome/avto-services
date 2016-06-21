@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Catalog;
+
 class MapController extends Controller
 {
     
@@ -13,8 +15,17 @@ class MapController extends Controller
 		return view('map');
 	}
 
-	public function show($address) {
-		return view('map', compact('address'));
+	public function show($name, $address) {
+		return view('map', compact('name', 'address'));
+	}
+
+	public function showOld($address) {
+		$catalog = Catalog::whereAddress($address)
+		    ->first()
+		    ->getAttributes(['name', 'address']);
+		    
+		return redirect()
+		    ->route('map.show', $catalog);
 	}
     
 }
