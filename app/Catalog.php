@@ -5,6 +5,7 @@ namespace App;
 // use Illuminate\Database\Eloquent\Model;
 
 use App\Image;
+use App\Comment;
 
 class Catalog extends Model
 {
@@ -18,6 +19,10 @@ class Catalog extends Model
 	
 	public function images() {
 		return $this->morphMany(Image::class, 'imageable');
+	}
+
+	public function comments() {
+		return $this->belongsTo(Comment::class, 'id', 'catalog_id');
 	}
 	
 	// similar
