@@ -1,13 +1,13 @@
 @extends('layouts.index')
 
 @section('title', 'Автосервисы в Одинцово - адреса и телефоны')
-@section('description', 'Автосервисы в Одинцово - каталог адресов и телефонов всех автосервисов в Одинцово')
+@section('description', 'Автосервисы в Одинцово - каталог адресов и телефонов автосервисов в Одинцово с полной справочной информацией и отзывами') <!-- полная справочная информация, схема проезда-->
 
 @section('content')
 	
 
 	<section class="catalog-list">
-		<h1>Автосервисы в Одинцово</h1>
+		<h1 style="text-align: center;">Автосервисы в Одинцово</h1>
 
 		<p class="description">
 			У вас поломался автомобиль и срочно нужен автосервис в Одинцово? Наш каталог автосервисов в Одинцово поможет найти ближайший подходящий сервис для вас и вашей машины. Так же вы можете получить полную информацию о автосервисе от адреса и телефона до расположения на карте.
@@ -18,7 +18,7 @@
 		@foreach($catalog as $item)
 			<article class="catalog-item catalog-item-border">
 				@include('catalog.partials.item-header', $item->getAttributes(['name', 'slug']))
-				@include('catalog.partials.item-address', ['address' => $item->address])
+				@include('catalog.partials.item-address', $item->getAttributes(['name', 'address']))
 				<div class="catalog-item-content" title="Подробнее об автосервисе {{ $item->name }}">
 					{!! $item->description !!}
 				</div>

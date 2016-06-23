@@ -1,4 +1,3 @@
 <h1>
-	<span>Автосервис</span>
-	<a href="{{ route('catalog.show', [$slug]) }}" title="Узнать больше о автосервисе {{ $name }}">{{ $name }}</a>
+	<a href="{{ route('catalog.show', [$slug]) }}" title="Узнать больше о автосервисе {{ $name }}">Автосервис "{{ $name }}"</a>
 </h1>

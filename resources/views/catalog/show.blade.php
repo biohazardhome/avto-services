@@ -1,13 +1,36 @@
 @extends('layouts.index')
 
-@section('title', $catalog->name)
+@section('title', 'Автосервис '. $catalog->name .' в Одинцово')
 @section('description', $catalog->description)
 
 @section('content')
-	<section style="width: 800px; margin: 0 auto;">
+	<style>
+		main {
+			overflow: hidden;
+			/*width: 1100px;*/
+			max-width: 1200px;
+    		margin: 0 auto;
+		}
+
+		section {
+			float: left;
+			max-width: 800px;
+			/*min-width: 360px;*/
+			margin: 0 auto;
+		}
+
+		aside {
+			float: left;
+		}
+
+		footer {
+			clear: both;
+		}
+	</style>
+	<section>
 		<article class="catalog-item">
 			@include('catalog.partials.item-header', $catalog->getAttributes(['name', 'slug']))
-			@include('catalog.partials.item-address', ['address' => $catalog->address])
+			@include('catalog.partials.item-address', $catalog->getAttributes(['name', 'address']))
 
 			<div class="catalog-description">{!! $catalog->description !!}</div>
 
@@ -17,10 +40,14 @@
 			<div class="catalog-map">
 				<h2 style="text-align: center;">Автосервис "{{ $catalog->name }}" на карте</h2>
 				@include('partials.map', ['address' => $catalog->address])
-				<!-- <div id="map" class="map-middle"></div> -->
+				<div id="map" class="map-middle"></div>
 			</div>
 
-			<div class="catalog-comment"></div>
+			<div class="catalog-comment">
+				<h2>
+					Автосервис "{{ $catalog->name }}" в Одинцово отзывы
+				</h2>
+			</div>
 		</article>
 	</section>
 @stop
@@ -29,6 +56,7 @@
 	<div class="catalog-similar">
 		@inject('catalog', 'App\Catalog')
 		
+		<h3>Похожие сервисы</h3>
 		<ul class="catalog-list-similar">
 		@foreach($catalog->random(5) as $item)
 			<li>
