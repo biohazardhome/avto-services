@@ -23,9 +23,9 @@ class MapController extends Controller
 			    		// dd($i, $k);			    	
 					    if ($k === 'site') {
 					    	return urlencode($i);
-					    } else {
+					    }/* else {
 					    	return addslashes($i);
-					    }
+					    }*/
 		    	});
 		    })/*->toJson()*/;
 
@@ -42,7 +42,7 @@ class MapController extends Controller
 		    ->getAttributes(['name', 'address']);
 
 		return redirect()
-		    ->route('map.show', $catalog);
+		    ->route('map.show', $catalog, 301);
 	}
     
 }
