@@ -15,7 +15,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/', 'Catalog\CatalogController@index');
+Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => '', */'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
