@@ -1,4 +1,5 @@
 User-agent: *
-#Disallow: /map/
+
+Disallow: /index.php
 
 Host: avto-services-odintsovo.ru
