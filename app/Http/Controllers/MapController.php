@@ -23,9 +23,9 @@ class MapController extends Controller
 			    		// dd($i, $k);			    	
 					    if ($k === 'site') {
 					    	return urlencode($i);
-					    }/* else {
+					    } else {
 					    	return addslashes($i);
-					    }*/
+					    }
 		    	});
 		    })/*->toJson()*/;
 
@@ -33,16 +33,30 @@ class MapController extends Controller
 	}
 
 	public function show($name, $address) {
-		return view('map', compact('name', 'address'));
+		$catalog = Catalog::whereName($name)
+			->orWhereAddress($address)
+			->first();
+
+		if ($catalog) {
+			list($name, $address) = $catalog->getAttributes(['name', 'address']);
+			return view('map', compact('name', 'address'));
+		}
+
+		return abort(404);
 	}
 
 	public function showOld($address) {
 		$catalog = Catalog::whereAddress($address)
-		    ->first()
-		    ->getAttributes(['name', 'address']);
+		    ->first();
 
-		return redirect()
-		    ->route('map.show', $catalog, 301);
+		if ($catalog) {
+		    $catalog->getAttributes(['name', 'address']);
+
+			return redirect()
+		    	->route('map.show', $catalog, 301);
+		}
+
+		return abort(404);
 	}
     
 }
