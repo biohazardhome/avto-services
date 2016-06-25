@@ -11,35 +11,37 @@ use App\Catalog;
 class MapController extends Controller
 {
     
-    public function index() { // all avtoservices in map
-		// return view('map');
+    public function index() {
 		$catalog = Catalog::get(['name', 'description', 'address', 'site', 'phones', 'email'])
-		    // ->pluck('address', 'name')
 			->keyBy('name')
 		    ->map(function($i, $k) {
-		    	// return $i->toArray();
 		    	return collect($i->toArray())
 		    	    ->map(function($i, $k) {
-			    		// dd($i, $k);			    	
 					    if ($k === 'site') {
 					    	return urlencode($i);
 					    } else {
 					    	return addslashes($i);
 					    }
 		    	});
-		    })/*->toJson()*/;
+		    });
 
 		return view('map-all', compact('catalog'));
 	}
 
 	public function show($name, $address) {
 		$catalog = Catalog::whereName($name)
-			->orWhereAddress($address)
-			->first();
+			->orWhere('address', $address)
+			->first(['name', 'description', 'address', 'site', 'phones', 'email']);
 
+		$catalog = (object) collect($catalog->toArray())->map(function($i, $k) {
+			    if ($k === 'site') {
+			    	return urlencode($i);
+			    } else {
+			    	return addslashes($i);
+			    }
+	    	})->toArray();
 		if ($catalog) {
-			list($name, $address) = $catalog->getAttributes(['name', 'address']);
-			return view('map', compact('name', 'address'));
+			return view('map', compact('catalog'));
 		}
 
 		return abort(404);

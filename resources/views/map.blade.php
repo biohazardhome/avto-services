@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@section('title', 'Местоположение автосервиса '. (!empty($name) ? $name : $address) .' на карте')
+@section('title', 'Местоположение автосервиса '. $catalog->name .' на карте')
 
 @section('content')
 	<style>
@@ -17,9 +17,9 @@
         	text-align: center;
         }
 	</style>
-	<h1>Автосервис {{ (!empty($name) ? $name : $address) }} на карте</h1>
-	<p><address>Адрес: {{ $address }}</address></p>
+	<h1>Автосервис {{ $catalog->name }} на карте</h1>
+	<p><address>Адрес: {{ $catalog->address }}</address></p>
 	<a href="{{ route('catalog.index') }}" title="Все автосервисы в Одинцово">Все автосервисы в Одинцово</a>
-	@include('partials.map', compact('address'))
+	@include('partials.map', ['address' => $catalog->address])
 	<div id="map"></div>
 @stop
