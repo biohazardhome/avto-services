@@ -23,9 +23,20 @@ class CatalogController extends Controller
 		$catalog = Catalog::whereSlug($slug)
 			->first();
 
+		$catalogMap = Catalog::transformForMap($catalog);
+
 		if ($catalog) {
-			return view('catalog.show', compact('catalog'));
+			return view('catalog.show', compact('catalog', 'catalogMap'));
 		}
 		return abort(404);
 	}
+
+    public function search($query) {
+        $catalog = Catalog::search($query)
+            ->get();
+
+        $catalog = Catalog::paginateCollection($catalog, 2);
+
+        return view('catalog.index', compact('catalog'));
+    }
 }
