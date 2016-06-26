@@ -40,6 +40,7 @@ class MapController extends Controller
 			    	return addslashes($i);
 			    }
 	    	})->toArray();
+		
 		if ($catalog) {
 			return view('map', compact('catalog'));
 		}
@@ -52,10 +53,10 @@ class MapController extends Controller
 		    ->first();
 
 		if ($catalog) {
-		    $catalog->getAttributes(['name', 'address']);
+		    $params = $catalog->getAttributes(['name', 'address']);
 
 			return redirect()
-		    	->route('map.show', $catalog, 301);
+		    	->route('map.show', $params, 301);
 		}
 
 		return abort(404);
