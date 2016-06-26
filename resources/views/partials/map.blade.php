@@ -17,7 +17,7 @@
 		var catalog = JSON.parse('{!! str_replace(['\r\n', '\n', '\t'], '', json_encode($catalog)) !!}'),
 			myMap = Map.create();
 
-		Map.geocode('{{ $address }}', {results: 1})
+		Map.geocode(catalog.address, {results: 1})
 			.then(function(res) {
 				var firstGeoObject = res.geoObjects.get(0),
 					coords = firstGeoObject.geometry.getCoordinates(),

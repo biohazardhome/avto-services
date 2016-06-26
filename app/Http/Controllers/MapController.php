@@ -12,18 +12,10 @@ class MapController extends Controller
 {
     
     public function index() {
-		$catalog = Catalog::get(['name', 'description', 'address', 'site', 'phones', 'email'])
-			->keyBy('name')
-		    ->map(function($i, $k) {
-		    	return collect($i->toArray())
-		    	    ->map(function($i, $k) {
-					    if ($k === 'site') {
-					    	return urlencode($i);
-					    } else {
-					    	return addslashes($i);
-					    }
-		    	});
-		    });
+		$catalog = Catalog::get()
+			->keyBy('name');
+
+		$catalog = Catalog::transformForMap($catalog);
 
 		return view('map-all', compact('catalog'));
 	}
@@ -31,15 +23,9 @@ class MapController extends Controller
 	public function show($name, $address) {
 		$catalog = Catalog::whereName($name)
 			->orWhere('address', $address)
-			->first(['name', 'description', 'address', 'site', 'phones', 'email']);
+			->first();
 
-		$catalog = (object) collect($catalog->toArray())->map(function($i, $k) {
-			    if ($k === 'site') {
-			    	return urlencode($i);
-			    } else {
-			    	return addslashes($i);
-			    }
-	    	})->toArray();
+		$catalog = Catalog::transformForMap($catalog);
 		
 		if ($catalog) {
 			return view('map', compact('catalog'));
