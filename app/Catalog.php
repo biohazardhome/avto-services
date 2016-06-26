@@ -3,6 +3,7 @@
 namespace App;
 
 // use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 use App\Image;
 use App\Comment;
@@ -34,6 +35,29 @@ class Catalog extends Model
 		$count = static::count() -1;
 		$skip = $count > 0 ? mt_rand(0, $count) : 0;
 		return $q->skip($skip)->take($take)->get();
+	}
+
+	public static function transformForMap($catalog) {
+		if ($catalog instanceof Collection) {
+			return $catalog->map(function($i, $k) {
+		    	return collect($i->toArray())
+		    	    ->map(function($i, $k) {
+					    if ($k === 'site') {
+					    	return urlencode($i);
+					    } else {
+					    	return addslashes($i);
+					    }
+		    	});
+		    });
+		} else {
+			return (object) collect($catalog->toArray())->map(function($i, $k) {
+			    if ($k === 'site') {
+			    	return urlencode($i);
+			    } else {
+			    	return addslashes($i);
+			    }
+	    	})->toArray();
+		}
 	}
 	
 }

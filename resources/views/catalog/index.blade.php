@@ -6,14 +6,14 @@
 @section('content')
 	
 
-	<section class="catalog-list">
-		<h1 style="text-align: center;">Автосервисы в Одинцово</h1>
+	<section class="catalog-list row col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+		<h1 class="text-center">Автосервисы в Одинцово</h1>
 
-		<p class="description">
-			У вас поломался автомобиль и срочно нужен автосервис в Одинцово? Наш каталог автосервисов в Одинцово поможет найти ближайший подходящий сервис для вас и вашей машины. Так же вы можете получить полную информацию о автосервисе от адреса и телефона до расположения на карте.
+		<p>
+			У вас поломался автомобиль и срочно нужен автосервис в Одинцово? Наш каталог автосервисов в Одинцово поможет найти ближайший подходящий сервис для вас и вашей машины. Так же вы можете получить полную информацию о автосервисе, от адреса и телефона, до расположения на карте.
 		</p>
 
-		<div style="text-align: center">{{ $catalog->links() }}</div>
+		<div class="text-center" style="border-bottom: 1px solid #dad8d8;">{{ $catalog->links() }}</div>
 
 		@foreach($catalog as $item)
 			<article class="catalog-item catalog-item-border">
@@ -26,9 +26,10 @@
 				<a href="#" title="Отзывы о автосервисе {{ $item->name }}">Отзывы</a>
 			</article>
 		@endforeach
+	
+		<div class="text-center">{{ $catalog->links() }}</div>
 	</section>
 	
-	<div style="text-align: center">{{ $catalog->links() }}</div>
 @stop
 
 

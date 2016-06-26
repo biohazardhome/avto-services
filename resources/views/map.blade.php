@@ -20,6 +20,6 @@
 	<h1>Автосервис {{ $catalog->name }} на карте</h1>
 	<p><address>Адрес: {{ $catalog->address }}</address></p>
 	<a href="{{ route('catalog.index') }}" title="Все автосервисы в Одинцово">Все автосервисы в Одинцово</a>
-	@include('partials.map', ['address' => $catalog->address])
+	@include('partials.map', ['catalog' => $catalog])
 	<div id="map"></div>
 @stop
