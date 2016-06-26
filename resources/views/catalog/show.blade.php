@@ -39,7 +39,7 @@
 			<div class="catalog-content">{!! $catalog->content !!}</div>
 			<div class="catalog-map">
 				<h2 style="text-align: center;">Автосервис "{{ $catalog->name }}" на карте</h2>
-				@include('partials.map', ['address' => $catalog->address])
+				@include('partials.map', ['catalog' => $catalogMap])
 				<div id="map" class="map-middle"></div>
 			</div>
 
