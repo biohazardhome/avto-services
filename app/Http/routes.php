@@ -17,9 +17,17 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
+
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => '', */'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
+	Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
+	Route::get('/search/{query}', 'CatalogController@search')->name('search');
+});
+
+Route::group(['as' => 'comment.', 'prefix' => 'comment'], function() {
+	// Route::get('/create', 'CommentController@create')->name('create');
+	Route::put('/store', 'CommentController@store')->name('store');
 });
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function() {
