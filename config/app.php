@@ -160,6 +160,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Aginev\Datagrid\DatagridServiceProvider::class,
 
+        Roumen\Sitemap\SitemapServiceProvider::class,
+
     ],
 
     /*
