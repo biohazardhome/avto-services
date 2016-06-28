@@ -49,7 +49,7 @@ class CatalogController extends Controller
 	    		$sort = $catalog->sort;
 	    		$priority = 0.0;
 	    		if ($sort >= 10) $priority = log10($sort) / 10;
-	        	$sitemap->add(route('catalog.show', $catalog->slug) .'/', $catalog->updated_at->toW3cString(), (float) $sort, 'daily');
+	        	$sitemap->add(route('catalog.show', $catalog->slug) .'/', $catalog->updated_at->toW3cString(), $priority, 'daily');
 	    	});
 	       	$sitemap->store('xml','sitemap_catalog');
 	    }
