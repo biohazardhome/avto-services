@@ -42,15 +42,15 @@ class CatalogController extends Controller
 
     public function sitemapGenerate() {
     	$sitemap = app('sitemap');
-    	// dd($sitemap->model, $sitemap->model->setCacheDuration(0));
 
 		if (!$sitemap->isCached()) {
 	    	$catalog = Catalog::all();
 	    	$catalog->each(function($catalog) use(&$sitemap) {
-	    		// dd(route('catalog.show', $catalog->slug), $catalog->updated_at->toW3cString(), $catalog->sort);
-	        	$sitemap->add(route('catalog.show', $catalog->slug) .'/', $catalog->updated_at->toW3cString(), $catalog->sort, 'daily');
+	    		$sort = $catalog->sort;
+	    		$priority = 0.0;
+	    		if ($sort >= 10) $priority = log10($sort) / 10;
+	        	$sitemap->add(route('catalog.show', $catalog->slug) .'/', $catalog->updated_at->toW3cString(), (float) $sort, 'daily');
 	    	});
-	    	// dd($sitemap);
 	       	$sitemap->store('xml','sitemap_catalog');
 	    }
     }
