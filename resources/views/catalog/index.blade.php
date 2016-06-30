@@ -6,7 +6,7 @@
 @section('content')
 	
 
-	<section class="catalog-list row col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+	<section class="catalog-list col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
 		<h1 class="text-center">Автосервисы в Одинцово</h1>
 
 		<p>
@@ -16,13 +16,13 @@
 		<div class="text-center" style="border-bottom: 1px solid #dad8d8;">{{ $catalog->links() }}</div>
 
 		@foreach($catalog as $item)
-			<article class="catalog-item catalog-item-border">
-				@include('catalog.partials.item-header', $item->getAttributes(['name', 'slug']))
-				@include('catalog.partials.item-address', $item->getAttributes(['name', 'address']))
+			<article class="catalog-item">
+				@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
+				@include('catalog.partials.item-address', $item->getAttributesOnly(['name', 'address']))
 				<div class="catalog-item-content" title="Подробнее об автосервисе {{ $item->name }}">
 					{!! $item->description !!}
 				</div>
-				@include('catalog.partials.item-info', $item->getAttributes(['phones', 'site', 'email', 'name']))
+				@include('catalog.partials.item-info', $item->getAttributesOnly(['phones', 'site', 'email', 'name']))
 				<a href="#" title="Отзывы о автосервисе {{ $item->name }}">Отзывы</a>
 			</article>
 		@endforeach

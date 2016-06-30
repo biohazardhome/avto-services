@@ -5,19 +5,21 @@
 	<meta charset="utf-8">
 	<meta name="description" content="@yield('description')">
 	
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
 	<link href="/css/index.css" rel="stylesheet" type="text/css">
 	<link href="/css/catalog.css" rel="stylesheet" type="text/css">
 	<link href="/css/map.css" rel="stylesheet" type="text/css">
 	
-</head><body>
+</head><body class="container-fluid">
 
 	<header>
 		@include('menu')
 	</header>
 
-	<main>
+	<main class="row">
 		@yield('content')
-		<aside>@yield('sidebar')</aside>
+		<aside class="col-md-4 col-lg-2">@yield('sidebar')</aside>
 	</main>
 	
 	

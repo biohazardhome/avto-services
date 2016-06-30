@@ -29,7 +29,7 @@ class Model extends BaseModel {
         ],*/
     ];
 
-	public function getAttributes(array $attr = array()) {
+	public function getAttributesOnly(array $attr = array()) {
 		return array_only(parent::getAttributes(), $attr);
 	}
 
