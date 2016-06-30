@@ -5,15 +5,26 @@ namespace App;
 // use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
+use My\Model\Slug\Slug;
+
 use App\Image;
 use App\Comment;
 
 class Catalog extends Model
 {
+
+	use Slug;
+
     protected
 		$table = 'catalog',
 		$fillable = ['slug', 'name', 'description', 'content', 'address', 'phones', 'email', 'site', 'sort'];
 		
+	public function slugGenerate() {
+        return static::slugOptions()
+            ->slugColumn('slug')
+            ->generateFromColumn('name');
+    }
+
 	public function getRouteKeyName() {
 		return 'slug';
 	}
@@ -23,7 +34,8 @@ class Catalog extends Model
 	}
 
 	public function comments() {
-		return $this->belongsTo(Comment::class, 'id', 'catalog_id');
+		// return $this->belongsTo(Comment::class, 'id', 'catalog_id');
+		return $this->hasMany(Comment::class, 'catalog_id');
 	}
 	
 	// similar
@@ -50,7 +62,8 @@ class Catalog extends Model
 		    	});
 		    });
 		} else {
-			return (object) collect($catalog->toArray())->map(function($i, $k) {
+			// dd($catalog->getAttributes());
+			return (object) collect($catalog->getAttributes())->map(function($i, $k) {
 			    if ($k === 'site') {
 			    	return urlencode($i);
 			    } else {
