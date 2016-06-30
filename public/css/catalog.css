@@ -1,26 +1,27 @@
 
 
 
-.catalog-list {
-	width: 800px;
-	margin: 0 auto;
-}
-
-
 .catalog-item {
-	
-	margin-bottom: 15px;
+	margin-bottom: 45px;
 	padding: 10px;
+	border-bottom: 1px solid #dad8d8;
 }
 
-.catalog-item-border {
-	border: 1px solid gray;
+.catalog-item h1, 
+.catalog-item h2 {
+	text-transform: uppercase;
+	text-align: center;
 }
 
 .catalog-item h1 {
+    font-size: 1.3em;
 	margin: 0;
 	margin-bottom: 15px;
-	text-align: center;
+}
+
+.catalog-item h2 {
+	font-size: 1.2em;
+    font-weight: bold;
 }
 
 .catalog-item h1 a {
@@ -40,13 +41,47 @@
 }
 
 .catalog-item-info {
-	margin-top: 10px;
+	margin: 10px 0;
 }
 
 
 
 
+.catalog-similar {
+
+}
+
+.catalog-similar h3 {
+	font-size: 1.1em;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
 .catalog-list-similar {
 	padding: 0;
+	padding-top: 10px;
 	list-style: none;
+	border-top: 1px solid #dad8d8;
+}
+
+.catalog-list-similar .catalog-item {
+	margin-bottom: 10px;
+	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+
+.catalog-list-similar .catalog-item h1 {
+	font-size: 1em;
+	margin-bottom: 5px;
+}
+
+.catalog-list-similar .catalog-item-description {
+    font-size: 0.9em;
+}
+.catalog-list-similar .catalog-item-info {
+    margin: 0;
+}
+.catalog-list-similar .catalog-item-phones b {
+	font-weight: normal;
+    font-size: 0.9em;
 }
