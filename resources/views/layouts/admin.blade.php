@@ -4,6 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="description" content="@yield('description')">
 	
+	
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
 	<link href="/css/index.css" rel="stylesheet" type="text/css">
 	<link href="/css/catalog.css" rel="stylesheet" type="text/css">
 	<link href="/css/map.css" rel="stylesheet" type="text/css">

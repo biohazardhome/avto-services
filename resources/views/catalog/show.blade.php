@@ -4,51 +4,34 @@
 @section('description', $catalog->description)
 
 @section('content')
-	<style>
-		main {
-			overflow: hidden;
-			/*width: 1100px;*/
-			max-width: 1200px;
-    		margin: 0 auto;
-		}
-
-		section {
-			float: left;
-			max-width: 800px;
-			/*min-width: 360px;*/
-			margin: 0 auto;
-		}
-
-		aside {
-			float: left;
-		}
-
-		footer {
-			clear: both;
-		}
-	</style>
-	<section>
+	<section class="col-md-8 col-lg-6 col-lg-offset-2">
 		<article class="catalog-item">
-			@include('catalog.partials.item-header', $catalog->getAttributes(['name', 'slug']))
-			@include('catalog.partials.item-address', $catalog->getAttributes(['name', 'address']))
+			@include('catalog.partials.item-header', $catalog->getAttributesOnly(['name', 'slug']))
+			@include('catalog.partials.item-address', $catalog->getAttributesOnly(['name', 'address']))
 
 			<div class="catalog-description">{!! $catalog->description !!}</div>
 
-			@include('catalog.partials.item-info', $catalog->getAttributes(['phones', 'site', 'email', 'name']))
+			@include('catalog.partials.item-info', $catalog->getAttributesOnly(['phones', 'site', 'email', 'name']))
 
 			<div class="catalog-content">{!! $catalog->content !!}</div>
 			<div class="catalog-map">
-				<h2 style="text-align: center;">Автосервис "{{ $catalog->name }}" на карте</h2>
+				<h2>Автосервис "{{ $catalog->name }}" на карте</h2>
 				@include('partials.map', ['catalog' => $catalogMap])
-				<div id="map" class="map-middle"></div>
+				<div id="map" style="width:auto; height: 450px;"></div>
 			</div>
 
 			<div class="catalog-comment">
 				<h2>
-					Автосервис "{{ $catalog->name }}" в Одинцово отзывы
+					Автосервис "{{ $catalog->name }}" отзывы
 				</h2>
+				@include('comment.create', ['catalogId' => $catalog->id])
+				
+				@foreach($catalog->comments as $comment)
+					@include('comment.show', $comment)
+				@endforeach
 			</div>
 		</article>
+		
 	</section>
 @stop
 
@@ -61,10 +44,10 @@
 		@foreach($catalog->random(5) as $item)
 			<li>
 				<article class="catalog-item">
-					@include('catalog.partials.item-header', $item->getAttributes(['name', 'slug']))
+					@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
 					<!-- <h1><a href="{{ route('catalog.show', [$item->slug]) }}">{{ $item->name }}</a></h1> -->
-					<div>{{ $item->description }}</div>
-					@include('catalog.partials.item-info', $item->getAttributes(['phones', 'site', 'email', 'name']))
+					<div class="catalog-item-description">{{ $item->description }}</div>
+					@include('catalog.partials.item-info', $item->getAttributesOnly(['phones', 'site', 'email', 'name']))
 				</article>
 			</li>
 		@endforeach

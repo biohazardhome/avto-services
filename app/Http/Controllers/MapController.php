@@ -39,7 +39,7 @@ class MapController extends Controller
 		    ->first();
 
 		if ($catalog) {
-		    $params = $catalog->getAttributes(['name', 'address']);
+		    $params = $catalog->getAttributesOnly(['name', 'address']);
 
 			return redirect()
 		    	->route('map.show', $params, 301);
