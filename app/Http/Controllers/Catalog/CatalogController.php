@@ -20,7 +20,8 @@ class CatalogController extends Controller
 	
 	public function show($slug) {
 		//dd(123);
-		$catalog = Catalog::whereSlug($slug)
+		$catalog = Catalog::with('comments')
+			->whereSlug($slug)
 			->first();
 
 		if ($catalog) {
