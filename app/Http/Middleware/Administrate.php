@@ -16,9 +16,9 @@ class Administrate
      */
     public function handle($request, Closure $next)
     {
-        if (!Gate::allows('adminAccess')) {
+        if (!Gate::allows('adminAccess') && !$request->is('admin/login')) {
             // return response('Unauthorized.', 401);
-            return redirect('/login');
+            return redirect('/admin/login');
         }
         return $next($request);
     }
