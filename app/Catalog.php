@@ -18,11 +18,12 @@ class Catalog extends Model
     protected
 		$table = 'catalog',
 		$fillable = ['slug', 'name', 'description', 'content', 'address', 'phones', 'email', 'site', 'sort'];
-		
+
 	public function slugGenerate() {
         return static::slugOptions()
             ->slugColumn('slug')
-            ->generateFromColumn('name');
+            ->generateFromColumn('name')
+            ->regenerateOnUpdate(false);
     }
 
 	public function getRouteKeyName() {
