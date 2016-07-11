@@ -23,6 +23,13 @@ class CatalogController extends Controller
                 'sortable'    => true,
                 'has_filters' => true
             ])
+            ->setColumn('slug', 'URL', [
+                'sortable'    => true,
+                'has_filters' => true,
+                'wrapper'     => function($value, $row) {
+                    return '<a href="/catalog/' . $value . '">' . $value . '</a>';
+                }
+            ])
             ->setColumn('email', 'Email', [
                 'sortable'    => true,
                 'has_filters' => true,
@@ -49,7 +56,7 @@ class CatalogController extends Controller
                 }
             ]);
 
-        return $grid->show('grid-table');
+        return view('admin.catalog.index', ['content' => $grid->show('grid-table')]);
     }
 
     public function show() {
