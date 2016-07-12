@@ -7,7 +7,7 @@
 		@if ($site)
 			<li>
 				<span class="glyphicon glyphicon-globe"></span>
-				<a href="{{ $site }}" title="Сайт автосервиса {{ $name }}" rel="nofollow" target="_blank">{{ $site }}</a>
+				<a href="{{ $site }}" title="Сайт автосервиса {{ $name }}" rel="nofollow" target="_blank">{{ str_replace('www.', '', $site) }}</a>
 			</li>
 		@endif
 		@if ($email)
