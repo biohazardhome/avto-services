@@ -29,6 +29,29 @@ class Catalog extends Model
 	public function getRouteKeyName() {
 		return 'slug';
 	}
+
+	public function getAddressSegmentsAttribute() {
+		// dd($this->address);
+		if ($this->address) {
+			return explode(',', $this->address);
+		}
+		return null;
+	}
+
+	public function getAddressStreetAttribute() {
+		$segments = $this->getAddressSegmentsAttribute();
+		return $segments !== null ? $segments[1] : null; 
+	}
+
+	public function getAddressBuildingAttribute() { // Здание
+		$segments = $this->getAddressSegmentsAttribute();
+		return $segments !== null ? $segments[2] : null; 
+	}
+
+	public function getAddressCityAttribute() {
+		$segments = $this->getAddressSegmentsAttribute();
+		return $segments !== null ? $segments[0] : null; 
+	}
 	
 	public function images() {
 		return $this->morphMany(Image::class, 'imageable');
@@ -43,11 +66,12 @@ class Catalog extends Model
 	public function similarities() {
 		return self::take(5);
 	}
-	
-	public function scopeRandom($q, $take = 1) {
-		$count = static::count() -1;
-		$skip = $count > 0 ? mt_rand(0, $count) : 0;
-		return $q->skip($skip)->take($take)->get();
+
+	public function scopeLikeByAddress($q, $street, $limit = 0/*, $cacheKey = ''*/) {
+		return $q->where('address', 'like', '%'. $street .'%')
+		    ->random($limit)
+		    // ->remember(5)
+		    ->get();
 	}
 
 	public static function transformForMap($catalog) {
