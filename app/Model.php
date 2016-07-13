@@ -48,4 +48,20 @@ class Model extends BaseModel {
 	    );
 	}
 
+    public function scopeRemember($q, $minutes, $key = null) {
+        $name = $this->connection ? $this->connection->getName() : '';
+        $newKey = md5($name . $this->toSql() . serialize($this->getBindings()));
+        $key = $key ? $key : $newKey;
+        return \Cache::remember($key, $minutes, function() use ($q) {
+            return $q->get();
+        });
+    }
+
+    public function scopeRandom($q, $limit = 0) {
+        $count = $q->count() - 1;
+        $skip = $count > 0 ? mt_rand(0, $count) : 0;
+        return $q->skip($skip)
+            ->limit($limit);
+    }
+
 }

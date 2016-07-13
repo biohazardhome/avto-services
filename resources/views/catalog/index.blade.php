@@ -6,7 +6,7 @@
 @section('content')
 	
 
-	<section class="catalog-list col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+	<section class="catalog-list col-md-9 col-lg-9">
 		<h1 class="text-center">Автосервисы в Одинцово</h1>
 
 		<p>
