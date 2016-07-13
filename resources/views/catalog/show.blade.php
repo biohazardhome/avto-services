@@ -4,7 +4,7 @@
 @section('description', $catalog->description)
 
 @section('content')
-	<section class="col-md-8 col-lg-6 col-lg-offset-2">
+	<section class="col-md-9 col-lg-9">
 		<article class="catalog-item">
 			@include('catalog.partials.item-header', $catalog->getAttributesOnly(['name', 'slug']))
 			@include('catalog.partials.item-address', $catalog->getAttributesOnly(['name', 'address']))
@@ -36,21 +36,36 @@
 @stop
 
 @section('sidebar')
+	
 	<div class="catalog-similar">
-		@inject('catalog', 'App\Catalog')
+		@inject('similar', 'App\Catalog')
 		
-		<h3>Похожие сервисы</h3>
+		<h3>Автосервисы на {{ $catalog->addressStreet }}</h3>
 		<ul class="catalog-list-similar">
-		@foreach($catalog->random(5) as $item)
-			<li>
-				<article class="catalog-item">
-					@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
-					<!-- <h1><a href="{{ route('catalog.show', [$item->slug]) }}">{{ $item->name }}</a></h1> -->
-					<div class="catalog-item-description">{{ $item->description }}</div>
-					@include('catalog.partials.item-info', $item->getAttributesOnly(['phones', 'site', 'email', 'name']))
-				</article>
-			</li>
-		@endforeach
+			@foreach($similar->LikeByAddress($catalog->addressStreet, 3) as $item)
+				<li>
+					<article class="catalog-item">
+						@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
+						@include('catalog.partials.item-address', $item->getAttributesOnly(['name', 'address']))
+					</article>
+				</li>
+			@endforeach
+		</ul>
+	</div>
+
+	<div class="catalog-similar">
+		@inject('similar', 'App\Catalog')
+		
+		<h3>Автосервисы в {{ $catalog->addressCity }}</h3>
+		<ul class="catalog-list-similar">
+			@foreach($similar->LikeByAddress($catalog->addressCity, 3) as $item)
+				<li>
+					<article class="catalog-item">
+						@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
+						@include('catalog.partials.item-address', $item->getAttributesOnly(['name', 'address']))
+					</article>
+				</li>
+			@endforeach
 		</ul>
 	</div>
 @stop

@@ -19,7 +19,7 @@
 
 	<main class="row">
 		@yield('content')
-		<aside class="col-md-4 col-lg-2">@yield('sidebar')</aside>
+		<aside class="col-md-3 col-lg-3">@yield('sidebar')</aside>
 	</main>
 	
 	

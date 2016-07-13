@@ -48,11 +48,11 @@
 
 
 .catalog-similar {
-
+	margin-bottom: 85px;
 }
 
 .catalog-similar h3 {
-	font-size: 1.1em;
+	font-size: 1.4em;
     margin-bottom: 5px;
     text-align: right;
 }
@@ -64,6 +64,15 @@
 	border-top: 1px solid #dad8d8;
 }
 
+.catalog-list-similar .catalog-item address span {
+	font-size: 12px;
+}
+
+.catalog-list-similar .catalog-item address a {
+	color: #a5a1a1;
+    font-size: 13px;
+}
+
 .catalog-list-similar .catalog-item {
 	margin-bottom: 10px;
 	font-size: 1.1em;
@@ -71,7 +80,7 @@
 }
 
 .catalog-list-similar .catalog-item h1 {
-	font-size: 1em;
+	font-size: 0.9em;
 	margin-bottom: 5px;
 }
 
