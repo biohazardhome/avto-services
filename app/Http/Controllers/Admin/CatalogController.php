@@ -21,7 +21,10 @@ class CatalogController extends Controller
         $grid
             ->setColumn('name', 'Name', [
                 'sortable'    => true,
-                'has_filters' => true
+                'has_filters' => true,
+                'wrapper'     => function($value, $row) {
+                    return '<a href="/admin/catalog/edit/' . $row->id . '">' . $value . '</a>';
+                }
             ])
             ->setColumn('slug', 'URL', [
                 'sortable'    => true,
@@ -36,6 +39,10 @@ class CatalogController extends Controller
                 'wrapper'     => function($value, $row) {
                     return '<a href="mailto:' . $value . '">' . $value . '</a>';
                 }
+            ])
+            ->setColumn('sort', 'Sort', [
+                'sortable'    => true,
+                'has_filters' => true,
             ])
             /*->setColumn('role_id', 'Role', [
                 // If you want to have role_id in the URL query string but you need to show role.name as value (dot notation for the user/role relation)
