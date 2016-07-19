@@ -1,5 +1,6 @@
-@foreach($comments as $comment)
-	@include('comment.show', compact('comment'))
-@endforeach
+<section class="comments">
+	@foreach($comments as $comment)
+		@include('comment.show', compact('comment'))
+	@endforeach
+</section>
 
-{{ $comments->links() }}

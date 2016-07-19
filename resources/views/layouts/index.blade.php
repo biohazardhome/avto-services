@@ -9,22 +9,30 @@
 	<link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
 	<link href="/css/index.css" rel="stylesheet" type="text/css">
 	<link href="/css/catalog.css" rel="stylesheet" type="text/css">
+	<link href="/css/comment.css" rel="stylesheet" type="text/css">
 	<link href="/css/map.css" rel="stylesheet" type="text/css">
+	<link href="/css/media.css" rel="stylesheet" type="text/css">
 	
 </head><body class="container-fluid">
 
-	<header>
+	<header class="row">
 		@include('menu')
 	</header>
 
 	<main class="row">
 		@yield('content')
-		<aside class="col-md-3 col-lg-3">@yield('sidebar')</aside>
+		@yield('sidebar')
+
+		{!! $composerCommentsIndex or '' !!}
+
 	</main>
 	
 	
 
-	<footer>
+	<footer class="row">
+
+
+		{!! $composerMapIndex or '' !!}
 		
 		<!-- Yandex.Metrika informer -->
 		<a href="https://metrika.yandex.ru/stat/?id=37981900&amp;from=informer"
@@ -62,5 +70,9 @@
 		<noscript><div><img src="https://mc.yandex.ru/watch/37981900" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 		<!-- /Yandex.Metrika counter -->
 	</footer>
+
+	<script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
+	<script src="/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/js/comment.js" type="text/javascript"></script>
 
 </body></html>

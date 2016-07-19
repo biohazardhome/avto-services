@@ -11,7 +11,7 @@
 	</ul>
 @endif
 
-<form class="form-comment-create" action="{{ route('comment.store') }}" method="POST">
+<form class="comment-form-create" action="{{ route('comment.store') }}" method="POST">
 	{{ csrf_field() }}
 	{{ method_field('put') }}
 	<input type="hidden" name="catalog_id" value="{{ $catalogId }}">
