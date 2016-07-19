@@ -6,6 +6,8 @@ use Exception;
 use Throwable;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 
+use Illuminate\View\Engines\EngineInterface;
+
 class PhpEngine implements EngineInterface
 {
     /**

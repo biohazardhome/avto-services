@@ -52,7 +52,7 @@ class CompilerEngine extends PhpEngine
         }
 
         $compiled = $this->compiler->getCompiledPath($path);
-        dd($compiled);
+        // dd($compiled);
 
         // Once we have the path to the compiled file, we will evaluate the paths with
         // typical PHP just like any other templates. We also keep a stack of views
