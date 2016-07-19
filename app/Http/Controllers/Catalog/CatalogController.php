@@ -13,8 +13,10 @@ class CatalogController extends Controller
 {
     
     public function index() {
-		$catalog = Catalog::orderBy('sort', 'desc')
+		$catalog = Catalog::withCount('comments')
+		    ->orderBy('sort', 'desc')
 			->paginate(20);
+
 		return view('catalog.index', compact('catalog'));
 	}
 	

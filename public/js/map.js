@@ -5,6 +5,7 @@ var Map = {
 		var optionsDefault = {center: [55.753994, 37.622093], zoom: 9};
 
 		id = id || 'map';
+        console.log(id);
 		options = options || optionsDefault;
 
 		return new ymaps.Map(id, {

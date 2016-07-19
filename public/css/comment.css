@@ -1,0 +1,13 @@
+
+.comments {
+	margin-bottom: 20px;
+}
+
+.comment-item {
+	padding: 15px;
+	border-bottom: 1px solid #ececec;
+}
+
+.comment-form-create {
+	display: none;
+}
