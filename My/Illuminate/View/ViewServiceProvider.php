@@ -6,6 +6,8 @@ use Illuminate\View\Engines\PhpEngine;
 use Illuminate\Support\ServiceProvider;
 // use Illuminate\View\Engines\CompilerEngine;
 use My\Illuminate\View\Engines\CompilerEngine;
+use Illuminate\View\FileViewFinder;
+use Illuminate\View\Factory;
 use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Compilers\BladeCompiler;
 

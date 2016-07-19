@@ -21,7 +21,8 @@ class ComposerServiceProvider extends ServiceProvider
             );
         }
 
-        if (!$request->is('map/*', 'map')) {
+        // if (!$request->is('map/*', 'map')) {
+        if ($request->is('/')) {
             view()->composer(
                 'layouts.index', 'App\Http\Composers\MapIndexComposer'
             );
