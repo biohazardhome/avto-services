@@ -28,7 +28,8 @@
             "My\\": "My/"
         },
         "files": [
-            "My/macros.php"
+            "My/macros.php",
+            "My/helpers.php"
         ]
     },
     "autoload-dev": {

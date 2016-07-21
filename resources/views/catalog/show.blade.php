@@ -1,8 +1,7 @@
 @extends('layouts.index')
 
 @section('title', 'Автосервис '. $catalog->name .' в Одинцово')
-@section('description', $catalog->description)
-
+@section('description', trim(str_limit_with(strip_tags($catalog->description), 200)) )
 @section('content')
 	<section class="catalog-show col-md-9 col-lg-9">
 		<article class="catalog-item bg-gray">
