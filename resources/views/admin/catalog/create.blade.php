@@ -11,15 +11,10 @@
 	<link rel="stylesheet" type="text/css" href="/trumbowyg/ui/trumbowyg.min.css">
 @stop
 
-
-
-@if ($errors->count())
-	@foreach ($errors->all() as $error)
-		{{ $error }}
-	@endforeach
-@endif
-
 @section('content')
+
+	@include('partials.form.errors', compact('errors'))
+
 	<form action="{{ route('admin.catalog.store') }}" method="post">
 		{{ csrf_field() }}
 		<input type="hidden" name="_method" value="PUT">
@@ -30,7 +25,14 @@
 				<input type="text" name="name" value="" required placeholder="Name">
 			</label>
 		</div>
-		
+
+		<div class="form-group">
+			<label>
+				<span>City: </span>
+				@include('partials.city-select', compact('cities'))
+			</label>
+		</div>
+
 		<div class="form-group">
 			<label>
 				<span>Phones: </span>

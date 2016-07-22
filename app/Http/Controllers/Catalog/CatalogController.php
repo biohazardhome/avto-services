@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Catalog;
+use App\City;
 
 class CatalogController extends Controller
 {
@@ -33,12 +34,44 @@ class CatalogController extends Controller
 		return abort(404);
 	}
 
-    public function search($query) {
-        $catalog = Catalog::search($query)
+	public function city($city) {
+		$city = City::with('catalog')
+			->whereSlug($city)
+			->first();
+		
+		if ($city) {
+			$catalog = $city->catalog;
+			if ($catalog->count()) {
+				$catalog = Catalog::paginateCollection($catalog, 15);
+
+				return view('catalog.index', compact('catalog'));
+			} else {
+				// return 'Нет элементов';
+				return 'Раздел пуст';
+			}
+		} else {
+			return 'Нет такого городав каталоге';
+		}
+	}
+
+    public function search(Request $request, $query = null) {
+
+    	// dd($request->isMethod('post'), $request);
+    	if ($request->isMethod('post')) {
+    		$query = $request->get('query');
+
+    		$this->validate($request, [
+    			'query' => 'required',
+			]);
+    	}
+
+        $catalog = Catalog::withCount('comments')->search($query)
             ->get();
+
 
         $catalog = Catalog::paginateCollection($catalog, 15);
 
+        // dd($catalog);
         return view('catalog.index', compact('catalog'));
     }
 

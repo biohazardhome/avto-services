@@ -39,8 +39,10 @@
 	                <!-- Left Side Of Navbar -->
 	                <ul class="nav navbar-nav">
 	                    <li><a href="{{ url('/admin') }}">Admin</a></li>
-	                    <li><a href="{{ url('/catalog') }}">Catalog</a></li>
-	                    <li><a href="{{ url('/comment') }}">Comments</a></li>
+	                    <li><a href="{{ url('/admin/catalog') }}">Catalog</a></li>
+	                    <li><a href="{{ url('/admin/comment') }}">Comments</a></li>
+	                    <li><a href="{{ url('/admin/city') }}">Cities</a></li>
+	                    <li><a href="{{ url('/admin/city-catalog') }}">Cities Catalog</a></li>
 	                    <li><a href="{{ url('/admin') }}">Images</a></li>
 	                </ul>
 

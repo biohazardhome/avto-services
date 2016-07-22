@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Catalog;
+use App\City;
 
 class CatalogController extends Controller
 {
@@ -19,6 +20,13 @@ class CatalogController extends Controller
 
     	$grid = new \Datagrid($catalog, $request->get('f', []));
         $grid
+            ->setColumn('id', 'ID', [
+                'sortable'    => true,
+                'has_filters' => true,
+                'wrapper'     => function($value, $row) {
+                    return '<a href="'. route('admin.catalog.show', [$value]) . '">' . $value . '</a>';
+                }
+            ])
             ->setColumn('name', 'Name', [
                 'sortable'    => true,
                 'has_filters' => true,
@@ -63,20 +71,24 @@ class CatalogController extends Controller
                 }
             ]);
 
-        return view('admin.catalog.index', ['content' => $grid->show('grid-table')]);
+        return view('admin.index', ['content' => $grid->show('grid-table')]);
     }
 
-    public function show() {
-
+    public function show($id) {
+        $catalog = Catalog::find($id);
+        return view('admin.show', ['model' => $catalog]);
     }
 
     public function create() {
-        return view('admin.catalog.create');
+        $cities = City::all();
+
+        return view('admin.catalog.create', compact('cities'));
     }
 
     public function store(Request $request) {
         $this->validate($request, [
             'name' => 'required|unique:catalog',
+            'city_id' => 'required|exists:cities,id',
             'phones' => 'required',
             'address' => 'required',
             'email' => 'email',
@@ -84,21 +96,26 @@ class CatalogController extends Controller
             'sort' => 'integer',
         ]);
 
-        Catalog::create($request->all());
+        $entity = Catalog::create($request->except('city_id'));
+        $entity->city()->attach($request->get('city_id'));
 
         return redirect()
-            ->route('admin.catalog.create');
+            ->route('admin.comment.show', [$entity->id]);
     }
 
     public function edit($id) {
-        $item = Catalog::find($id);
-        return view('admin.catalog.edit', compact('item'));
+        $item = Catalog::with('city')
+            ->find($id);
+
+        $cities = City::all();
+        return view('admin.catalog.edit', compact('item', 'cities'));
     }
 
     public function update(Request $request, $id) {
-        // dd($request->all());
         $this->validate($request, [
             'name' => 'required|unique:catalog,id,'. $id .'',
+            'regenerateSlug' => 'boolean',
+            'city_id' => 'required|exists:cities,id',
             'phones' => 'required',
             'address' => 'required',
             'email' => 'email',
@@ -109,11 +126,19 @@ class CatalogController extends Controller
             //'content' => '',
             'sort' => 'integer',
         ]);
-        Catalog::find($id)
-            ->update($request->all());
+
+        $entity = Catalog::find($id);
+
+        if ($request->regenerateSlug) {
+            $entity->getSlugOptions()->regenerateOnUpdate = true;
+        }
+
+        $entity->update($request->except(['regenerateSlug', 'city_id']));
+        $entity->city()->detach($entity->city->first()->id);
+        $entity->city()->attach($request->get('city_id'));
 
         return redirect()
-            ->route('admin.catalog.edit', [$id])/*->withInput()*/;
+            ->route('admin.catalog.show', [$id]);
     }
 
     public function delete($id) {

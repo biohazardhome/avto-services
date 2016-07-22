@@ -33,9 +33,10 @@
 					</ul>
 				</li>
 			</ul> -->
-			<form class="navbar-form navbar-left" role="search">
+			<form class="navbar-form navbar-left" action="{{ route('catalog.search') }}" method="post" role="search">
+				{{ csrf_field() }}
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input class="form-control" type="text" name="query" placeholder="Search">
 				</div>
 				<button type="submit" class="btn btn-default">Отправить</button>
 			</form>

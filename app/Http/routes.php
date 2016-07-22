@@ -18,11 +18,14 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
+Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
+// Route::get('/{city}/{catalog-type}', 'Catalog\CatalogController@city')->name('catalog-type');
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => '', */'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
-	Route::get('/search/{query}', 'CatalogController@search')->name('search');
+	Route::get('/search/{query?}', 'CatalogController@search')->name('search');
+	Route::post('/search', 'CatalogController@search')->name('search');
 	Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 });
 
@@ -41,11 +44,32 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 
 	Route::group(['as' => 'catalog.', 'prefix' => 'catalog', ], function() {
 		Route::get('/', 'CatalogController@index')->name('index');
+		Route::get('/show/{id}', 'CatalogController@show')->name('show');
 		Route::get('/create', 'CatalogController@create')->name('create');
 		Route::put('/store', 'CatalogController@store')->name('store');
 		Route::get('/edit/{id}', 'CatalogController@edit')->name('edit');
 		Route::post('/update/{id}', 'CatalogController@update')->name('update');
 		Route::get('/delete/{id}', 'CatalogController@delete')->name('delete');
+	});
+
+	Route::group(['as' => 'comment.', 'prefix' => 'comment', ], function() {
+		Route::get('/', 'CommentController@index')->name('index');
+		Route::get('/show/{id}', 'CommentController@show')->name('show');
+		Route::get('/create', 'CommentController@create')->name('create');
+		Route::put('/store', 'CommentController@store')->name('store');
+		Route::get('/edit/{id}', 'CommentController@edit')->name('edit');
+		Route::post('/update/{id}', 'CommentController@update')->name('update');
+		Route::get('/delete', 'CommentController@delete')->name('delete');
+	});
+
+	Route::group(['as' => 'city.', 'prefix' => 'city', ], function() {
+		Route::get('/', 'CityController@index')->name('index');
+		Route::get('/show/{id}', 'CityController@show')->name('show');
+		Route::get('/create', 'CityController@create')->name('create');
+		Route::put('/store', 'CityController@store')->name('store');
+		Route::get('/edit/{id}', 'CityController@edit')->name('edit');
+		Route::post('/update/{id}', 'CityController@update')->name('update');
+		Route::get('/delete', 'CityController@delete')->name('delete');
 	});
 });
 

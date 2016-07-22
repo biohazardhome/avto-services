@@ -2,13 +2,13 @@
 
 namespace App;
 
-// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 use My\Model\Slug\Slug;
 
 use App\Image;
 use App\Comment;
+use App\City;
 
 class Catalog extends Model
 {
@@ -19,7 +19,7 @@ class Catalog extends Model
 		$table = 'catalog',
 		$fillable = ['slug', 'name', 'description', 'content', 'address', 'phones', 'email', 'site', 'sort'];
 
-	public function slugGenerate() {
+	public static function slugGenerate() {
         return static::slugOptions()
             ->slugColumn('slug')
             ->generateFromColumn('name')
@@ -31,7 +31,6 @@ class Catalog extends Model
 	}
 
 	public function getAddressSegmentsAttribute() {
-		// dd($this->address);
 		if ($this->address) {
 			return explode(',', $this->address);
 		}
@@ -58,8 +57,11 @@ class Catalog extends Model
 	}
 
 	public function comments() {
-		// return $this->belongsTo(Comment::class, 'id', 'catalog_id');
 		return $this->hasMany(Comment::class, 'catalog_id');
+	}
+
+	public function city() {
+		return $this->belongsToMany(City::class, 'catalog_cities', 'catalog_id', 'city_id');
 	}
 	
 	// similar
