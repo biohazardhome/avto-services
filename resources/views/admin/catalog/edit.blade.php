@@ -11,15 +11,10 @@
 	<link rel="stylesheet" type="text/css" href="/trumbowyg/ui/trumbowyg.min.css">
 @stop
 
-
-
-@if ($errors->count())
-	@foreach ($errors->all() as $error)
-		{{ $error }}
-	@endforeach
-@endif
-
 @section('content')
+
+	@include('partials.form.errors', compact('errors'))
+
 	<form action="{{ route('admin.catalog.update', [$item->id]) }}" method="post">
 		{{ csrf_field() }}
 
@@ -27,6 +22,26 @@
 			<label>
 				<span>Name: </span>
 				<input type="text" name="name" value="{{ $item->name }}" required placeholder="Name">
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label>
+				<span>Regenerate Slug: value ({{ $item->slug }})</span>
+				<input type="checkbox" name="regenerateSlug" value="1" {{ $item->getSlugOptions()->regenerateOnUpdate ? 'checked' : '' }} placeholder="Regenerate Slug">
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label>
+				<span>City: </span>
+				<!-- <select name="city_id">
+					@foreach ($cities as $city)
+						<?php $selected = $city->id === $item->city->first()->id ? 'selected' : ''; ?>
+						<option value="{{ $city->id }}" {{ $selected }}>{{ $city->name }}</option>
+					@endforeach
+				</select> -->
+				@include('partials.city-select', ['cities' => $cities, 'selectedId' => $item->city->first()->id])
 			</label>
 		</div>
 		
