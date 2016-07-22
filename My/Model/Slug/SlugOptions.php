@@ -9,7 +9,7 @@ class SlugOptions {
 		$generateFromColumn = 'title',
 		$generateUnique = true,
 		$maxLength = 255,
-		$regenerateOnUpdate = true;
+		$regenerateOnUpdate = false;
 
 	public function create() {
 		return new static;

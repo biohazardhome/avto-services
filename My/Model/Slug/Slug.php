@@ -10,32 +10,33 @@ use My\Model\Slug\SlugOptions;
 
 trait Slug {
 
-	protected
+	protected static
 		$slugOptions = null;
 
-	abstract public function slugGenerate();
+	abstract  public function slugGenerate();
 
     public static function slugOptions() {
     	return new SlugOptions();
     }
 
 	public static function bootSlug() {
+		self::$slugOptions = self::slugGenerate();
 
 		static::creating(function(Model $m) {
 			$m->addSlug();
 		});
 
-		if (self::slugOptions()->regenerateOnUpdate) {
-			static::updating(function(Model $m) {
+		static::updating(function(Model $m)  {
+			if ($m->getSlugOptions()->regenerateOnUpdate) {
+
 				$m->addSlug();
-			});
-		}
+			}
+		});
+		
 	}
 
 	public function addSlug() {
-		$options = $this->slugOptions = $this->slugGenerate();
-
-		$column = $this->slugOptions->slugColumn;
+		$column = static::$slugOptions->slugColumn;
 
 		$slug = $this->generateSlug();
 		if ($slug === '') {
@@ -51,7 +52,7 @@ trait Slug {
 	}
 
 	public function generateSlug() {
-		return str_slug($this->{$this->slugOptions->generateFromColumn});
+		return str_slug($this->{static::$slugOptions->generateFromColumn});
 	}
 
 	public function generateSlugUnique($slug) {
@@ -65,19 +66,23 @@ trait Slug {
 	}
 
 	public function slugIsUnique($slug) {
-		return !(bool) $this->where($this->slugOptions->slugColumn, $slug)
+		return !(bool) $this->where(static::$slugOptions->slugColumn, $slug)
 			->where($this->getKeyName(), '!=', $this->getKey() ?: '0')
 			->count();
 	}
 
+	public function getSlugOptions() {
+		return self::$slugOptions;
+	}
+
 	public function slugValidate() {
-		if (!strlen($this->slugOptions->generateFromColumn)) {
+		if (!strlen(static::$slugOptions->generateFromColumn)) {
 			throw InvalidOption::missingFromField();
         }
-        if (!strlen($this->slugOptions->slugColumn)) {
+        if (!strlen(static::$slugOptions->slugColumn)) {
             throw InvalidOption::missingSlugField();
         }
-        if ($this->slugOptions->maxLength <= 0) {
+        if (static::$slugOptions->maxLength <= 0) {
             throw InvalidOption::invalidMaximumLength();
         }
 	}
