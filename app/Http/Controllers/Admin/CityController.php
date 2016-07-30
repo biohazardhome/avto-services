@@ -34,6 +34,14 @@ class CityController extends Controller
                 'sortable'    => true,
                 'has_filters' => true,
             ])
+            ->setColumn('title', 'Title', [
+                'sortable'    => true,
+                'has_filters' => true,
+            ])
+            ->setColumn('description', 'Description', [
+                'sortable'    => true,
+                'has_filters' => true,
+            ])
             ->setActionColumn([
                 'wrapper' => function($value, $row) {
                     return '<a href="' . route('admin.city.edit', [$row->id]) . '" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>

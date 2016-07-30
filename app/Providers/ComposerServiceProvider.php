@@ -15,23 +15,13 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot(Request $request)
     {
-        if ($request->is('/')) {
-            view()->composer(
-                'layouts.index', 'App\Http\Composers\CommentsIndexComposer'
-            );
-        }
+        view()->composer(
+            ['index', 'catalog.city'], 'App\Http\Composers\CommentsIndexComposer'
+        );
 
-        // if (!$request->is('map/*', 'map')) {
-        if ($request->is('/')) {
-            view()->composer(
-                'layouts.index', 'App\Http\Composers\MapIndexComposer'
-            );
-        }
-
-        // Using Closure based composers...
-        /*view()->composer('dashboard', function ($view) {
-            //
-        });*/
+        view()->composer(
+            ['index', 'catalog.city'], 'App\Http\Composers\MapIndexComposer'
+        );
     }
 
     /**

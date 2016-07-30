@@ -100,7 +100,7 @@ class CatalogController extends Controller
         $entity->city()->attach($request->get('city_id'));
 
         return redirect()
-            ->route('admin.comment.show', [$entity->id]);
+            ->route('admin.catalog.show', [$entity->id]);
     }
 
     public function edit($id) {

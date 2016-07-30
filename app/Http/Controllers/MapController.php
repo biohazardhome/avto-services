@@ -12,8 +12,7 @@ class MapController extends Controller
 {
     
     public function index() {
-		$catalog = Catalog::get()
-			->keyBy('name');
+		$catalog = Catalog::get();
 
 		$catalog = Catalog::transformForMap($catalog);
 

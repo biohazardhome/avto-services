@@ -14,14 +14,11 @@
 
 Route::get('/kladr/{region}', 'KladrController@region');
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
-Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
-// Route::get('/{city}/{catalog-type}', 'Catalog\CatalogController@city')->name('catalog-type');
-
-Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', /*'middleware' => '', */'prefix' => 'catalog'], function() {
+Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
 	Route::get('/search/{query?}', 'CatalogController@search')->name('search');
@@ -107,6 +104,11 @@ Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], functio
 		}
 	});
 //});
+
+Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
+// Route::get('/{city}/{catalog-type}', 'Catalog\CatalogController@city')->name('catalog-type');
+
+
 
 /*Route::get('/', function () {
     return view('welcome');

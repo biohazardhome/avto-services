@@ -76,18 +76,25 @@ class Catalog extends Model
 		    ->get();
 	}
 
-	public static function transformForMap($catalog) {
+	public static function transformForMap($catalog, array $except = []) {
 		if ($catalog instanceof Collection) {
-			return $catalog->map(function($i, $k) {
-		    	return collect($i->toArray())
-		    	    ->map(function($i, $k) {
-					    if ($k === 'site') {
-					    	return urlencode($i);
-					    } else {
-					    	return addslashes($i);
-					    }
-		    	});
-		    });
+			return $catalog->keyBy('name')
+				->map(function($i, $k) use($except) {
+
+					$except = array_merge($except, ['pivot']);
+					$attributes = array_except($i->toArray(), $except);
+
+			    	return collect($attributes)
+			    	    ->map(function($i, $k) {
+						    if ($k === 'site') {
+						    	return urlencode($i);
+						    } else if (is_string($i)) {
+						    	return addslashes($i);
+						    }/* else if (is_array($i)) {
+						    	dump($k, $i);
+						    }*/
+			    	});
+			    });
 		} else {
 			// dd($catalog->getAttributes());
 			return (object) collect($catalog->getAttributes())->map(function($i, $k) {
