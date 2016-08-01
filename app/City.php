@@ -13,7 +13,7 @@ class City extends Model
 
     protected
     	$table = 'cities',
-        $fillable = ['id', 'name', 'slug'];
+        $fillable = ['id', 'name', 'slug', 'title', 'description', 'text'];
 
     public static function slugGenerate() {
         return static::slugOptions()

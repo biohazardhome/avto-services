@@ -18,7 +18,7 @@ class CatalogController extends Controller
 		    ->orderBy('sort', 'desc')
 			->paginate(20);
 
-		return view('catalog.index', compact('catalog'));
+		return view('index', compact('catalog'));
 	}
 	
 	public function show($slug) {
@@ -35,22 +35,25 @@ class CatalogController extends Controller
 	}
 
 	public function city($city) {
-		$city = City::with('catalog')
+		$city = City::with(['catalog' => function($q) {
+				$q->withCount('comments')
+					->orderBy('sort', 'desc');
+			}])
 			->whereSlug($city)
 			->first();
 		
 		if ($city) {
 			$catalog = $city->catalog;
 			if ($catalog->count()) {
-				$catalog = Catalog::paginateCollection($catalog, 15);
+				$catalog = Catalog::paginateCollection($catalog, 20);
 
-				return view('catalog.index', compact('catalog'));
+				return view('catalog.city', compact('catalog', 'city'));
 			} else {
 				// return 'Нет элементов';
 				return 'Раздел пуст';
 			}
 		} else {
-			return 'Нет такого городав каталоге';
+			return 'Нет такого города в каталоге';
 		}
 	}
 

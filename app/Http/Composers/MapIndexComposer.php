@@ -3,12 +3,16 @@
 namespace App\Http\Composers;
 
 use Illuminate\View\View;
-use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 
 use App\Catalog;
+use App\City;
 
 class MapIndexComposer
 {
+
+    protected
+        $request;
 
     /**
      * Create a new profile composer.
@@ -16,9 +20,9 @@ class MapIndexComposer
      * @param  UserRepository  $users
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        
+        $this->request = $request;
     }
 
     /**
@@ -29,20 +33,43 @@ class MapIndexComposer
      */
     public function compose(View $view)
     {
-        $this->view = $view;
+        $url = $this->request->path();
+        $city = $this->getCity($url);
+        if ($city) {
+            $catalog = $city->catalog->keyBy('name');
+        } else {
+            $catalog = Catalog::all([
+                'name',
+                'description',
+                'address',
+                'site',
+                'email',
+                'phones'
+            ])->keyBy('name');
+        }
 
-        $catalog = Catalog::transformForMap(Catalog::all([
-            'name',
-            'description',
-            'address',
-            'site',
-            'email',
-            'phones'
-        ])->keyBy('name'));
+        $catalog = Catalog::transformForMap($catalog);
 
-        $content = view('partials.sections.map-all', compact('catalog'));
+        $content = view('partials.sections.map-all', compact('city', 'catalog'));
 
         $view->with('composerMapIndex', $content);
+    }
+
+    protected function getCity($citySlug) {
+        $city = City::with(['catalog' => function($q) {
+                $q->get([
+                    'name',
+                    'description',
+                    'address',
+                    'site',
+                    'email',
+                    'phones',
+                ]);
+            }])
+            ->whereSlug($citySlug)
+            ->first();
+
+        return $city;
     }
 
 }
