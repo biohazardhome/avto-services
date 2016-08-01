@@ -12,6 +12,8 @@ use App\City;
 class CommentsIndexComposer
 {
 
+    const COMMENTS_COUNT = 3;
+
     protected
         $view,
         $request;
@@ -90,11 +92,13 @@ class CommentsIndexComposer
         $comments = $city->catalog->reduce(function($collect, $item) {
                 // dump($item->comments);
                 return $collect->merge($item->comments);
-            }, collect())
-            ;
+            }, collect());
 
-        $comments = $comments->count() ? $comments->random(3) : collect();
-
+        if ($comments->count() === 0) {
+            $comments = collect();
+        } else {
+            $comments = $comments->count() >= self::COMMENTS_COUNT ? $comments->random(self::COMMENTS_COUNT) : $comments;
+        }
         return $comments;
     }
 
