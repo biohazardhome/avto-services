@@ -96,7 +96,6 @@ class Catalog extends Model
 			    	});
 			    });
 		} else {
-			// dd($catalog->getAttributes());
 			return (object) collect($catalog->getAttributes())->map(function($i, $k) {
 			    if ($k === 'site') {
 			    	return urlencode($i);
