@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "aginev/datagrid": "^1.0",
         "nicolaslopezj/searchable": "^1.9",
-        "roumen/sitemap": "^2.6"
+        "roumen/sitemap": "^2.6",
+        "creitive/laravel5-breadcrumbs": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
