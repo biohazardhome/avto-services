@@ -62,7 +62,7 @@ class Model extends BaseModel {
     public function scopeRandom($q, $limit = 0) {
         $count = $q->count() - 1;
         $limit = $limit-1 > $count ? $count : $limit;
-        dd($count, $limit);
+        // dump($count, $limit-1);
         $skip = $count > 0 ? mt_rand(0, $count) : 0;
         return $q->skip($skip)
             ->limit($limit);
