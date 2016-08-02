@@ -6,17 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model;
 use App\City;
 
 class CityController extends Controller
 {
     
 	public function index(Request $request) {
-		$cities = City::paginate(15);
+		$sort = $this->sortable($request, 'city');
+
+        $cities = City::sortable($sort['sortField'], $sort['sortType'])
+            ->searchable($request->get('query'))->get();
+		// $cities = City::paginate(15);
 
 		$grid = new \Datagrid($cities, $request->get('f', []));
-        $grid
-            ->setColumn('id', 'ID', [
+        $grid->setColumn('id', 'ID', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
@@ -49,7 +53,11 @@ class CityController extends Controller
                 }
             ]);
 
-        return view('admin.index', ['content' => $grid->show('grid-table')]);
+        return view('admin.index', [
+			'content' => $grid->show('grid-table'),
+			'table' => str_singular($cities->first()->getTable()),
+            'columns' => array_keys($cities->first()->getAttributes()),
+		]);
 	}
 
 	public function show($id) {

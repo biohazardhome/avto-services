@@ -8,17 +8,23 @@ use App\Http\Requests;
 
 use App\Http\Controllers\Controller;
 
+use App\Model;
 use App\Comment;
 
 class CommentController extends Controller
 {
     
 	public function index(Request $request) {
-		$comments = Comment::paginate(15);
+		$sort = $this->sortable($request, 'comment');
+
+        $comments = Comment::sortable($sort['sortField'], $sort['sortType'])
+            ->searchable($request->get('query'))->get()/*
+            ->paginate(self::PAGINATE_COUNT)*/;
+
+        $comments = Model::paginateCollection($comments, self::PAGINATE_COUNT);
 
         $grid = new \Datagrid($comments, $request->get('f', []));
-        $grid
-            ->setColumn('id', 'ID', [
+        $grid->setColumn('id', 'ID', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
@@ -53,7 +59,11 @@ class CommentController extends Controller
                 }
             ]);
 
-        return view('admin.index', ['content' => $grid->show('grid-table')]);
+        return view('admin.index', [
+            'content' => $grid->show('grid-table'),
+            'table' => str_singular($comments->first()->getTable()),
+            'columns' => array_keys($comments->first()->getAttributes()),
+        ]);
 	}
 
     public function show($id) {

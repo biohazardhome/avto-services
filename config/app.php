@@ -164,6 +164,7 @@ return [
         Aginev\Datagrid\DatagridServiceProvider::class,
 
         Roumen\Sitemap\SitemapServiceProvider::class,
+        Creitive\Breadcrumbs\BreadcrumbsServiceProvider::class,
 
     ],
 
@@ -214,6 +215,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Datagrid' => Aginev\Datagrid\Datagrid::class,
+        'Breadcrumbs' => Creitive\Breadcrumbs\Facades\Breadcrumbs::class,
 
     ],
 
