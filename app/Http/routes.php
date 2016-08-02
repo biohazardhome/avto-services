@@ -11,8 +11,18 @@
 |
 */
 
+function routeSame($name, $controller, array $params = [], $type = 'get') { // параметры
+	Route::$type('/'. $name .'/{' . $name . '}', $controller .'@'. $name)->name($name);
+}
 
-Route::get('/kladr/{region}', 'KladrController@region');
+/*Route::group(['as' => 'kladr.', 'prefix' => 'kladr'], function() {
+	Route::get('/{region}/{district}/{city}/{street}/{building}', 'KladrController@index')->name('index');
+	Route::get('/region/{region}', 'KladrController@region')->name('region');
+	Route::get('/district/{district}', 'KladrController@district')->name('district');
+	Route::get('/city/{city}', 'KladrController@city')->name('city');
+	Route::get('/street/{street}', 'KladrController@street')->name('street');
+	routeSame('building', 'KladrController');
+});*/
 
 // Route::get('/home', 'HomeController@index');
 
@@ -40,7 +50,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 	Route::get('/', 'CatalogController@index')->name('index');
 
 	Route::group(['as' => 'catalog.', 'prefix' => 'catalog', ], function() {
-		Route::get('/', 'CatalogController@index')->name('index');
+		Route::any('/', 'CatalogController@index')->name('index');
 		Route::get('/show/{id}', 'CatalogController@show')->name('show');
 		Route::get('/create', 'CatalogController@create')->name('create');
 		Route::put('/store', 'CatalogController@store')->name('store');
@@ -50,7 +60,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 	});
 
 	Route::group(['as' => 'comment.', 'prefix' => 'comment', ], function() {
-		Route::get('/', 'CommentController@index')->name('index');
+		Route::any('/', 'CommentController@index')->name('index');
 		Route::get('/show/{id}', 'CommentController@show')->name('show');
 		Route::get('/create', 'CommentController@create')->name('create');
 		Route::put('/store', 'CommentController@store')->name('store');
@@ -60,7 +70,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 	});
 
 	Route::group(['as' => 'city.', 'prefix' => 'city', ], function() {
-		Route::get('/', 'CityController@index')->name('index');
+		Route::any('/', 'CityController@index')->name('index');
 		Route::get('/show/{id}', 'CityController@show')->name('show');
 		Route::get('/create', 'CityController@create')->name('create');
 		Route::put('/store', 'CityController@store')->name('store');

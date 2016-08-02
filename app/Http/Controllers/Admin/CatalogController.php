@@ -5,22 +5,31 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 
+use App\Model;
 use App\Catalog;
 use App\City;
 
 class CatalogController extends Controller
 {
+    // const PAGINATE_COUNT = 15;
     
+    protected $sortableField = 'sort';
+
     public function index(Request $request) {
-        $catalog = Catalog::orderBy('sort', 'desc')
-            ->paginate(15);
+        $sort = $this->sortable($request, 'catalog');
+
+        $catalog = Catalog::sortable($sort['sortField'], $sort['sortType'])
+            ->searchable($request->get('query'))->get()/*
+            ->paginate(self::PAGINATE_COUNT)*/;
+
+        $catalog = Model::paginateCollection($catalog, self::PAGINATE_COUNT);
+        // dd($catalog);
 
     	$grid = new \Datagrid($catalog, $request->get('f', []));
-        $grid
-            ->setColumn('id', 'ID', [
+        $grid->setColumn('id', 'ID', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
@@ -71,7 +80,11 @@ class CatalogController extends Controller
                 }
             ]);
 
-        return view('admin.index', ['content' => $grid->show('grid-table')]);
+        return view('admin.index', [
+            'content' => $grid->show('grid-table'),
+            'table' => str_singular($catalog->first()->getTable()),
+            'columns' => array_keys($catalog->first()->getAttributes()),
+        ]);
     }
 
     public function show($id) {

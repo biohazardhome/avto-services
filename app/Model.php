@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Http\Request;
 
 class Model extends BaseModel {
 
@@ -15,7 +16,8 @@ class Model extends BaseModel {
      *
      * @var array
      */
-    protected $searchable = [
+    protected
+        $searchable = [
         'columns' => [
             'catalog.name' => 10,
             'catalog.description' => 7,
@@ -59,9 +61,28 @@ class Model extends BaseModel {
 
     public function scopeRandom($q, $limit = 0) {
         $count = $q->count() - 1;
+        $limit = $limit-1 > $count ? $count : $limit;
+        dd($count, $limit);
         $skip = $count > 0 ? mt_rand(0, $count) : 0;
         return $q->skip($skip)
             ->limit($limit);
+    }
+
+    public function scopeSortable($q, $sortField, $sortType = null) {
+        if ($sortType === 'asc') {
+            $q = $q->orderBy($sortField, 'asc');
+        } else {
+            $q = $q->orderBy($sortField, 'desc');
+        }
+        return $q;
+    }
+
+    public function scopeSearchable($q, $query = null) {
+        return $query ? $q->search($query) : $q;
+    }
+
+    public function scopeFirtable($q, Request $request) {
+        
     }
 
 }

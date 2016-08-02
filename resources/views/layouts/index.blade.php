@@ -12,6 +12,8 @@
 	<link href="/css/comment.css" rel="stylesheet" type="text/css">
 	<link href="/css/map.css" rel="stylesheet" type="text/css">
 	<link href="/css/media.css" rel="stylesheet" type="text/css">
+
+	@yield('head')
 	
 </head><body class="container-fluid">
 

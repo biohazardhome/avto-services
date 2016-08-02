@@ -5,7 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="description" content="@yield('description')">
 	
-	
+	<link rel="stylesheet" type="text/css" href="/css/jquery.kladr.min.css">
+	<link rel="stylesheet" type="text/css" href="/trumbowyg/ui/trumbowyg.min.css">
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
 	<link href="/css/index.css" rel="stylesheet" type="text/css">
@@ -80,6 +81,11 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
 	<!-- <script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script> -->
+	<script src="/js/jquery.kladr.min.js" type="text/javascript"></script>
+	<script src="/trumbowyg/trumbowyg.min.js" type="text/javascript"></script>
+	<script>
+		$('.trumbowyg').trumbowyg();
+	</script>
 	@yield('assetsJS')
 
 </body></html>
