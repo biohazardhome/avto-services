@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
-@section('title', $city->title)
-@section('description', $city->description) <!-- полная справочная информация, схема проезда-->
+@section('title', 'Автосервисы в '. $city->name .' с отзывами и местоположением на карте')
+@section('description', 'Автосервисы в '. $city->name .' - каталог адресов и телефонов автосервисов в '. $city->name .' с полной справочной информацией и отзывами') <!-- полная справочная информация, схема проезда-->
 
 
 @section('head')
