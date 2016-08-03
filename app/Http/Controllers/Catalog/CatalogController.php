@@ -22,7 +22,7 @@ class CatalogController extends Controller
 	}
 	
 	public function show($slug) {
-		$catalog = Catalog::with('comments')
+		$catalog = Catalog::with('city', 'comments')
 			->whereSlug($slug)
 			->first();
 
