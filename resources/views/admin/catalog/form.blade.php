@@ -35,7 +35,7 @@
 		<span>City: </span>
 		<?php
 			$params = ['cities' => $cities];
-			if ($type === 'edit') $params[] = ['selectedId' => $item->city->first()->id];
+			if ($type === 'edit') $params['selectedId'] = $item->city->first()->id;
 		?>
 		@include('partials.city-select', $params)
 	</label>
@@ -59,7 +59,7 @@
 	<label>
 		<span>Site: </span>
 		<input class="form-control" type="text" name="site" value="{{ object_get($item, 'site', '') }}" placeholder="Site">
-		<span>http://example.com</span>
+		<span>example.com</span>
 	</label>
 </div>
 
