@@ -28,7 +28,7 @@ var Map = {
     		phones = '';
 
     	if (attrs.site) {
-			site = '<a href="http://'+ attrs.site +'/">'+ attrs.site +'</a>';
+			site = '<a href="http://'+ attrs.site +'/" blank="_target">'+ attrs.site +'</a>';
     	}
 
     	if (attrs.email) {
