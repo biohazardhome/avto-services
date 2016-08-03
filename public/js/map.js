@@ -25,8 +25,7 @@ var Map = {
 	placemarkData: function(attrs, index) {
 		var site = '',
     		email = '',
-    		phones = '',
-    		phonesPrefix = '+7 ';
+    		phones = '';
 
     	if (attrs.site) {
 			site = '<a href="http://'+ attrs.site +'/">'+ attrs.site +'</a>';
@@ -39,10 +38,10 @@ var Map = {
     	if (attrs.phones) {
     		phones = attrs.phones.split(',');
     		if (phones.length > 1) {
-    			phones = phones.map(function(i) { return phonesPrefix + i.trim(); })
+    			phones = phones.map(function(i) { return i.trim(); })
     				.join(', ');
     		} else {
-    			phones = phonesPrefix + phones;
+    			phones = phones;
     		}
     	}
 
