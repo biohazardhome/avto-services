@@ -4,6 +4,17 @@
 @section('description', trim(str_limit_with(strip_tags($catalog->description), 200)) )
 @section('content')
 	<section class="catalog-show col-md-9 col-lg-9">
+
+		<?php
+			Breadcrumbs::setCssClasses('breadcrumb');
+			Breadcrumbs::setDivider('');
+			Breadcrumbs::add('Автосервисы', '/');
+			Breadcrumbs::add($catalog->city->first()->name, '/'. $catalog->city->first()->slug);
+			Breadcrumbs::add($catalog->name, '/'. $catalog->slug);
+		?>
+
+		{!! Breadcrumbs::render() !!}
+
 		<article class="catalog-item bg-gray">
 			<div class="catalog-item-well">
 				@include('catalog.partials.item-header', $catalog->getAttributesOnly(['name']) + ['city' => $catalog->city->first()])
