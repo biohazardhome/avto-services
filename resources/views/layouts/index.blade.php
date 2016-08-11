@@ -33,8 +33,15 @@
 
 	<footer class="row">
 
-
 		{!! $composerMapIndex or '' !!}
+
+		<u>Автосервисы в городах</u>
+		<?php $cities = App\City::all() ?>
+		<ul>
+			@foreach($cities as $city)
+				<li><a href="/{{ $city->slug }}">{{ $city->name }}</a></li>
+			@endforeach
+		</ul>
 		
 		<!-- Yandex.Metrika informer -->
 		<a href="https://metrika.yandex.ru/stat/?id=37981900&amp;from=informer"
