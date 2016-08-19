@@ -1,6 +1,6 @@
 <?php
 
-namespace My\Traits\Model;
+namespace My\Model\Traits;
 
 trait CatalogAddress {
 
