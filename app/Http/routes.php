@@ -53,7 +53,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 		Route::any('/', 'CatalogController@index')->name('index');
 		Route::get('/show/{id}', 'CatalogController@show')->name('show');
 		Route::get('/create', 'CatalogController@create')->name('create');
-		Route::put('/store', 'CatalogController@store')->name('store');
+		Route::post('/store', 'CatalogController@store')->name('store');
 		Route::get('/edit/{id}', 'CatalogController@edit')->name('edit');
 		Route::post('/update/{id}', 'CatalogController@update')->name('update');
 		Route::get('/delete/{id}', 'CatalogController@delete')->name('delete');
@@ -84,6 +84,16 @@ Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], functio
 	Route::get('/', 'MapController@index')->name('index');
 	Route::get('/{address}', 'MapController@showOld')->name('show.old');
 	Route::get('/{name}/{address}', 'MapController@show')->name('show');
+});
+
+Route::group(['prefix' => 'image', 'as' => 'image'], function () {
+    Route::get('/', 'ImageController@index')->name('.index');
+    Route::get('/create', 'ImageController@create')->name('.create');
+    Route::post('/store', 'ImageController@store')/*->name('.store')*/;
+    Route::post('/upload', 'ImageController@upload')->name('.upload');
+    Route::get('/delete/{id}', 'ImageController@delete')->name('.delete');
+    Route::get('/edit/{id}', 'ImageController@edit')->name('.edit');
+	Route::get('/{id}/edit', 'ImageController@edit')->name('.edit');
 });
 
 

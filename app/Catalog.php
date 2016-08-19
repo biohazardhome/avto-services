@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Support\Collection;
 
 use My\Model\Slug\Slug;
+use My\Model\Traits\CatalogAddress;
 
-use App\Image;
+use My\Model\Image;
 use App\Comment;
 use App\City;
 
@@ -14,6 +15,7 @@ class Catalog extends Model
 {
 
 	use Slug;
+	use CatalogAddress;
 
     protected
 		$table = 'catalog',
@@ -30,31 +32,9 @@ class Catalog extends Model
 		return 'slug';
 	}
 
-	public function getAddressSegmentsAttribute() {
-		if ($this->address) {
-			return explode(',', $this->address);
-		}
-		return null;
-	}
-
-	public function getAddressStreetAttribute() {
-		$segments = $this->getAddressSegmentsAttribute();
-		return $segments !== null ? $segments[1] : null; 
-	}
-
-	public function getAddressBuildingAttribute() { // Здание
-		$segments = $this->getAddressSegmentsAttribute();
-		return $segments !== null ? $segments[2] : null; 
-	}
-
-	public function getAddressCityAttribute() {
-		$segments = $this->getAddressSegmentsAttribute();
-		return $segments !== null ? $segments[0] : null; 
-	}
-	
 	public function images() {
-		return $this->morphMany(Image::class, 'imageable');
-	}
+    	return $this->morphMany(Image::class, 'imageable');
+    }
 
 	public function comments() {
 		return $this->hasMany(Comment::class, 'catalog_id');

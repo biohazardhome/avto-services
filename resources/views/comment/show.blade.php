@@ -1,5 +1,8 @@
 <article class="comment-item">
 	<div>
+		@if ($comment->catalog)
+			<a href="{{ route('catalog.show', $comment->catalog->slug) }}">{{ $comment->catalog->name }}</a>
+		@endif
 		@if ($comment->name)
 			<span>Пользователь <span class="glyphicon glyphicon-user"></span> {{ $comment->name }}</span>
 		@endif

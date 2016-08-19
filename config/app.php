@@ -159,6 +159,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         App\Providers\ComposerServiceProvider::class,
+        App\Providers\MorphMapServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
         Aginev\Datagrid\DatagridServiceProvider::class,

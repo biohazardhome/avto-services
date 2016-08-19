@@ -41,10 +41,19 @@
 	</label>
 </div>
 
+@if($type === 'create')
+	<div class="form-group">
+		<label>
+			<span>Images: </span>
+			@include('image.button')
+		</label>
+	</div>
+@endif
+
 <div class="form-group">
 	<label>
 		<span>Phones: </span>
-		<input class="form-control" type="text" name="phones" value="{{ object_get($item, 'phones', '') }}" required placeholder="Phones">
+		<input class="form-control" type="text" name="phones" value="{{ object_get($item, 'phones', '') }}" placeholder="Phones">
 	</label>
 </div>
 

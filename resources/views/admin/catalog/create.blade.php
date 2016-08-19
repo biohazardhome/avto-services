@@ -1,13 +1,15 @@
 @extends('layouts.admin')
 
-@include('admin.catalog.kladr')
+@section('assetsJS')
+	@include('admin.catalog.kladr')
+@stop
 
 @section('content')
 
 	@include('partials.form.errors', compact('errors'))
 
-	<form action="{{ route('admin.catalog.store') }}" method="post">
-		<input type="hidden" name="_method" value="PUT">
+	<form action="{{ route('admin.catalog.store') }}" method="post" enctype="multipart/form-data">
+		{{-- <input type="hidden" name="_method" value="PUT"> --}}
 
 		@include('admin.catalog.form', compact('cities'))
 
