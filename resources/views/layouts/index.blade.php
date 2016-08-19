@@ -39,7 +39,7 @@
 		<?php $cities = App\City::all() ?>
 		<ul>
 			@foreach($cities as $city)
-				<li><a href="{{ $city->slug }}">{{ $city->name }}</a></li>
+				<li><a href="/{{ $city->slug }}">{{ $city->name }}</a></li>
 			@endforeach
 		</ul>
 		
