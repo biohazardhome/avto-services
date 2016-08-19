@@ -11,10 +11,14 @@ use App\Http\Controllers\Controller;
 use App\Model;
 use App\Catalog;
 use App\City;
+use My\Model\Image;
+use My\Command\ImageUploadCommand;
 
 class CatalogController extends Controller
 {
     // const PAGINATE_COUNT = 15;
+
+    const FOLDER_IMAGE = 'catalog';
     
     protected $sortableField = 'sort';
 
@@ -102,7 +106,9 @@ class CatalogController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:catalog',
             'city_id' => 'required|exists:cities,id',
-            'phones' => 'required',
+            // 'images.*' => 'image:jpeg,png,gif',
+            'images.*.file' => 'image:jpeg,png,gif|size:3145728|dimensions:min_width=200,min_height=200',
+            // 'phones' => 'required',
             'address' => 'required',
             'email' => 'email',
             'description' => 'required',
@@ -111,6 +117,43 @@ class CatalogController extends Controller
 
         $entity = Catalog::create($request->except('city_id'));
         $entity->city()->attach($request->get('city_id'));
+
+        $files = $request->file('images');
+        $folder = self::FOLDER_IMAGE .'/'. $entity->slug;
+
+        foreach ($files as $file) {
+            if ($file && $file->isValid()) {
+                // $image = command(new ImageUploadCommand(), compact('file', 'folder'));
+                $image = command(new ImageUploadCommand($file, $folder));
+
+                $oldPath = $image->getPath();
+                $image->rename($entity->name);
+                $path = $image->getPath();
+
+                $image->move($oldPath, $path);
+
+                if (!$image->isErrors()) {
+                    // dump($image);
+                    $entity->images()->save(new Image([
+                        'filename' => $image->filename,
+                        'path' => $path,
+                    ]));
+                    /*Image::create([
+                        'filename' => $image->filename,
+                        'path' => $path,
+                        // 'alt' => $filename,
+                        // 'title' => $filename,
+                        'imageable_id' => $entity->id,
+                        'imageable_type' => 'catalog',
+                    ]);*/
+                } else {
+                    $errors = $image->getErrors();
+                }
+            } else {
+                $errors[] = 'Невалидный файл';
+                // dump($file);
+            }
+        }
 
         return redirect()
             ->route('admin.catalog.show', [$entity->id]);
@@ -129,7 +172,7 @@ class CatalogController extends Controller
             'name' => 'required|unique:catalog,id,'. $id .'',
             'regenerateSlug' => 'boolean',
             'city_id' => 'required|exists:cities,id',
-            'phones' => 'required',
+            // 'phones' => 'required',
             'address' => 'required',
             'email' => 'email',
             // 'site' => 'active_url',
