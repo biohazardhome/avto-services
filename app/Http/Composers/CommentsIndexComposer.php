@@ -42,15 +42,15 @@ class CommentsIndexComposer
 
         if ($city) {
             $comments = $this->getComments($city);
-        } else {
-            $comments = Comment::limit(3)
+        } else { // main page
+            $comments = Comment::with('catalog')
+                ->limit(self::COMMENTS_COUNT)
                 ->get();
         }
-        // dd($city);
 
-        $this->view = $view;
+        /*$this->view = $view;
 
-        /*$comments = Comment::limit(3)
+        $comments = Comment::limit(3)
             ->get();*/
 
         /*$content = $this->compileFromString(
@@ -68,28 +68,21 @@ class CommentsIndexComposer
     }
 
     protected function getCity($citySlug) {
-        $city = City::with(['catalog'/* => function($q) {
-                $q->random(3)->get();
-            }*/,'catalog.comments'/* => function($q) {
-                $q->limit(3)->get();
-            }*/])
+        // $city = City::with(['catalog', 'catalog.comments'])
+        $city = City::with('catalog')
             ->whereSlug($citySlug)
             ->first();
 
-        /*$comments = $city->first()->catalog->reduce(function($collect, $item) {
-                // dump($item->comments);
-                return $collect->merge($item->comments);
-            }, collect())
-            ->random(3);
-
-        // dd($comments);
-
-        return $comments;*/
         return $city;
     }
 
     protected function getComments($city) {
-        $comments = $city->catalog->reduce(function($collect, $item) {
+
+        $comments = Comment::whereIn('catalog_id', $city->catalog->pluck('id'))
+            ->limit(self::COMMENTS_COUNT)
+            ->get();
+
+        /*$comments = $city->catalog->reduce(function($collect, $item) {
                 // dump($item->comments);
                 return $collect->merge($item->comments);
             }, collect());
@@ -98,7 +91,7 @@ class CommentsIndexComposer
             $comments = collect();
         } else {
             $comments = $comments->count() >= self::COMMENTS_COUNT ? $comments->random(self::COMMENTS_COUNT) : $comments;
-        }
+        }*/
         return $comments;
     }
 
