@@ -23,7 +23,7 @@
 
 		<h1 class="text-center">Автосервисы в {{ $city->name }}</h1>
 
-		<p>{{ $city->text }}</p>
+		<p>{!! $city->text !!}</p>
 
 		<div class="text-center" style="border-bottom: 1px solid #dad8d8;">{{ $catalog->links() }}</div>
 
