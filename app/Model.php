@@ -20,6 +20,7 @@ class Model extends BaseModel {
      */
     protected
         $injectUniqueIdentifier = true,
+        $rules = [],
         $searchable = [
         'columns' => [
             'catalog.name' => 10,
