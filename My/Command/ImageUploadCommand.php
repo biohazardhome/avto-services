@@ -27,7 +27,7 @@ class ImageUploadCommand {
 		$folder = $this->folder;
 		
 		$filename = $file->getClientOriginalName();
-		$image = new Image($filename, $folder, null, null, true);
+		$image = new Image($filename, $folder/*, null, null, true*/);
 
 		$pathDir = $image->getPathDir();
 		/*if (!file_exists($pathDir)) {

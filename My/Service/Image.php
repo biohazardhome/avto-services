@@ -24,7 +24,7 @@ class Image {
 		$title,
 		$folder;
 
-	public function __construct($filename, $folder = null, $dir = null, $alt = null, $title = null, $renameUseFolder = false) {
+	public function __construct($filename, $folder = null, $dir = null/*, $alt = null, $title = null, $renameUseFolder = false*/) {
 		$this->dir = $dir === null ? $this->dir : $dir;
 		$this->filename = $filename;
 		// $this->oldFilename = $filename;
@@ -34,18 +34,18 @@ class Image {
 
 		$this->storage = Storage::disk('local');
 
-		$this->renameFilenameUseFolderName($renameUseFolder);
+		// $this->renameFilenameUseFolderName($renameUseFolder);
 	}
 
 	public function addedFolderToDir($folder) {
 		$this->dir .= $folder .'/';
 	}
 
-	public function renameFilenameUseFolderName($rename = false) {
+	/*public function renameFilenameUseFolderName($rename = false) {
 		if ($rename && $this->folder) {
-			$this->rename($this->folder);
+			$this->renameFilename($this->folder);
 		}
-	}
+	}*/
 
 	public function getDir() {
 		if ($this->folder !== null) {
@@ -101,7 +101,7 @@ class Image {
 		$this->filename = $filename;
 	}
 
-	public function rename($filename) { // changeFilename
+	public function renameFilename($filename) { // changeFilename
 		if ($filename === '' && $filename === null) return false; 
 		list($name, $ext) = explode('.', $this->filename);
 		return $this->filename = $filename .'.'. $ext;
@@ -110,7 +110,7 @@ class Image {
 	public function setFolder($folder, $name = bull) {
 		// $this->oldPathDir = $this->getPathDir();
 		$oldPath = $this->getPath();
-		$this->rename($name);
+		$this->renameFilename($name);
 		// dd($oldPath);
 		$this->folder = $folder;
 

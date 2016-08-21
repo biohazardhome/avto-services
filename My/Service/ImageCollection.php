@@ -32,10 +32,13 @@ class ImageCollection extends Collection {
 			// dd($model->imageable()->get());
 			$catalog = $model->imageable()->first();
 			if ($catalog) {
-				$dirFolder = $model->imageable_type ? lcfirst(class_basename($model->imageable_type)): null;
-				$folder = $catalog->slug;
-				$image = new ImageService($filename, $catalog->slug);
-				$image->addedFolderToDir($dirFolder);
+				// $dirFolder = $model->imageable_type ? lcfirst(class_basename($model->imageable_type)): null;
+				// $dirFolder = class_exists($model->imageable_type) ? lcfirst(class_basename($model->imageable_type)) : $model->imageable_type;
+				$type = class_exists($model->imageable_type) ? lcfirst(class_basename($model->imageable_type)) : $model->imageable_type;
+				$folder = $type .'/'. $catalog->slug;
+				// $image = new ImageService($filename, $catalog->slug);
+				$image = new ImageService($filename, $folder);
+				// $image->addedFolderToDir($dirFolder);
 				// dump($image->getDir(), $image->getFilename());
 			} else {
 				$image = new ImageService($filename);
