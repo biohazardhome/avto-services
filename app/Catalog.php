@@ -19,7 +19,16 @@ class Catalog extends Model
 
     protected
 		$table = 'catalog',
-		$fillable = ['slug', 'name', 'description', 'content', 'address', 'phones', 'email', 'site', 'sort'];
+		$fillable = ['slug', 'name', 'description', 'content', 'address', 'phones', 'email', 'site', 'sort'],
+		$rules = [
+			// 'slug' => 'required|unique:catalog',
+			'name' => 'required|unique:catalog',
+            // 'phones' => 'required',
+            'address' => 'required',
+            'email' => 'email',
+            'description' => 'required',
+            'sort' => 'integer',
+		];
 
 	public static function slugGenerate() {
         return static::slugOptions()

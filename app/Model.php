@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
-use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Http\Request;
+
+use Nicolaslopezj\Searchable\SearchableTrait;
+use Watson\Validating\ValidatingTrait;
 
 class Model extends BaseModel {
 
-	use SearchableTrait;
+	use SearchableTrait, ValidatingTrait;
 
     /**
      * Searchable rules.
@@ -17,6 +19,7 @@ class Model extends BaseModel {
      * @var array
      */
     protected
+        $injectUniqueIdentifier = true,
         $searchable = [
         'columns' => [
             'catalog.name' => 10,

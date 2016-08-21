@@ -104,54 +104,40 @@ class CatalogController extends Controller
 
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required|unique:catalog',
             'city_id' => 'required|exists:cities,id',
-            // 'images.*' => 'image:jpeg,png,gif',
             'images.*.file' => 'image:jpeg,png,gif|size:3145728|dimensions:min_width=200,min_height=200',
-            // 'phones' => 'required',
-            'address' => 'required',
-            'email' => 'email',
-            'description' => 'required',
-            'sort' => 'integer',
         ]);
 
         $entity = Catalog::create($request->except('city_id'));
+        if ($entity->isInvalid()) {
+            return back()->withErrors($entity->getErrors())
+                ->withInput();
+        }
         $entity->city()->attach($request->get('city_id'));
 
-        $files = $request->file('images');
+        $files = $request->file('images', []);
         $folder = self::FOLDER_IMAGE .'/'. $entity->slug;
-
         foreach ($files as $file) {
             if ($file && $file->isValid()) {
                 // $image = command(new ImageUploadCommand(), compact('file', 'folder'));
                 $image = command(new ImageUploadCommand($file, $folder));
 
                 $oldPath = $image->getPath();
-                $image->rename($entity->name);
+                $image->renameFilename($entity->name);
                 $path = $image->getPath();
 
                 $image->move($oldPath, $path);
 
                 if (!$image->isErrors()) {
-                    // dump($image);
                     $entity->images()->save(new Image([
                         'filename' => $image->filename,
                         'path' => $path,
                     ]));
-                    /*Image::create([
-                        'filename' => $image->filename,
-                        'path' => $path,
-                        // 'alt' => $filename,
-                        // 'title' => $filename,
-                        'imageable_id' => $entity->id,
-                        'imageable_type' => 'catalog',
-                    ]);*/
                 } else {
                     $errors = $image->getErrors();
                 }
             } else {
                 $errors[] = 'Невалидный файл';
-                // dump($file);
             }
         }
 
@@ -169,21 +155,21 @@ class CatalogController extends Controller
 
     public function update(Request $request, $id) {
         $this->validate($request, [
-            'name' => 'required|unique:catalog,id,'. $id .'',
+            // 'name' => 'required|unique:catalog,id,'. $id .'',
             'regenerateSlug' => 'boolean',
             'city_id' => 'required|exists:cities,id',
             // 'phones' => 'required',
-            'address' => 'required',
-            'email' => 'email',
-            // 'site' => 'active_url',
-            // 'site' => 'url',
-            //'site' => ['regex' => '^((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$'],
-            'description' => 'required',
-            //'content' => '',
-            'sort' => 'integer',
+            // 'address' => 'required',
+            // 'email' => 'email',
+            // 'description' => 'required',
+            // 'sort' => 'integer',
         ]);
 
         $entity = Catalog::find($id);
+        if ($entity->isInvalid()) {
+            return back()->withErrors($entity->getErrors())
+                ->withInput();
+        }
 
         if ($request->regenerateSlug) {
             $entity->getSlugOptions()->regenerateOnUpdate = true;
