@@ -14,7 +14,7 @@
 
 <div class="form-group">
 	<label>
-		<span>Address: </span>
+		<span>Address: (Область, город, улица, дом) </span>
 	</label>
 	<div class="col-sm-10">
 		<input class="form-control" name="address" type="text" value="{{ object_get($item, 'address', '') }}" placeholder="Адрес">
