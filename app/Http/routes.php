@@ -30,10 +30,10 @@ Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
+	Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 	Route::get('/{slug}', 'CatalogController@show')->name('show');
 	Route::get('/search/{query?}', 'CatalogController@search')->name('search');
 	Route::post('/search', 'CatalogController@search')->name('search');
-	Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 });
 
 Route::group(['as' => 'comment.', 'prefix' => 'comment'], function() {
