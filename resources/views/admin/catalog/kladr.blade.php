@@ -22,11 +22,17 @@
 
 						var labels = objs.filter(function(item) {
 							console.log(item);
-							return ['region', 'city', 'street', 'building'].includes(item.contentType);
+							return !['cityOwner'].includes(item.contentType);
 						}).map(function(item) {
-							return (['region', 'street', 'building'].includes(item.contentType)) ? 
-									item.contentType === 'region' ? item.name +' '+ item.type : item.type +' '+ item.name 
-								: item.name;
+							// if (item.contentType) {
+								var name = item.name
+									type = item.type.toLowerCase(),
+									contentType = item.contentType;
+
+								return (['region', 'district', 'city', 'street', 'building'].includes(contentType)) ? 
+										['region', 'district'].includes(contentType) ? name +' '+ type : type +' '+ name 
+									: name;
+							// }
 						});
 						return labels.join(', ');
 					}
