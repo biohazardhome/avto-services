@@ -14,11 +14,11 @@ trait CatalogAddress {
 
 	protected $SEGMENTS = [
 		// 'zip' => 0,
-		'region' => 1,
-		'district' => 2,
-		'city' => 3,
-		'street' => 4,
-		'build' => 5,
+		'region' => 0,
+		'district' => 1,
+		'city' => 2,
+		'street' => 3,
+		'build' => 4,
 	];
 
 	public function getAddressSegmentsAttribute($type) {
