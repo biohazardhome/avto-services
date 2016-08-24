@@ -20,6 +20,16 @@ class CatalogController extends Controller
 
 		return view('index', compact('catalog'));
 	}
+
+	public function showRedirect($slug) {
+		$catalog = Catalog::whereSlug($slug)
+			->first();
+
+		if ($catalog) {
+			return redirect()->route('main', [$slug]);
+		}
+		return abort(404);
+	}
 	
 	public function show($slug) {
 		$catalog = Catalog::with('city', 'comments')
