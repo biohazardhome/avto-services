@@ -19,15 +19,22 @@ class MapController extends Controller
 		return view('map-all', compact('catalog'));
 	}
 
-	public function show($name, $address) {
-		$catalog = Catalog::whereName($name)
-			->orWhere('address', $address)
+	public function show($slug, $address) {
+		$catalog = Catalog::whereSlug($slug)
+			->where('address', $address)
 			->first();
 
-		$catalog = Catalog::transformForMap($catalog);
-		
+		// dump(123);
 		if ($catalog) {
+			$catalog = Catalog::transformForMap($catalog);
 			return view('map', compact('catalog'));
+		} else { // redirect old url path
+			$catalog = Catalog::whereName($slug)
+				->first();
+
+			if ($catalog) {
+				return redirect()->route('map.show', $catalog->getAttributesOnly(['slug', 'address']));
+			}
 		}
 
 		return abort(404);
