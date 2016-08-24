@@ -45,6 +45,11 @@
     margin-top: 0;
 }
 
+.catalog-item h1 small,
+.catalog-item h2 small {
+	font-size: 80%;
+}
+
 .catalog-item h1 a {
 	color: black;
 }
