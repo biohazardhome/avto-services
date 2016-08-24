@@ -1,1 +1,1 @@
-<h1>Автосервис "{{ $name }}" в {{ $city->name }}</h1>
+<h1><small>Автосервис</small> "{{ $name }}" <small>в {{ $city->name }}</small></h1>
