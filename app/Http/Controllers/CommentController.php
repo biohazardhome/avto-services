@@ -53,7 +53,7 @@ class CommentController extends Controller
 
         \Mail::send('emails.comment', $fields, function($m) use($fields) {
             $m->subject('Форма комментариев');
-            $m->from($fields['email'], 'Автосервисы в одинцово');
+            $m->from('info@avto-services.ru', 'Автосервисы в одинцово');
             // $m->to('info@avto-services-odintsovo.ru');
             $m->to('stalker-nikko@yandex.ru');
         });
