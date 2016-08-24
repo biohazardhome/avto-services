@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CatalogRequest;
 use App\Model;
 use App\Catalog;
 use App\City;
@@ -102,11 +103,11 @@ class CatalogController extends Controller
         return view('admin.catalog.create', compact('cities'));
     }
 
-    public function store(Request $request) {
-        $this->validate($request, [
+    public function store(CatalogRequest $request) {
+        /*$this->validate($request, [
             'city_id' => 'required|exists:cities,id',
             'images.*.file' => 'image:jpeg,png,gif|size:3145728|dimensions:min_width=200,min_height=200',
-        ]);
+        ]);*/
 
         $entity = Catalog::create($request->except('city_id'));
         if ($entity->isInvalid()) {
@@ -153,8 +154,8 @@ class CatalogController extends Controller
         return view('admin.catalog.edit', compact('item', 'cities'));
     }
 
-    public function update(Request $request, $id) {
-        $this->validate($request, [
+    public function update(CatalogRequest $request, $id) {
+        /*$this->validate($request, [
             // 'name' => 'required|unique:catalog,id,'. $id .'',
             'regenerateSlug' => 'boolean',
             'city_id' => 'required|exists:cities,id',
@@ -163,7 +164,7 @@ class CatalogController extends Controller
             // 'email' => 'email',
             // 'description' => 'required',
             // 'sort' => 'integer',
-        ]);
+        ]);*/
 
         $entity = Catalog::find($id);
         if ($entity->isInvalid()) {
