@@ -18,7 +18,7 @@
 		<article class="catalog-item bg-gray">
 			<div class="catalog-item-well">
 				@include('catalog.partials.item-header', $catalog->getAttributesOnly(['name']) + ['city' => $catalog->city->first()])
-				@include('catalog.partials.item-address', $catalog->getAttributesOnly(['name', 'address']))
+				@include('catalog.partials.item-address', $catalog->getAttributesOnly(['slug', 'name', 'address']))
 
 				<div class="catalog-description">{!! $catalog->description !!}</div>
 
