@@ -28,10 +28,12 @@ function routeSame($name, $controller, array $params = [], $type = 'get') { // Ð
 
 Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
+
+
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
 	Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
-	Route::get('/{slug}', 'CatalogController@show')->name('show');
+	Route::get('/{slug}', 'CatalogController@showRedirect')->name('show');
 	Route::get('/search/{query?}', 'CatalogController@search')->name('search');
 	Route::post('/search', 'CatalogController@search')->name('search');
 });
@@ -86,14 +88,14 @@ Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], functio
 	Route::get('/{name}/{address}', 'MapController@show')->name('show');
 });
 
-Route::group(['prefix' => 'image', 'as' => 'image'], function () {
-    Route::get('/', 'ImageController@index')->name('.index');
+Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
+    Route::get('/', 'ImageController@index')->name('index');
     Route::get('/create', 'ImageController@create')->name('.create');
-    Route::post('/store', 'ImageController@store')/*->name('.store')*/;
-    Route::post('/upload', 'ImageController@upload')->name('.upload');
-    Route::get('/delete/{id}', 'ImageController@delete')->name('.delete');
-    Route::get('/edit/{id}', 'ImageController@edit')->name('.edit');
-	Route::get('/{id}/edit', 'ImageController@edit')->name('.edit');
+    Route::post('/store', 'ImageController@store')/*->name('store')*/;
+    Route::post('/upload', 'ImageController@upload')->name('upload');
+    Route::get('/delete/{id}', 'ImageController@delete')->name('delete');
+    Route::get('/edit/{id}', 'ImageController@edit')->name('edit');
+	Route::get('/{id}/edit', 'ImageController@edit')->name('edit');
 });
 
 
@@ -125,7 +127,23 @@ Route::group(['prefix' => 'image', 'as' => 'image'], function () {
 	});
 //});
 
-Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
+
+Route::get('/{slug}/{slug2?}', function($slug, $slug2 = null) {
+	// dump($slug);
+	if (App\City::whereSlug($slug)->first()) {
+		//Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
+		$controller = app()->make(App\Http\Controllers\Catalog\CatalogController::class);
+        return app()->call([$controller, 'city'], compact('slug'));
+	} else if (App\Catalog::whereSlug($slug)->first()) {
+		$controller = app()->make(App\Http\Controllers\Catalog\CatalogController::class);
+        return app()->call([$controller, 'show'], compact('slug'));
+	}
+	// return 
+
+})->name('main');
+
+
+// Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
 // Route::get('/{city}/{catalog-type}', 'Catalog\CatalogController@city')->name('catalog-type');
 
 
