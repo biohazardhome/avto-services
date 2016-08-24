@@ -14,8 +14,9 @@ class CatalogController extends Controller
 {
     
     public function index() {
-		$catalog = Catalog::withCount('comments')
-		    ->orderBy('sort', 'desc')
+		$catalog = Catalog::with('city')
+			->withCount('comments')
+			->orderBy('sort', 'desc')
 			->paginate(20);
 
 		return view('index', compact('catalog'));
