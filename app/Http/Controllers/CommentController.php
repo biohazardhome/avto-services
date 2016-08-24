@@ -52,10 +52,10 @@ class CommentController extends Controller
         ]);
 
         \Mail::send('emails.comment', $fields, function($m) use($fields) {
-            $m->subject('Форма комментариев');
-            $m->from($fields['email'], 'Автосервисы в одинцово');
-            // $m->to('info@avto-services-odintsovo.ru');
-            $m->to('stalker-nikko@yandex.ru');
+            $m->subject('Форма комментариев')
+                // ->from('info@avto-services.ru', 'Автосервисы')
+                // ->to('info@avto-services-odintsovo.ru')
+                ->to('stalker-nikko@yandex.ru');
         });
 
         Comment::create($fields);
