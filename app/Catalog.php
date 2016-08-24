@@ -41,6 +41,10 @@ class Catalog extends Model
 		return 'slug';
 	}
 
+	/*public function getCityAttribute() {
+		return $this->getRelationValue('city')->first();
+	}*/
+
 	public function images() {
     	return $this->morphMany(Image::class, 'imageable');
     }

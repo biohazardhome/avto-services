@@ -38,6 +38,6 @@ class CreateCatalogCities extends Migration
     public function down()
     {
         Schema::drop('catalog_cities');
-        Schema::dropForeign(['catalog_id', 'city_id']);
+        // Schema::dropForeign(['catalog_id', 'city_id']);
     }
 }

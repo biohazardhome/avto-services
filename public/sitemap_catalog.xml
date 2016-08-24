@@ -1,358 +1,388 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="http://avto-services/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
+<?xml-stylesheet href="http://avto-services-odintsovo.ru/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>http://avto-services/catalog/vfm-autoservis/</loc>
-		<priority>10</priority>
-		<lastmod>2016-06-27T00:17:28+00:00</lastmod>
+    <loc>http://avto-services-odintsovo.ru/catalog/vfm-autoservis/</loc>
+		<priority>0.1</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoprestizh/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoprestizh/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-17T18:52:39+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis-shinomontazh/</loc>
-		<priority>1</priority>
-		<lastmod>2016-06-17T19:08:36+00:00</lastmod>
-		<changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>http://avto-services/catalog/avtodiagnostika/</loc>
-		<priority>1</priority>
-		<lastmod>2016-06-17T19:20:01+00:00</lastmod>
-		<changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>http://avto-services/catalog/pit-stop/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis-shinomontazh/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-24T02:27:49+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/tekhtsentr-avtodrayv-na-mozhayke/</loc>
-		<priority>1</priority>
-		<lastmod>2016-06-24T02:26:38+00:00</lastmod>
-		<changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>http://avto-services/catalog/atvmechanik/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtodiagnostika/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:35+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/autodents/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/pit-stop/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:35+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtohelp/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/tekhtsentr-avtodrayv-na-mozhayke/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:36+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/dragon/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/atvmechanik/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:36+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/fan-avto/</loc>
-		<priority>1</priority>
-		<lastmod>2016-06-17T19:21:01+00:00</lastmod>
-		<changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>http://avto-services/catalog/gorodcarru/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/autodents/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:37+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/h2o-auto/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtohelp/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:37+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/md-servise/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/dragon/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:37+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/megavolt/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/fan-avto/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:38+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/mistercarru/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/gorodcarru/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:38+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/starter-avto/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/h2o-auto/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:38+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/vianor/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/md-servise/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:39+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avto-servis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/megavolt/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:39+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avto-siti/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/mistercarru/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:39+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avto-megavolt/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/starter-avto/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:39+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtobam/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/vianor/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:40+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtovolt/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avto-servis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:40+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoklinika/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avto-siti/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:41+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtopomoshch/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avto-megavolt/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:41+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtorad/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtobam/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:41+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtovolt/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:41+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis-2/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoklinika/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:42+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis-3/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtopomoshch/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:42+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis-4/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtorad/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:42+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis-5/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:43+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtoservis-gorki-motors/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis-2/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:43+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtostil/</loc>
-		<priority>1</priority>
-		<lastmod>2016-06-15T08:12:44+00:00</lastmod>
-		<changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>http://avto-services/catalog/avtostil-2/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis-3/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:44+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtotekhtsentr-zapadnyy/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis-4/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:45+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtotekhtsentr-odintsovo/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis-5/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:45+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtotekhtsentr-odintsovo-2/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtoservis-gorki-motors/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:45+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/avtotransservis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtostil/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:46+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/alyans-avto/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtostil-2/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:46+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/auto-nito/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtotekhtsentr-zapadnyy/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:47+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/aeroprestizh/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtotekhtsentr-odintsovo/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:47+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/brigada-avtolombard/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtotekhtsentr-odintsovo-2/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:47+00:00</lastmod>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/volin/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtotransservis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:47+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/doktor-motors/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/alyans-avto/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:48+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/dyuka/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/auto-nito/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:48+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/evro-trak-servis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/aeroprestizh/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:48+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/evroservis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/brigada-avtolombard/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:49+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/ip-tsvetkov/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/volin/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:49+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/legion/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/doktor-motors/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:49+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/liga-servis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/dyuka/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:50+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/novyy-avtomobil-iznutri/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/evro-trak-servis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:50+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/odin-servis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/evroservis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:50+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/standart-motors/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/ip-tsvetkov/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:51+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/tekh-tsentr-na-smolenke/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/legion/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:51+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/tekhnicheskiy-tsentr-bakovskiy/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/liga-servis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:51+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/formula-skorosti/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/novyy-avtomobil-iznutri/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:52+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/shtormavto/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/odin-servis/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:52+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/eko/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/standart-motors/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:52+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://avto-services/catalog/yanta-servis/</loc>
+    <loc>http://avto-services-odintsovo.ru/catalog/tekh-tsentr-na-smolenke/</loc>
 		<priority>0</priority>
-		<lastmod>2016-06-15T08:12:53+00:00</lastmod>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/tekhnicheskiy-tsentr-bakovskiy/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/formula-skorosti/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/shtormavto/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/eko/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/yanta-servis/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/dens-benz/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T21:07:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/tekhnolider/</loc>
+		<priority>0.1</priority>
+		<lastmod>2016-08-03T13:12:44+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/avto-status/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-04T09:35:53+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/avtostroyfarfor/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-03T20:33:07+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services-odintsovo.ru/catalog/nadezhda/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-11T23:53:04+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
 </urlset>
