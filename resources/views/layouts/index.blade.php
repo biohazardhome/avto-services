@@ -7,11 +7,6 @@
 	
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-	<link href="/css/index.css" rel="stylesheet" type="text/css">
-	<link href="/css/catalog.css" rel="stylesheet" type="text/css">
-	<link href="/css/comment.css" rel="stylesheet" type="text/css">
-	<link href="/css/map.css" rel="stylesheet" type="text/css">
-	<link href="/css/media.css" rel="stylesheet" type="text/css">
 
 	@yield('head')
 	
@@ -80,8 +75,15 @@
 		<!-- /Yandex.Metrika counter -->
 	</footer>
 
+	
+	<link href="/css/index.css" rel="stylesheet" type="text/css">
+	<link href="/css/catalog.css" rel="stylesheet" type="text/css">
+	<link href="/css/comment.css" rel="stylesheet" type="text/css">
+	<link href="/css/map.css" rel="stylesheet" type="text/css">
+	<link href="/css/media.css" rel="stylesheet" type="text/css">
+
 	<script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
-	<script src="/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="/js/comment.js" type="text/javascript"></script>
 
 </body></html>

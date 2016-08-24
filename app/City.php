@@ -2,8 +2,6 @@
 
 namespace App;
 
-// use Illuminate\Database\Eloquent\Model;
-
 use My\Model\Slug\Slug;
 use App\Catalog;
 
