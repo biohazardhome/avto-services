@@ -29,8 +29,8 @@ class Image {
 		$this->filename = $filename;
 		// $this->oldFilename = $filename;
 		$this->folder = $folder;
-		$this->alt = $alt === null ? $filename : $alt;
-		$this->title = $title === null ? $filename : $title;
+		// $this->alt = $alt === null ? $filename : $alt;
+		// $this->title = $title === null ? $filename : $title;
 
 		$this->storage = Storage::disk('local');
 
