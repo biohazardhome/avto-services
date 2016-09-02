@@ -10,6 +10,7 @@ use My\Model\Traits\CatalogAddress;
 use My\Model\Image;
 use App\Comment;
 use App\City;
+use App\Service;
 
 class Catalog extends Model
 {
@@ -19,10 +20,15 @@ class Catalog extends Model
 
     protected
 		$table = 'catalog',
-		$fillable = ['slug', 'name', 'description', 'content', 'address', 'phones', 'email', 'site', 'sort'],
+		$fillable = [
+			'slug', 'city_id', 'service_id', 'name', 'description', 'content', 'address', 
+			'phones', 'email', 'site', 'sort'
+		],
 		$rules = [
 			// 'slug' => 'required|unique:catalog',
 			'name' => 'required|unique:catalog',
+			'city_id' => 'required|exists:cities,id',
+			'service_id' => 'required|exists:services,id',
             // 'phones' => 'required',
             'address' => 'required',
             'email' => 'email',
@@ -45,6 +51,10 @@ class Catalog extends Model
 		return $this->getRelationValue('city')->first();
 	}*/
 
+	public function service() {
+		return $this->belongsTo(Service::class);
+	}
+
 	public function images() {
     	return $this->morphMany(Image::class, 'imageable');
     }
@@ -53,8 +63,12 @@ class Catalog extends Model
 		return $this->hasMany(Comment::class, 'catalog_id');
 	}
 
-	public function city() {
+	/*public function city() {
 		return $this->belongsToMany(City::class, 'catalog_cities', 'catalog_id', 'city_id');
+	}*/
+
+	public function city() {
+		return $this->belongsTo(City::class);
 	}
 	
 	// similar

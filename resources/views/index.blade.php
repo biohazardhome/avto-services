@@ -14,8 +14,7 @@
 
 		@foreach($catalog as $item)
 			<article class="catalog-item">
-				@include('catalog.partials.item-header-link-city', $item->getAttributesOnly(['name', 'slug']) + ['city' => $item->city->first()])
-				{{-- @include('catalog.partials.item-address-anchor', $item->getAttributesOnly(['slug', 'name', 'address'])) --}}
+				@include('catalog.partials.item-header-link-city', $item->getAttributesOnly(['name', 'slug']) + ['city' => $item->city])
 				@include('catalog.partials.item-address-short-anchor', $item)
 				<div class="catalog-item-content" title="Подробнее об автосервисе {{ $item->name }}">
 					{!! $item->description !!}
