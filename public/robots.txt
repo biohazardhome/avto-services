@@ -4,6 +4,7 @@ Disallow: /index.php
 Disallow: /search
 Disallow: /catalog/$
 Disallow: /catalog/odintsovo
+Disallow: /odintsovo/autoservice/
 Disallow: /*page=*
 
 Host: avto-services-odintsovo.ru
