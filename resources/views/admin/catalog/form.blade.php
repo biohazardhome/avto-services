@@ -35,7 +35,7 @@
 		<span>City: </span>
 		<?php
 			$params = ['cities' => $cities];
-			if ($type === 'edit') $params['selectedId'] = $item->city->first()->id;
+			if ($type === 'edit') $params['selectedId'] = $item->city->id;
 		?>
 		@include('partials.city-select', $params)
 	</label>

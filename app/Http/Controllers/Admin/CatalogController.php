@@ -109,12 +109,13 @@ class CatalogController extends Controller
             'images.*.file' => 'image:jpeg,png,gif|size:3145728|dimensions:min_width=200,min_height=200',
         ]);*/
 
-        $entity = Catalog::create($request->except('city_id'));
+        // $entity = Catalog::create($request->except('city_id'));
+        $entity = Catalog::create($request->all());
         if ($entity->isInvalid()) {
             return back()->withErrors($entity->getErrors())
                 ->withInput();
         }
-        $entity->city()->attach($request->get('city_id'));
+        // $entity->city()->attach($request->get('city_id'));
 
         $files = $request->file('images', []);
         $folder = self::FOLDER_IMAGE .'/'. $entity->slug;
@@ -176,9 +177,9 @@ class CatalogController extends Controller
             $entity->getSlugOptions()->regenerateOnUpdate = true;
         }
 
-        $entity->update($request->except(['regenerateSlug', 'city_id']));
-        $entity->city()->detach($entity->city->first()->id);
-        $entity->city()->attach($request->get('city_id'));
+        $entity->update($request->except(['regenerateSlug'/*, 'city_id'*/]));
+        // $entity->city()->detach($entity->city->first()->id);
+        // $entity->city()->attach($request->get('city_id'));
 
         return redirect()
             ->route('admin.catalog.show', [$id]);

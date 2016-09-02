@@ -11,6 +11,14 @@
 |
 */
 
+
+use App\Http\Controllers\Catalog\CatalogController;
+use App\Catalog;
+use App\Service;
+use App\City;
+
+
+
 function routeSame($name, $controller, array $params = [], $type = 'get') { // параметры
 	Route::$type('/'. $name .'/{' . $name . '}', $controller .'@'. $name)->name($name);
 }
@@ -127,18 +135,20 @@ Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
 	});
 //});
 
-
-Route::get('/{slug}/{slug2?}', function($slug, $slug2 = null) {
+Route::get('/{slug}/{service?}', function($slug, $service = null) {
 	// dump($slug);
-	if (App\City::whereSlug($slug)->first()) {
+	if (City::whereSlug($slug)->first() && Service::whereSlug($service)->first()) {
 		//Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
-		$controller = app()->make(App\Http\Controllers\Catalog\CatalogController::class);
-        return app()->call([$controller, 'city'], compact('slug'));
-	} else if (App\Catalog::whereSlug($slug)->first()) {
-		$controller = app()->make(App\Http\Controllers\Catalog\CatalogController::class);
-        return app()->call([$controller, 'show'], compact('slug'));
+	 	return (new CatalogController)->cityService($slug, $service);
+	} else if (City::whereSlug($slug)->first()) {
+		//Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
+		return (new CatalogController)->city($slug);
+	} else if (Catalog::whereSlug($slug)->first()) {
+		// $controller = app()->make(App\Http\Controllers\Catalog\CatalogController::class);
+        // return app()->call([$controller, 'show'], compact('slug'));
+        return (new CatalogController)->show($slug);
 	}
-	// return 
+	return abort(404);
 
 })->name('main');
 
