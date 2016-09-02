@@ -9,6 +9,7 @@ use App\Http\Requests;
 
 use App\Catalog;
 use App\City;
+use App\Service;
 
 class CatalogController extends Controller
 {
@@ -33,7 +34,7 @@ class CatalogController extends Controller
 	}
 	
 	public function show($slug) {
-		$catalog = Catalog::with('city', 'comments')
+		$catalog = Catalog::with('city', 'service', 'comments')
 			->whereSlug($slug)
 			->first();
 
@@ -66,6 +67,26 @@ class CatalogController extends Controller
 		} else {
 			return 'Нет такого города в каталоге';
 		}
+	}
+
+	public function cityService($city, $service) {
+		$catalog = Catalog::with('city', 'service')
+			->whereHas('service', function($q) use($service) {
+				$q->whereSlug($service);
+			})->whereHas('city', function($q) use($city) {
+				$q->whereSlug($city);
+			})->get();
+
+			// dump($catalog->first()->city);
+		if ($catalog) {
+			$catalog = Catalog::paginateCollection($catalog);
+
+			$city = $catalog->first()->city;
+			$service = $catalog->first()->service;
+
+			return view('catalog.service', compact('catalog', 'city', 'service'));
+		}
+		return abort(404);
 	}
 
     public function search(Request $request, $query = null) {
