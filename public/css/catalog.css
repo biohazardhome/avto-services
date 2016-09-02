@@ -11,7 +11,7 @@
 }
 
 .catalog-show {
-	margin-right: 15px;
+	/*margin-right: 15px;*/
 	/*background-color: white;*/
 	padding: 0;
 }
@@ -77,11 +77,18 @@
 
 
 
+.catalog-similar-wrap {
+	background: white;
+	padding: 0 15px;
+}
+
 .catalog-similar {
 	margin-bottom: 55px;
 }
 
 .catalog-similar h3 {
+	margin-top: 0;
+	padding-top: 20px;
 	font-size: 1.4em;
     margin-bottom: 5px;
     text-align: right;

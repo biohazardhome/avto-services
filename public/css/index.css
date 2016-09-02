@@ -39,8 +39,8 @@ main {
 }
 
 aside {
-	width: calc(25% - 15px) !important;
-	background-color: white;
+	padding-right: 0;
+	#background-color: white;
 }
 
 
