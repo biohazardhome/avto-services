@@ -22,8 +22,12 @@ function str_limit_with($s, $limit = null, $end = '.', $withEnd = true) {
 }
 
 function mb_ucfirst($value) {
-	$value = mb_strtolower(trim($value));
+	$value = mb_strtolower($value);
 	return mb_strtoupper(mb_substr($value, 0, 1)) . mb_substr($value, 1);
+}
+
+function mb_lcfirst($value) {
+	return mb_strtolower($value);
 }
 
 // input url with protocol http://example.com
