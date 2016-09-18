@@ -33,7 +33,7 @@ class City extends Model
     }*/
 
     public function catalog() {
-    	return $this->belongsTo(Catalog::class);
+    	return $this->hasMany(Catalog::class/*, 'id', 'city_id'*/);
     }
 
 }
