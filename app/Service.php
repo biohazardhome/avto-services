@@ -26,4 +26,16 @@ class Service extends Model
 		return $this->hasMany(Catalog::class, 'service_id');
 	}
 
+	public function getNameLcFirstAttribute() {
+		return mb_lcfirst($this->name);
+	}
+
+	public function getSingularLcFirstAttribute() {
+		return mb_lcfirst($this->singular);
+	}
+
+	/*public function getSingularAttribute() {
+		return str_singular($this->name);
+	}*/
+
 }

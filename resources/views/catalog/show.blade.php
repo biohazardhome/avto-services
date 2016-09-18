@@ -36,9 +36,10 @@
 
 			<div class="catalog-map catalog-item-well">
 				<a name="map"></a>
-				<h2>{{ $service->name }} "{{ $catalog->name }}" на карте</h2>
+				<h2>{{ $service->singular }} "{{ $catalog->name }}" на карте</h2>
 				@include('partials.map', ['catalog' => $catalogMap])
 				<div id="map" style="width:auto; height: 450px;"></div>
+				<a href="/map/{{ $catalog->city->slug }}/">Все {{ $service->nameLcFirst }} в {{ $catalog->city->name}} на карте</a>
 			</div>
 
 			<div class="catalog-comment catalog-item-well">
@@ -49,7 +50,7 @@
 						<a href="#" class="comment-form-show btn btn-default" title="Показать форму отзывов">Написать</a>
 					</div>
 					<h2>
-						Отзывы о {{ $service->name }} {{ $catalog->name }} в Одинцово
+						Отзывы о {{ $service->singularLcFirst }}е "{{ $catalog->name }}" в {{ $catalog->city->name }}
 					</h2>
 				</div>
 				@include('comment.create', ['catalogId' => $catalog->id])
@@ -95,9 +96,11 @@
 					@endforeach
 				</ul>
 			</div>
+
+			<div class="catalog-similar">
 				@inject('catalog', 'App\Catalog')
 				
-				<h3>Популярные {{ mb_lcfirst($service->name) }} {{ $catalog->addressCityShort }} в {{ $city->name }}</h3>
+				<h3>Популярные {{ $service->nameLcFirst }} {{ $catalog->addressCityShort }} в {{ $city->name }}</h3>
 				<ul class="catalog-list-similar">
 					@foreach($catalog->whereCityId($city->id)->orderBy('sort', 'desc')->limit(3)->get() as $item)
 						<li>
