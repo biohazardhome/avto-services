@@ -12,6 +12,7 @@ use App\Http\Requests\CatalogRequest;
 use App\Model;
 use App\Catalog;
 use App\City;
+use App\Service;
 use My\Model\Image;
 use My\Command\ImageUploadCommand;
 
@@ -99,8 +100,9 @@ class CatalogController extends Controller
 
     public function create() {
         $cities = City::all();
+        $services = Service::all();
 
-        return view('admin.catalog.create', compact('cities'));
+        return view('admin.catalog.create', compact('cities', 'services'));
     }
 
     public function store(CatalogRequest $request) {
@@ -152,7 +154,8 @@ class CatalogController extends Controller
             ->find($id);
 
         $cities = City::all();
-        return view('admin.catalog.edit', compact('item', 'cities'));
+        $services = Service::all();
+        return view('admin.catalog.edit', compact('item', 'cities', 'services'));
     }
 
     public function update(CatalogRequest $request, $id) {

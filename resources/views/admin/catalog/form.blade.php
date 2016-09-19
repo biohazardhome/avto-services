@@ -13,11 +13,20 @@
 </div>
 
 <div class="form-group">
+	<label>Тип услуги</label>
+	<select name="service_id">
+		@foreach($services as $service)
+			<option value="{{ $service->id }}" {{ (isset($item->service_id) && $service->id === $item->service_id) ? 'selected' : '' }}>{{ $service->name }}</option>
+		@endforeach
+	</select>
+</div>
+
+<div class="form-group">
 	<label>
 		<span>Address: (Область, город, улица, дом) </span>
 	</label>
 	<div class="col-sm-10">
-		<input class="form-control" name="address" type="text" value="{{ object_get($item, 'address', '') }}" placeholder="Адрес">
+		<input class="form-control" type="text" name="address" value="{{ object_get($item, 'address', '') }}" placeholder="Адрес">
 	</div>
 </div>
 
