@@ -38,25 +38,29 @@ class MapIndexComposer
         if ($city) {
             $catalog = $city->catalog->keyBy('name');
         } else {
-            $catalog = Catalog::all([
-                'name',
-                'description',
-                'address',
-                'site',
-                'email',
-                'phones'
-            ])->keyBy('name');
+            $catalog = Catalog::with('service')
+                ->get(/*[
+                    'name',
+                    'description',
+                    'address',
+                    'site',
+                    'email',
+                    'phones'
+                ]*/)->keyBy('name');
         }
 
-        $catalog = Catalog::transformForMap($catalog);
+        $catalogMap = Catalog::transformForMap($catalog);
 
-        $content = view('partials.sections.map-all', compact('city', 'catalog'));
+        $content = view('partials.sections.map-all', compact('city') + ['catalog' => $catalogMap, 'service' => $catalog->first()->service]);
+
+        // dd($city);
+        // $content .= '<a href="/map/'. $city->slug .'/">Все '. $catalog->first()->service->name .' в '. $city->name .'</a>';
 
         $view->with('composerMapIndex', $content);
     }
 
     protected function getCity($citySlug) {
-        $city = City::with(['catalog' => function($q) {
+        $city = City::with(['catalog'/* => function($q) {
                 $q->get([
                     'name',
                     'description',
@@ -65,7 +69,7 @@ class MapIndexComposer
                     'email',
                     'phones',
                 ]);
-            }])
+            }*/, 'catalog.service'])
             ->whereSlug($citySlug)
             ->first();
 

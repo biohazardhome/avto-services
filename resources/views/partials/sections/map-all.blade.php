@@ -13,4 +13,10 @@
 		<h2 class="text-center">Все автосервисы на карте <span class="lead text-muted">({{ $catalog->count() }}) {{ $type }}</span></h2>
 	@endif
 	@include('partials.map-all', ['catalog' => $catalog])
+
+	@if ($city)
+		<a href="/map/{{ $city->slug }}/">Все {{ $service->name }} в {{ $city->name }} на карте</a>
+	@else
+		<a href="/map/">Все {{ $service->nameLcFirst }} на карте</a>
+	@endif
 @endif

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Comment;
 use App\City;
+use App\Service;
 
 class CommentsIndexComposer
 {
@@ -48,6 +49,10 @@ class CommentsIndexComposer
                 ->get();
         }
 
+        $serviceId = $comments->first()->catalog->service_id;
+        $service = $this->getService($serviceId);
+        // dd($service);
+
         /*$this->view = $view;
 
         $comments = Comment::limit(3)
@@ -62,25 +67,36 @@ class CommentsIndexComposer
             compact('comments')
         );*/
 
-        $content = view('partials.sections.comment', compact('city', 'comments'));
+        $content = view('partials.sections.comment', compact('city', 'comments', 'service'));
 
         $view->with('composerCommentsIndex', $content);
     }
 
     protected function getCity($citySlug) {
-        // $city = City::with(['catalog', 'catalog.comments'])
-        $city = City::with('catalog')
+        $city = City::with(['catalog' => function($q) {
+                $q->with('comments')
+                    ->has('comments')
+                    ->get();
+            }])
             ->whereSlug($citySlug)
             ->first();
 
         return $city;
     }
 
-    protected function getComments($city) {
+    protected function getService($id) {
+        return Service::find($id);
+    }
 
-        $comments = Comment::whereIn('catalog_id', $city->catalog->pluck('id'))
+    protected function getComments($city) {
+        /*$comments = Comment::whereIn('catalog_id', $city->catalog->pluck('id'))
             ->limit(self::COMMENTS_COUNT)
-            ->get();
+            ->get();*/
+
+        $comments = $city->catalog->reduce(function($comments, $item) {
+                return $comments->merge($item->comments);
+            }, collect())
+            ->take(self::COMMENTS_COUNT);
 
         /*$comments = $city->catalog->reduce(function($collect, $item) {
                 // dump($item->comments);
