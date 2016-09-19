@@ -30,13 +30,15 @@
 
 		{!! $composerMapIndex or '' !!}
 
-		<u>Автосервисы в городах</u>
-		<?php $cities = App\City::all() ?>
-		<ul>
-			@foreach($cities as $city)
-				<li><a href="/{{ $city->slug }}">{{ $city->name }}</a></li>
-			@endforeach
-		</ul>
+		<div>
+			<u>Автосервисы в городах</u>
+			<?php $cities = App\City::all() ?>
+			<ul>
+				@foreach($cities as $city)
+					<li><a href="/{{ $city->slug }}">{{ $city->name }}</a></li>
+				@endforeach
+			</ul>
+		</div>
 		
 		<!-- Yandex.Metrika informer -->
 		<a href="https://metrika.yandex.ru/stat/?id=37981900&amp;from=informer"
@@ -81,9 +83,11 @@
 	<link href="/css/comment.css" rel="stylesheet" type="text/css">
 	<link href="/css/map.css" rel="stylesheet" type="text/css">
 	<link href="/css/media.css" rel="stylesheet" type="text/css">
+	@yield('css')
 
 	<script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
 	<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="/js/comment.js" type="text/javascript"></script>
+	@yield('js')
 
 </body></html>

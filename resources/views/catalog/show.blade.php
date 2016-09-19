@@ -50,7 +50,7 @@
 						<a href="#" class="comment-form-show btn btn-default" title="Показать форму отзывов">Написать</a>
 					</div>
 					<h2>
-						Отзывы о {{ $service->singularLcFirst }}е "{{ $catalog->name }}" в {{ $catalog->city->name }}
+						Отзывы об {{ $service->singularLcFirst }}е "{{ $catalog->name }}" в {{ $catalog->city->name }}
 					</h2>
 				</div>
 				@include('comment.create', ['catalogId' => $catalog->id])
