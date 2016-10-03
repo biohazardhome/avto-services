@@ -11,8 +11,6 @@
 	<section class="catalog-show col-md-9 col-lg-9">
 
 		<?php
-
-
 			Breadcrumbs::setCssClasses('breadcrumb');
 			Breadcrumbs::setDivider('');
 			Breadcrumbs::add($service->name, '/'. $city->slug .'/'. $service->slug);
@@ -32,6 +30,13 @@
 				@include('catalog.partials.item-info', $catalog->getAttributesOnly(['phones', 'site', 'email', 'name']))
 
 				<div class="catalog-content">{!! $catalog->content !!}</div>
+
+				<div>
+					<a 
+						href="{{ route('main', [$city->slug, $service->slug]) }}" 
+						title=""
+					>Все {{ $service->name }} в {{ $city->name }}</a>
+				</div>
 			</div>
 
 			<div class="catalog-map catalog-item-well">
