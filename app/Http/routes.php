@@ -92,6 +92,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 
 Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], function() {
 	Route::get('/', 'MapController@index')->name('index');
+	Route::any('/{city}', 'MapController@city')->name('city');
+	Route::any('/city-ajax/{city}', 'MapController@cityAjax')->name('city-ajax');
+	// Route::any('/city/{city}', 'MapController@city')->name('city');
 	Route::get('/{address}', 'MapController@showOld')->name('show.old');
 	Route::get('/{slug}/{address}', 'MapController@show')->name('show');
 });
@@ -111,7 +114,7 @@ Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
 	//dd(123);
 	Route::get('/images/{file}', function($file = null) {
 		$path = storage_path('app/public/images/') . $file;
-		dd($path, file_exists($path));
+		// dd($path, file_exists($path));
 		if (file_exists($path)) {
 			//return response()->download($path);
 			echo file_get_contents($path);
@@ -119,7 +122,7 @@ Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
 	});
 	Route::get('/images/{catalog}/{file}', function($catalog, $file = null) {
 		$path = storage_path('app/public/images/') . $catalog .'/'. $file;
-		//dd($path, file_exists($path));
+		// dd($path, file_exists($path));
 		if (file_exists($path)) {
 			return response()->download($path);
 			//echo file_get_contents($path);
@@ -127,7 +130,7 @@ Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
 	});
 	Route::get('/images/catalog/{catalog}/{file}', function($catalog, $file = null) {
 		$path = storage_path('app/public/images/catalog/') . $catalog .'/'. $file;
-		//dd($path, file_exists($path));
+		// dd($path, file_exists($path));
 		if (file_exists($path)) {
 			return response()->download($path);
 			//echo file_get_contents($path);

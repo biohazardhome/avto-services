@@ -3,6 +3,22 @@
 @section('title', 'Автосервисы в Одинцово на карте')
 @section('description', '')
 
+@section('js')
+	<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script src="/js/map.js" type="text/javascript"></script>
+	<script src="/js/map-all.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var promise = mapCity('{{ $city->slug }}')/*.done(function(data) {
+				console.log(data)
+			})*/;
+
+			console.log(promise)
+
+		});
+	</script>
+@stop
+
 @section('content')
 	<style type="text/css">
 		html, body, main, section {
@@ -38,10 +54,11 @@
         	height: auto;
         }
     </style>
+    
 
 	<section>
-		<h1>{{ $catalog->count() }} Автосервиса в Одинцово</h1>
+		<h1>Автосервиса в {{ $city->name }}</h1>
 
-		@include('partials.map-all', compact('catalog'))
+		<div id="map-all"></div>
 	</section>
 @stop
