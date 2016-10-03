@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Catalog;
+use App\City;
 
 class MapController extends Controller
 {
@@ -52,6 +53,38 @@ class MapController extends Controller
 		}
 
 		return abort(404);
+	}
+
+	public function cityAjax($city) {
+		$city = City::with('catalog')
+			->whereSlug($city)
+			->first();
+
+		// dd($city);
+		$catalog = $city->catalog;
+
+		if ($catalog->count()) {
+			$catalog = Catalog::transformForMap($catalog)->toArray();
+			// var_dump($catalog);
+
+			return response()->json($catalog);
+			// return json_encode($catalog);
+		}
+		return abort(404);
+	}
+
+	public function city($slug) {
+		$city = City::whereSlug($slug)
+			->first();
+
+		return view('map-all', compact('city'));
+	}
+
+	public function cityService($city, $service) {
+		$city = City::whereSlug($slug)
+			->first();
+
+		return view('map-all', compact('city'));
 	}
     
 }
