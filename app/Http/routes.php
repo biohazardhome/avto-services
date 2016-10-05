@@ -140,7 +140,10 @@ Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
 
 Route::get('/{slug}/{service?}', function($slug, $service = null) {
 	// dump($slug);
-	if (City::whereSlug($slug)->first() && Service::whereSlug($service)->first()) {
+	if (Service::whereSlug($slug)->first()) {
+		// dump($slug);
+		return (new CatalogController)->service($slug);
+	} else if (City::whereSlug($slug)->first() && Service::whereSlug($service)->first()) {
 		//Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
 	 	return (new CatalogController)->cityService($slug, $service);
 	} else if (City::whereSlug($slug)->first()) {
