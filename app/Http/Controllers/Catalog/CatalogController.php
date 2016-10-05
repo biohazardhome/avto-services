@@ -69,6 +69,25 @@ class CatalogController extends Controller
 		}
 	}
 
+	public function service($slug) {
+		$service = Service::with(['catalog' => function($q) {
+				$q->withCount('comments')
+					->orderBy('sort', 'desc');
+			}])
+			->whereSlug($slug)
+			->first();
+
+		if ($service) {
+			$catalog = $service->catalog;
+			$catalog = Catalog::paginateCollection($catalog);
+			// $city = City::find($catalog->first()->city_id);
+			// dump($catalog, $service, $city);
+			if ($catalog) {
+				return view('catalog.service', compact('catalog', 'service'));
+			}
+		}
+	}
+
 	public function cityService($city, $service) {
 		$catalog = Catalog::with('city', 'service')
 			->whereHas('service', function($q) use($service) {
@@ -110,7 +129,7 @@ class CatalogController extends Controller
         return view('catalog.index', compact('catalog'));
     }
 
-    public function sitemapGenerate() {
+    /*public function sitemapGenerate() {
     	$sitemap = app('sitemap');
 
 		if (!$sitemap->isCached()) {
@@ -123,5 +142,5 @@ class CatalogController extends Controller
 	    	});
 	       	$sitemap->store('xml','sitemap_catalog');
 	    }
-    }
+    }*/
 }

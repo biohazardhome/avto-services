@@ -9,7 +9,7 @@ class Service extends Model
     
 	protected
 		$table = 'services',
-		$fillable = [];
+		$fillable = [/*'id', 'name', 'slug', 'title', 'header', 'description', 'content', 'singular'*/];
 
 	public static function slugGenerate() {
         return static::slugOptions()
