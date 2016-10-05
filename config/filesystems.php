@@ -70,8 +70,13 @@ return [
         ],*/
         
         'public-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/catalog'),
+            'visibility' => 'public',
+        ],
+        'upload-images-catalog' => [
 			'driver' => 'local',
-			'root' => storage_path('app/public/images/catalog'),
+			'root' => storage_path('public/upload/images/catalog'),
 			'visibility' => 'public',
         ],
 

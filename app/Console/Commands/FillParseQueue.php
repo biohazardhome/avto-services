@@ -12,7 +12,7 @@ use App\Jobs\Parse;
 class FillParseQueue extends Command
 {
 	
-	const URL = 'http://www.plan1.ru/odincovo/avto/avtoservisyi/';
+	const URL = 'http://www.plan1.ru/dolgoprudniy/avto/avtoservisyi/';
 	
     /**
      * The name and signature of the console command.
@@ -55,8 +55,9 @@ class FillParseQueue extends Command
 			$urls = $this->parse($content);
 			//dd(function_exists('dispatch'));
 			foreach ($urls as $url) {
-				dispatch((new Parse($url))->onQueue('parse'));
-				//dd();
+                // continue;
+                // dd($url);
+				dispatch((new Parse($url))/*->onQueue('parse')*/);
 			}
 		}
     }

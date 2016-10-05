@@ -1,5 +1,9 @@
 <?php
 
+/*
+	Преобразовывать адреса к своему формату
+*/
+
 namespace App\Jobs;
 
 use App\Jobs\Job;
@@ -33,7 +37,7 @@ class Parse extends Job implements ShouldQueue
     public function __construct($url)
     {
         $this->url = $url;
-        $this->storage = Storage::disk('public-images');
+        $this->storage = Storage::disk('upload-images-catalog');
     }
 
     /**
@@ -81,11 +85,13 @@ class Parse extends Job implements ShouldQueue
 				'phones' => $phones,
 				'email' => $email,
 				'site' => $site,
+				'city_id' => 3,
+				'service_id' => 1,
 				//'images' => $images,
 			];
 			
 			$catalog = $this->createCatalogItem($item);
-			$images = $this->saveImages($images, $catalog->slug, $catalog->id);
+			$images = $this->saveImages($images, $catalog->slug, $catalog);
 			
 			if ($content) {
 				$content = $this->replaceImageInContent($contentNode, $images);
@@ -108,6 +114,15 @@ class Parse extends Job implements ShouldQueue
 		
 		return Catalog::create($item);
 	}
+
+	public function createImage($path) {
+		$image = new Image();
+		$image->fill([
+			'filename' => basename($path),
+			'path' => $path,
+		]);
+		return $image;
+	}
 	
 	public function catalogUniqueSlug($slug) {
 		$newSlug = $slug;
@@ -120,7 +135,7 @@ class Parse extends Job implements ShouldQueue
 	}
 		
     
-    public function saveImages(array $images, $name, $catalogId) {
+    public function saveImages(array $images, $name, $catalog) {
 		$imagesPath = [];
 		$storage = $this->storage;
 		
@@ -137,12 +152,16 @@ class Parse extends Job implements ShouldQueue
 			$pathfile = $name .'/'. basename($image);
 			$pathfile = $this->renameImage($pathfile, $name);
 			$pathfile = $this->uniqueNameImage($pathfile);
-			dump($pathfile);
+			dump(basename($pathfile), $pathfile);
 			$storage->put($pathfile, file_get_contents(/*self::URL . */$image));
 			$imagesPath[] = $pathfile;
+
+			$image = $this->createImage($pathfile);
+			$catalog->images()->save($image);
 			
 			/*Image::create([
-				'path' = $pathinfo,
+			    'filename' => basename($pathfile),
+				'path' => $pathinfo,
 				'imageable_type' => 'catalog',
 				'imageable_id' => $catalogId 
 			]);*/
