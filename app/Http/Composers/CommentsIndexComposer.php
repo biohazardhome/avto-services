@@ -49,27 +49,29 @@ class CommentsIndexComposer
                 ->get();
         }
 
-        $serviceId = $comments->first()->catalog->service_id;
-        $service = $this->getService($serviceId);
-        // dd($service);
+        if ($comments->count()) {
+            $serviceId = $comments->first()->catalog->service_id;
+            $service = $this->getService($serviceId);
+            // dd($service);
 
-        /*$this->view = $view;
+            /*$this->view = $view;
 
-        $comments = Comment::limit(3)
-            ->get();*/
+            $comments = Comment::limit(3)
+                ->get();*/
 
-        /*$content = $this->compileFromString(
-            '<div class="col-md-12 col-lg-12" style="margin-top: 15px; background-color: white; padding: 15px;">
-                <h2 class="text-center">Отзывы о автосервисах в Одинцово</h2>
-                
-                @include(\'comment.index\', [\'comments\' => $comments])
-            </div>',
-            compact('comments')
-        );*/
+            /*$content = $this->compileFromString(
+                '<div class="col-md-12 col-lg-12" style="margin-top: 15px; background-color: white; padding: 15px;">
+                    <h2 class="text-center">Отзывы о автосервисах в Одинцово</h2>
+                    
+                    @include(\'comment.index\', [\'comments\' => $comments])
+                </div>',
+                compact('comments')
+            );*/
 
-        $content = view('partials.sections.comment', compact('city', 'comments', 'service'));
+            $content = view('partials.sections.comment', compact('city', 'comments', 'service'));
 
-        $view->with('composerCommentsIndex', $content);
+            $view->with('composerCommentsIndex', $content);
+        }
     }
 
     protected function getCity($citySlug) {
