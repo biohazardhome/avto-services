@@ -15,12 +15,15 @@ class CatalogController extends Controller
 {
     
     public function index() {
-		$catalog = Catalog::with('city')
+		$catalog = Catalog::with('city', 'service')
 			->withCount('comments')
 			->orderBy('sort', 'desc')
 			->paginate(20);
 
-		return view('index', compact('catalog'));
+		$service = $catalog->first()->service;
+		// dump($service);
+
+		return view('index', compact('catalog', 'service'));
 	}
 
 	public function showRedirect($slug) {
