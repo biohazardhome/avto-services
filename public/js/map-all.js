@@ -109,3 +109,37 @@ function mapCity(city) {
 	// return promise;
 	return dfd.promise();
 }
+
+function mapService(service) {
+
+	var promise,
+		dfd = $.Deferred();
+	
+	console.log(dfd)
+	
+	ymaps.ready(function () {
+		promise = $.get('/map/service-ajax/'+ service, {}, function(data) {
+			prepare(data, dfd);
+		});
+	});
+	// console.log(dfd.promise())
+	// return promise;
+	return dfd.promise();
+}
+
+function mapServiceCity(service, city) {
+
+	var promise,
+		dfd = $.Deferred();
+	
+	console.log(dfd)
+	
+	ymaps.ready(function () {
+		promise = $.get('/map/service-city-ajax/'+ service +'/'+ city, {}, function(data) {
+			prepare(data, dfd);
+		});
+	});
+	// console.log(dfd.promise())
+	// return promise;
+	return dfd.promise();
+}

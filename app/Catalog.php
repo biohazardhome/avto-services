@@ -76,6 +76,29 @@ class Catalog extends Model
 		return self::take(5);
 	}
 
+	/*public function scopeBy($q, $type, $args) {
+
+	}*/
+
+	public function scopeByCity($q, $slug) {
+		return $q->with('service', 'city')
+			->whereHas('city', function($q) use($slug) {
+				$q->whereSlug($slug);
+			})->withCount('comments');
+	}
+
+	public function scopeByService($q, $slug) {
+		return $q->with('service', 'city')
+			->whereHas('service', function($q) use($slug) {
+				$q->whereSlug($slug);
+			})->withCount('comments');
+	}
+
+	public function scopeByServiceAndCity($q, $slug, $slug2) {
+		return $q->byService($slug)
+			->byCity($slug2);
+	}
+
 	public function scopeLikeByAddress($q, $street, $limit = 0/*, $cacheKey = ''*/) {
 		return $q->where('address', 'like', '%'. $street .'%')
 		    ->random($limit)

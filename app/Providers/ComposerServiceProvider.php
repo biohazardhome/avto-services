@@ -20,7 +20,7 @@ class ComposerServiceProvider extends ServiceProvider
         );
 
         view()->composer(
-            ['index', 'catalog.city'], 'App\Http\Composers\MapIndexComposer'
+            ['index', 'catalog.city', 'catalog.service'], 'App\Http\Composers\MapIndexComposer'
         );
     }
 

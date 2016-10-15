@@ -13,16 +13,6 @@
 		<div class="text-center" style="border-bottom: 1px solid #dad8d8;">{{ $catalog->links() }}</div>
 
 		@foreach($catalog as $item)
-			<!-- <article class="catalog-item">
-				@include('catalog.partials.item-header-link-city', $item->getAttributesOnly(['name', 'slug']) + ['city' => $item->city])
-				@include('catalog.partials.item-address-short-anchor', $item)
-				<div class="catalog-item-content" title="Подробнее об автосервисе {{ $item->name }}">
-					{!! $item->description !!}
-				</div>
-				@include('catalog.partials.item-info', $item->getAttributesOnly(['phones', 'site', 'email', 'name']))
-			
-				<a href="{{ route('catalog.show', [$item->slug]) }}#comments" title="Отзывы о автосервисе {{ $item->name }}">Отзывы ({{ $item->comments_count }})</a>
-			</article> -->
 			@include('catalog.item', compact('item'))
 		@endforeach
 	

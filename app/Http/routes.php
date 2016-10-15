@@ -93,8 +93,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], function() {
 	Route::get('/', 'MapController@index')->name('index');
 	Route::any('/all-ajax/', 'MapController@allAjax')->name('all-ajax');
-	Route::any('/{city}', 'MapController@city')->name('city');
+	Route::any('/service-city-ajax/{service}/{city}', 'MapController@serviceCityAjax')->name('service-city-ajax');
 	Route::any('/city-ajax/{city}', 'MapController@cityAjax')->name('city-ajax');
+	Route::any('/service-ajax/{service}', 'MapController@serviceAjax')->name('service-ajax');
+	Route::any('/{city}', 'MapController@city')->name('city');
 	// Route::any('/city/{city}', 'MapController@city')->name('city');
 	Route::get('/{address}', 'MapController@showOld')->name('show.old');
 	Route::get('/{slug}/{address}', 'MapController@show')->name('show');
@@ -139,24 +141,22 @@ Route::group(['prefix' => 'image', 'as' => 'image.'], function () {
 	});
 //});
 
-Route::get('/{slug}/{service?}', function($slug, $service = null) {
-	// dump($slug);
-	if (Service::whereSlug($slug)->first()) {
-		// dump($slug);
-		return (new CatalogController)->service($slug);
-	} else if (City::whereSlug($slug)->first() && Service::whereSlug($service)->first()) {
-		//Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
-	 	return (new CatalogController)->cityService($slug, $service);
+Route::get('/{slug}/{slug2?}', function($slug, $slug2 = null) {
+	// dd($slug, $slug2);
+	$controller = new CatalogController;
+	if (Service::whereSlug($slug)->first() && City::whereSlug($slug2)->first()) {
+		// session(['mapType' => 'serviceCity']);
+	 	return $controller->cityService($slug, $slug2);
+	} else if (Service::whereSlug($slug)->first()) {
+		// session(['mapType' => 'service']);
+		return $controller->service($slug);
 	} else if (City::whereSlug($slug)->first()) {
-		//Route::get('/{city}', 'Catalog\CatalogController@city')->name('catalog-city');
-		return (new CatalogController)->city($slug);
+		// session(['mapType' => 'city']);
+		return $controller->city($slug);
 	} else if (Catalog::whereSlug($slug)->first()) {
-		// $controller = app()->make(App\Http\Controllers\Catalog\CatalogController::class);
-        // return app()->call([$controller, 'show'], compact('slug'));
-        return (new CatalogController)->show($slug);
+        return $controller->show($slug);
 	}
 	return abort(404);
-
 })->name('main');
 
 
