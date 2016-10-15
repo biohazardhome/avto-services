@@ -55,6 +55,19 @@ class MapController extends Controller
 		return abort(404);
 	}
 
+	public function allAjax() {
+		$catalog = Catalog::all();
+
+		if ($catalog->count()) {
+			$catalog = Catalog::transformForMap($catalog)->toArray();
+			// var_dump($catalog);
+
+			return response()->json($catalog);
+			// return json_encode($catalog);
+		}
+		return abort(404);
+	}
+
 	public function cityAjax($city) {
 		$city = City::with('catalog')
 			->whereSlug($city)
