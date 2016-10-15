@@ -40,7 +40,7 @@ Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
 	Route::get('/', 'CatalogController@index')->name('index');
-	Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
+	// Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 	Route::get('/{slug}', 'CatalogController@showRedirect')->name('show');
 	Route::get('/search/{query?}', 'CatalogController@search')->name('search');
 	Route::post('/search', 'CatalogController@search')->name('search');
@@ -92,6 +92,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 
 Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], function() {
 	Route::get('/', 'MapController@index')->name('index');
+	Route::any('/all-ajax/', 'MapController@allAjax')->name('all-ajax');
 	Route::any('/{city}', 'MapController@city')->name('city');
 	Route::any('/city-ajax/{city}', 'MapController@cityAjax')->name('city-ajax');
 	// Route::any('/city/{city}', 'MapController@city')->name('city');

@@ -2,9 +2,9 @@
 <?xml-stylesheet href="http://avto-services/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>http://avto-services/catalog/vfm-autoservis/</loc>
-		<priority>10</priority>
-		<lastmod>2016-06-27T00:17:28+00:00</lastmod>
+    <loc>http://avto-services/catalog/vfm/</loc>
+		<priority>0.1</priority>
+		<lastmod>2016-08-24T14:12:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
@@ -15,13 +15,13 @@
   </url>
   <url>
     <loc>http://avto-services/catalog/avtoservis-shinomontazh/</loc>
-		<priority>1</priority>
-		<lastmod>2016-06-17T19:08:36+00:00</lastmod>
+		<priority>0</priority>
+		<lastmod>2016-08-31T23:06:30+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
   <url>
     <loc>http://avto-services/catalog/avtodiagnostika/</loc>
-		<priority>1</priority>
+		<priority>0</priority>
 		<lastmod>2016-06-17T19:20:01+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
@@ -33,7 +33,7 @@
   </url>
   <url>
     <loc>http://avto-services/catalog/tekhtsentr-avtodrayv-na-mozhayke/</loc>
-		<priority>1</priority>
+		<priority>0</priority>
 		<lastmod>2016-06-24T02:26:38+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
@@ -63,7 +63,7 @@
   </url>
   <url>
     <loc>http://avto-services/catalog/fan-avto/</loc>
-		<priority>1</priority>
+		<priority>0</priority>
 		<lastmod>2016-06-17T19:21:01+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
@@ -195,7 +195,7 @@
   </url>
   <url>
     <loc>http://avto-services/catalog/avtostil/</loc>
-		<priority>1</priority>
+		<priority>0</priority>
 		<lastmod>2016-06-15T08:12:44+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
@@ -353,6 +353,312 @@
     <loc>http://avto-services/catalog/yanta-servis/</loc>
 		<priority>0</priority>
 		<lastmod>2016-06-15T08:12:53+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/test2/</loc>
+		<priority>0</priority>
+		<lastmod>2016-07-19T18:21:36+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/test/</loc>
+		<priority>0</priority>
+		<lastmod>2016-07-20T12:37:01+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/avto-status/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-04T09:37:03+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/orsigroup/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-25T12:51:20+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/euyeee/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T20:08:33+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/eueueue/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T20:32:48+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/kk2323k23423k23k3kk3/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T20:33:28+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/545345/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T20:35:33+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/345345/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T21:08:07+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/45345345345/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T21:10:15+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/4534534/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T21:12:06+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/45345345/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T21:13:27+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/tertertr/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-05T21:15:31+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/ewwerwer/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-10T15:13:25+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234234242/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-10T15:29:02+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/qqqqqqqqqq/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-10T15:31:26+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/11111111111111/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-19T19:17:13+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/444444444444444/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-19T19:22:10+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/2312312322323/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-19T20:37:41+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/55454/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-19T21:06:41+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/2222222222222222/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T14:28:18+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/2222222222222222-1/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T14:28:46+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/222222222/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:05:44+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/123123/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:13:40+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/dwdwdwdwdwdd/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:14:10+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/2342342/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:24:31+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:25:26+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234d/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:38:55+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234dc/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:27:06+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234dce/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:27:44+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234dcerxasa/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:28:17+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/34234234dcerx/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T15:28:39+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/xsxsxsx/</loc>
+		<priority>0</priority>
+		<lastmod>2016-08-21T17:59:47+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/docolor/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:48:03+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/dolcar/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:48:16+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/new-star-marine/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:30+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/avtolyuks/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:31+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/avtopartner-ttm-tsentr-sever/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:31+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/avtospetsnaz/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:32+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/avtotorr/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:33+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/avtoevakuator/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:33+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/azbuka-mekhaniki/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:34+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/amk-avto-strakhovanie/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:34+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/digger-pro/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:35+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/kompaniya-karavantsentr/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:35+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/moto112/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:36+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/sluzhba-evakuatsii-sokol/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:36+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/tekhtsentr-avtozhuk/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:37+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/tyuning-atele-nik/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:37+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/forsazh-severo-vostok/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:38+00:00</lastmod>
+		<changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>http://avto-services/catalog/evakuator/</loc>
+		<priority>0</priority>
+		<lastmod>2016-10-05T00:52:38+00:00</lastmod>
 		<changefreq>daily</changefreq>
   </url>
 </urlset>
