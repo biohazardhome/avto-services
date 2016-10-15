@@ -89,6 +89,7 @@ class CatalogController extends Controller
 		if ($catalog) {
 			$city = $catalog->first()->city;
 			$service = $catalog->first()->service;
+			$catalog = Catalog::paginateCollection($catalog);
 
 			return view('catalog.service', compact('catalog', 'city', 'service'));
 		}
