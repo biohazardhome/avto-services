@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Catalog;
 use App\City;
+use App\Service;
 
 class MapController extends Controller
 {
@@ -60,28 +61,43 @@ class MapController extends Controller
 
 		if ($catalog->count()) {
 			$catalog = Catalog::transformForMap($catalog)->toArray();
-			// var_dump($catalog);
 
 			return response()->json($catalog);
-			// return json_encode($catalog);
 		}
 		return abort(404);
 	}
 
-	public function cityAjax($city) {
-		$city = City::with('catalog')
-			->whereSlug($city)
-			->first();
-
-		// dd($city);
-		$catalog = $city->catalog;
+	public function cityAjax($slug) {
+		$catalog = Catalog::byCity($slug)->get();
 
 		if ($catalog->count()) {
 			$catalog = Catalog::transformForMap($catalog)->toArray();
-			// var_dump($catalog);
 
 			return response()->json($catalog);
-			// return json_encode($catalog);
+		}
+		return abort(404);
+	}
+
+	public function serviceAjax($slug) {
+		$catalog = Catalog::byService($slug)->get();
+
+		if ($catalog->count()) {
+			$catalog = Catalog::transformForMap($catalog)->toArray();
+
+			return response()->json($catalog);
+		}
+		return abort(404);
+	}
+
+	public function serviceCityAjax($slug, $slug2) {
+		$catalog = Catalog::byService($slug)
+			->byCity($slug2)
+			->get();
+
+		if ($catalog->count()) {
+			$catalog = Catalog::transformForMap($catalog)->toArray();
+
+			return response()->json($catalog);
 		}
 		return abort(404);
 	}
@@ -96,6 +112,8 @@ class MapController extends Controller
 	public function cityService($city, $service) {
 		$city = City::whereSlug($slug)
 			->first();
+
+		dd(123);
 
 		return view('map-all', compact('city'));
 	}

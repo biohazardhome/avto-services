@@ -49,17 +49,12 @@ class CatalogController extends Controller
 		return abort(404);
 	}
 
-	public function city($city) {
-		$city = City::with(['catalog' => function($q) {
-				$q->withCount('comments')
-					->orderBy('sort', 'desc');
-			}])
-			->whereSlug($city)
-			->first();
+	public function city($slug) {
+		$catalog = Catalog::byCity($slug)->get();
 		
-		if ($city) {
-			$catalog = $city->catalog;
+		if ($catalog) {
 			if ($catalog->count()) {
+				$city = $catalog->first()->city;
 				$catalog = Catalog::paginateCollection($catalog, 20);
 
 				return view('catalog.city', compact('catalog', 'city'));
@@ -73,36 +68,25 @@ class CatalogController extends Controller
 	}
 
 	public function service($slug) {
-		$service = Service::with(['catalog' => function($q) {
-				$q->withCount('comments')
-					->orderBy('sort', 'desc');
-			}])
-			->whereSlug($slug)
-			->first();
+		$catalog = Catalog::byService($slug)->get();
 
-		if ($service) {
-			$catalog = $service->catalog;
+		if ($catalog) {
+			$service = $catalog->first()->service;
 			$catalog = Catalog::paginateCollection($catalog);
-			// $city = City::find($catalog->first()->city_id);
-			// dump($catalog, $service, $city);
 			if ($catalog) {
 				return view('catalog.service', compact('catalog', 'service'));
 			}
+		} else {
+			return 'Нет такой услуги в каталоге';
 		}
 	}
 
-	public function cityService($city, $service) {
-		$catalog = Catalog::with('city', 'service')
-			->whereHas('service', function($q) use($service) {
-				$q->whereSlug($service);
-			})->whereHas('city', function($q) use($city) {
-				$q->whereSlug($city);
-			})->get();
+	public function cityService($service, $city) {
+		$catalog = Catalog::byService($service)
+			->byCity($city)
+			->get();
 
-			// dump($catalog->first()->city);
 		if ($catalog) {
-			$catalog = Catalog::paginateCollection($catalog);
-
 			$city = $catalog->first()->city;
 			$service = $catalog->first()->service;
 
@@ -112,8 +96,6 @@ class CatalogController extends Controller
 	}
 
     public function search(Request $request, $query = null) {
-
-    	// dd($request->isMethod('post'), $request);
     	if ($request->isMethod('post')) {
     		$query = $request->get('query');
 
@@ -125,10 +107,8 @@ class CatalogController extends Controller
         $catalog = Catalog::withCount('comments')->search($query)
             ->get();
 
-
         $catalog = Catalog::paginateCollection($catalog, 15);
 
-        // dd($catalog);
         return view('catalog.index', compact('catalog'));
     }
 

@@ -1,5 +1,17 @@
 <?php
 
+function call(callable $fn) {
+    $args = [];
+    $argsNum = func_num_args();
+    if ($argsNum == 2) {
+        $args = func_get_arg(1);
+        if (!is_array($args)) $args = [$args];
+    } else {
+        $args = array_slice(func_get_args(), 1);
+    }
+    return call_user_func_array($fn, $args);
+}
+
 function command($command, array $args = array()) {
 	return call_user_func_array([$command, 'handle'], $args);
 }
