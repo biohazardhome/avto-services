@@ -33,7 +33,7 @@ function str_limit_with($s, $limit = null, $end = '.', $withEnd = true) {
 	return $s;
 }
 
-function mb_ucfirst($value) {
+function mb_ucfirst($value) { // php 7 not
 	$value = mb_strtolower($value);
 	return mb_strtoupper(mb_substr($value, 0, 1)) . mb_substr($value, 1);
 }

@@ -8,6 +8,8 @@
 
 	<form action="{{ route('admin.city.store') }}" method="post">
 
+		{{ method_field('PUT') }}
+
 		@include('admin.city.form')
 
 		<!-- {{ csrf_field() }}
