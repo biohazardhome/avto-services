@@ -11,15 +11,17 @@ use App\Jobs\Parse;
 
 class FillParseQueue extends Command
 {
+
+    const DOMAIN = 'http://www.plan1.ru/';
 	
-	const URL = 'http://www.plan1.ru/dolgoprudniy/avto/avtoservisyi/';
+	const URL = 'http://www.plan1.ru/himki/avto/avtoservisyi/';
 	
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'parse:fill';
+    protected $signature = 'parse:fill {uri}';
 
     /**
      * The console command description.
@@ -46,7 +48,9 @@ class FillParseQueue extends Command
     public function handle()
     {
         $client = new Client();
-        $res = $client->request('GET', self::URL);
+        // $res = $client->request('GET', self::URL);
+        $uri = $this->argument('uri');
+        $res = $client->request('GET', self::DOMAIN . $uri);
         //dd($res->getStatusCode());
         
         if ($res->getStatusCode() === 200) {

@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
 use GuzzleHttp\Client;
 
 use App\Catalog;
-use App\Image;
+use My\Model\Image;
 use Storage;
 
 class Parse extends Job implements ShouldQueue

@@ -12,7 +12,7 @@
 <div class="form-group">
 	<label>
 		<span>Slug: </span>
-		<input class="form-control" type="text" name="slug" value="{{ object_get($city, 'slug', '') }}" required placeholder="Slug">
+		<input class="form-control" type="text" name="slug" value="{{ object_get($city, 'slug', '') }}" placeholder="Slug">
 	</label>
 </div>
 

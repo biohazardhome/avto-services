@@ -24,9 +24,9 @@ class City extends Model
 		return 'slug';
 	}
 
-	public function setNameAttribute($value) {
+	/*public function setNameAttribute($value) {
 		$this->name = mb_ucfirst($value);
-	}
+	}*/
 
     /*public function catalog() {
         return $this->belongsToMany(Catalog::class, 'catalog_cities', 'city_id', 'catalog_id');
