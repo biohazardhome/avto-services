@@ -39,6 +39,11 @@ Route::get('/', 'Catalog\CatalogController@index')->name('index');
 
 
 Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
+	Route::group(['as'=> 'phone.', 'prefix' => 'phone'], function() {
+		Route::get('/', 'PhoneController@index')->name('index');
+		
+	});
+
 	Route::get('/', 'CatalogController@index')->name('index');
 	// Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 	Route::get('/{slug}', 'CatalogController@showRedirect')->name('show');
