@@ -6,7 +6,10 @@
 @section('content')
 
 	<section class="catalog-list col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
-		<h1 class="text-center">Телефоны компаниий</h1>
+
+		<?php $city = isset($city) ? ' в '. $city->name : ''; ?>
+
+		<h1 class="text-center">Телефоны компаниий{{ $city }}</h1>
 
 		<div class="text-center" style="border-bottom: 1px solid #dad8d8;">{{ $catalog->links() }}</div>
 
