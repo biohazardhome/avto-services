@@ -29,6 +29,12 @@ class RouteServiceProvider extends ServiceProvider
         $router->pattern('id', '[0-9]+');
 
         parent::boot($router);
+
+
+
+        \Route::bind('city', function($city) {
+            return \App\City::whereSlug($city)->first();
+        });
     }
 
     /**
