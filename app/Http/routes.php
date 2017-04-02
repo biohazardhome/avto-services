@@ -151,6 +151,9 @@ Route::get('/{slug}/{slug2?}', function($slug, $slug2 = null) {
 		// session(['mapType' => 'service']);
 		return $controller->service($slug);
 	} else if (City::whereSlug($slug)->first()) {
+		if ($slug2 !== null) {
+			return redirect('/'. $slug);
+		}
 		// session(['mapType' => 'city']);
 		return $controller->city($slug);
 	} else if (Catalog::whereSlug($slug)->first()) {

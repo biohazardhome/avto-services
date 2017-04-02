@@ -1,7 +1,16 @@
 @extends('layouts.index')
 
-@section('title', '')
-@section('description', 'Автосервисы в- каталог адресов и телефонов автосервисов в  с полной справочной информацией и отзывами') <!-- полная справочная информация, схема проезда-->
+{{-- @section('title', $service->name .' в Москве на карте с отзывами, адресами и телефонами') --}}
+{{-- @section('description', 'Автосервисы в Москве каталог адресов и телефонов автосервисов в Москве с полной справочной информацией и отзывами') <!-- полная справочная информация, схема проезда--> --}}
+
+@if (empty($city))
+	@section('title', $service->name)
+	@section('description', $service->name)
+@else
+	@section('title', $service->name .' в '. $city->name .' на карте с отзывами, адресами и телефонами')
+	@section('description', $service->name .' в '. $city->name .' каталог адресов и телефонов автосервисов в '. $city->name .' с полной справочной информацией и отзывами')
+@endif
+
 
 
 @section('head')
@@ -20,7 +29,14 @@
 
 		{!! Breadcrumbs::render() !!}
 
-		<h1 class="text-center">{{ $service->name }}</h1>
+		<h1 class="text-center">
+			{{ $service->name }}
+
+			@if (isset($city))
+				 в 
+				{{ $city->name }}
+			@endif
+		</h1>
 
 		<p>{!! $service->content !!}</p>
 

@@ -76,6 +76,21 @@ class Catalog extends Model
 		return self::take(5);
 	}
 
+	public function scopeLastsByCity($q, $city, $limit = 3) {
+        /*return $q->with('city')->whereHas('city', function($qq) use ($city) {
+        	// dd($qq->get());
+                $qq->whereSlug($city)->get();
+            })->limit($limit)
+            ->get();*/
+
+        return $city = City::with(['catalog' => function($q) {
+	            $q->limit(3);
+	        }])
+	        ->whereSlug($city)
+	        ->first()
+	        ->catalog;
+    }
+
 	/*public function scopeBy($q, $type, $args) {
 
 	}*/
