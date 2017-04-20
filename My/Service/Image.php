@@ -12,6 +12,7 @@ class Image {
 
 	protected
 		// $renameFilenameUseFolderName = false,
+		$model = null,
 		$dir = '/upload/images/',
 		/*$oldPathDir,
 		$oldFilename,*/
@@ -35,6 +36,15 @@ class Image {
 		$this->storage = Storage::disk('local');
 
 		// $this->renameFilenameUseFolderName($renameUseFolder);
+	}
+
+	public function setModel($model) {
+		$this->model = $model;
+		return $this;
+	}
+
+	public function getModel() {
+		return $this->model;
 	}
 
 	public function addedFolderToDir($folder) {

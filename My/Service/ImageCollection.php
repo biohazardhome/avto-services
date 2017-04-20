@@ -44,6 +44,7 @@ class ImageCollection extends Collection {
 				$image = new ImageService($filename);
 			}
 			// dd($image);
+			$image->setModel($model);
 			$this->items[$key] = $image;
 			// return new ImageService($model->filename, $model->imageable_type ? lcfirst(class_basename($model->imageable_type)) : null);
 		}

@@ -31,6 +31,11 @@
 
 				<div class="catalog-content">{!! $catalog->content !!}</div>
 
+				<div class="catalog-gallery">
+					<?php $images = new My\Service\ImageCollection($catalog->images);?>
+					@include('image.list-horizontal', compact('images'))
+				</div>
+
 				<div>
 					<a 
 						href="{{ route('main', [$city->slug, $service->slug]) }}" 
