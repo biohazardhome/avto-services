@@ -1,4 +1,4 @@
-<ul>
+<ul class="list-unstyled">
 	@foreach ($images as $image)
 	<?php $imageModel = $image->getModel(); ?>
 		<li>
