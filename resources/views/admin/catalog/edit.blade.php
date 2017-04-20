@@ -8,21 +8,9 @@
 @section('content')
 
 	<?php
-		$imagesModel = $item->images;
-		$images = new My\Service\ImageCollection($imagesModel);
+		$images = new My\Service\ImageCollection($item->images);
 	?>
-	<ul>
-		@foreach ($images as $k => $image)
-			<?php $imageModel = $imagesModel[$k];?>
-			<li>
-				<img src="{{ $image->getUrl() }}" alt="" title="" width="100">
-				<div>
-					<a href="/image/delete/{{ $imageModel->id }}/" onclick="return confirm('Удалить?')">Delete</a>
-					<a href="/image/edit/{{ $imageModel->id }}/">Edit</a>
-				</div>
-			</li>
-		@endforeach
-	</ul>
+	@include('image.list-vertical', compact('images'))
 
 	@include('image.upload', [
 	    'filename' => $item->slug,
