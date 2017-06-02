@@ -2,6 +2,12 @@
 <article class="catalog-item">
 	@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
 	@include('catalog.partials.item-address-anchor', $item->getAttributesOnly(['slug', 'name', 'address']))
+	
+	<div class="catalog-gallery">
+		<?php $images = new My\Service\ImageCollection($item->images);?>
+		@include('image.list-horizontal', compact('images', 'service') + ['catalog' => $item])
+	</div>
+
 	<div class="catalog-item-content" title="Подробнее об {{ $serviceSingularLcFirst }}е {{ $item->name }}">
 		{!! $item->description !!}
 	</div>

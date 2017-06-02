@@ -5,7 +5,7 @@
 	$service = $catalog->service;
 ?>
 
-@section('title', 'Автосервис '. $catalog->name .' в Одинцово')
+@section('title', $service->singular .' '. $catalog->name .' '. $city->name)
 @section('description', trim(str_limit_with(strip_tags($catalog->description), 200)) )
 @section('content')
 	<section class="catalog-show col-md-9 col-lg-9">
@@ -33,7 +33,7 @@
 
 				<div class="catalog-gallery">
 					<?php $images = new My\Service\ImageCollection($catalog->images);?>
-					@include('image.list-horizontal', compact('images'))
+					@include('image.list-horizontal', compact('images', 'catalog', 'service'))
 				</div>
 
 				<div>
