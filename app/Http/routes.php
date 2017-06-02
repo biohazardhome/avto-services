@@ -18,6 +18,7 @@ use App\Service;
 use App\City;
 
 
+Route::auth();
 
 function routeSame($name, $controller, array $params = [], $type = 'get') { // параметры
 	Route::$type('/'. $name .'/{' . $name . '}', $controller .'@'. $name)->name($name);
@@ -59,7 +60,7 @@ Route::group(['as' => 'comment.', 'prefix' => 'comment'], function() {
 	Route::get('/sitemap-generate', 'CommentController@sitemapGenerate')->name('sitemap-generate');
 });
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function() {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', /*'web',*/ 'admin'], 'namespace' => 'Admin'], function() {
 	Route::auth();
 
 	Route::get('/', 'CatalogController@index')->name('index');
@@ -176,3 +177,5 @@ Route::get('/{slug}/{slug2?}', function($slug, $slug2 = null) {
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+
+

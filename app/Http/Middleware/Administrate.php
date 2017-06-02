@@ -16,10 +16,10 @@ class Administrate
      */
     public function handle($request, Closure $next)
     {
-        // if (!Gate::allows('adminAccess') && !$request->is('admin/login')) {
+        if (!Gate::allows('adminAccess') && !$request->is('admin/login')) {
             // return response('Unauthorized.', 401);
-            // return redirect('/admin/login');
-        // }
+            return redirect('/admin/login');
+        }
         return $next($request);
     }
 }
