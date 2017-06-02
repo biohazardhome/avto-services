@@ -69,18 +69,18 @@ class FillParseQueue extends Command
     public function parse($content) {
 		$dom = new Crawler((string) $content);
 		
-		$urls = [];
+		// $urls = [];
 			
 		$contentNode = $dom->filter('#content');
-		$contentNode->filter(
+		return $contentNode->filter(
 			'#spisok .fake-background-eb-div,
 			.sb-n-non-rating-ent-div .nonRatingItem'
 		)
-			->each(function(Crawler $node, $i) use(&$urls) {
-				$urls[] = $node->filter('.sp-n-nonrating-title a')
+			->each(function(Crawler $node/*, $i*/) /*use(&$urls) */{
+				/*$urls[] = */ return $node->filter('.sp-n-nonrating-title a')
 					->attr('href');
 			});
 			
-		return $urls;
+		// return $urls;
 	}
 }
