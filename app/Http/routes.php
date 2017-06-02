@@ -81,7 +81,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 		Route::put('/store', 'CommentController@store')->name('store');
 		Route::get('/edit/{id}', 'CommentController@edit')->name('edit');
 		Route::post('/update/{id}', 'CommentController@update')->name('update');
-		Route::get('/delete', 'CommentController@delete')->name('delete');
+		Route::get('/delete/{id}', 'CommentController@delete')->name('delete');
 	});
 
 	Route::group(['as' => 'city.', 'prefix' => 'city', ], function() {
@@ -91,7 +91,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin', 'n
 		Route::put('/store', 'CityController@store')->name('store');
 		Route::get('/edit/{id}', 'CityController@edit')->name('edit');
 		Route::post('/update/{id}', 'CityController@update')->name('update');
-		Route::get('/delete', 'CityController@delete')->name('delete');
+		Route::get('/delete/{id}', 'CityController@delete')->name('delete');
 	});
 });
 
