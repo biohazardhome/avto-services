@@ -12,9 +12,18 @@
 
 		<div class="text-center" style="border-bottom: 1px solid #dad8d8;">{{ $catalog->links() }}</div>
 
-		@foreach($catalog as $item)
-			@include('catalog.item', compact('item'))
-		@endforeach
+		<div class="catalog">
+			<div class="row">
+			@foreach($catalog as $i => $item)				
+
+				@include('catalog.item-tile', compact('item'))
+
+				@if (($i + 1) % 2 === 0) 
+					</div><div class="row">
+				@endif
+
+			@endforeach
+		</div>
 	
 		<div class="text-center">{{ $catalog->links() }}</div>
 	</section>
