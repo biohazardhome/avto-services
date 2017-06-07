@@ -54,6 +54,10 @@ class Model extends BaseModel {
 	    );
 	}
 
+    public function scopeWhereNot($q, $parametr, $value) {
+        return $q->where($parametr, '!=', $value);
+    }
+
     public function scopeRemember($q, $minutes, $key = null) {
         $name = $this->connection ? $this->connection->getName() : '';
         $newKey = md5($name . $this->toSql() . serialize($this->getBindings()));

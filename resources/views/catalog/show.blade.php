@@ -75,9 +75,12 @@
 @section('sidebar')
 	<aside class="col-sm-12 col-md-3 col-lg-3">
 		<div class="catalog-similar-wrap">
+
+			@inject('similar', 'App\Catalog')
+
+			<?php $similar = $similar->whereNot('id', $catalog->id);?>
+
 			<div class="catalog-similar">
-				@inject('similar', 'App\Catalog')
-				
 				<h3>{{ $service->name }} на {{ $catalog->addressStreet }}</h3>
 				<ul class="catalog-list-similar">
 					@foreach($similar->LikeByAddress($catalog->addressStreet, 3) as $item)
@@ -92,7 +95,7 @@
 			</div>
 
 			<div class="catalog-similar">
-				@inject('similar', 'App\Catalog')
+				
 				
 				<h3>{{ $service->name }} в городе {{ $catalog->addressCityShort }}</h3>
 				<ul class="catalog-list-similar">
@@ -108,11 +111,11 @@
 			</div>
 
 			<div class="catalog-similar">
-				@inject('catalog', 'App\Catalog')
+				
 				
 				<h3>Популярные {{ $service->nameLcFirst }} {{ $catalog->addressCityShort }} в {{ $city->name }}</h3>
 				<ul class="catalog-list-similar">
-					@foreach($catalog->whereCityId($city->id)->orderBy('sort', 'desc')->limit(3)->get() as $item)
+					@foreach($similar->whereCityId($city->id)->orderBy('sort', 'desc')->limit(3)->get() as $item)
 						<li>
 							<article class="catalog-item">
 								@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))

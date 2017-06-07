@@ -45,6 +45,14 @@ Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog
 		Route::get('/{city}', 'PhoneController@city')->name('city');
 	});
 
+	Route::group(['as' => 'address', 'prefix' => 'address'], function() {
+		Route::get('/', 'AddressController@index')->name('index');
+		Route::get('/region/{region}', 'AddressController@region')->name('region');
+		Route::get('/district/{district}', 'AddressController@district')->name('district');
+		Route::get('/street/{street}', 'AddressController@street')->name('street');
+		Route::get('/build/{build}', 'AddressController@build')->name('build');
+	});
+
 	Route::get('/', 'CatalogController@index')->name('index');
 	// Route::get('/sitemap-generate', 'CatalogController@sitemapGenerate')->name('sitemap-generate');
 	Route::get('/{slug}', 'CatalogController@showRedirect')->name('show');
