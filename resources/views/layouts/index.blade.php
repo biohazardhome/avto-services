@@ -30,34 +30,38 @@
 
 		{!! $composerMapIndex or '' !!}
 
-		<div class="catalog row">
-			<ul class="catalog-city col-lg-4 list-unstyled">
-				<h1>Автосервисы в Одинцово</h1>
-				<?php
-					$catalog = App\Catalog::lastsByCity('odintsovo');
-				?>
-				@foreach($catalog as $item)
-					@include('catalog.partials.list', compact('item'))
-				@endforeach
-			</ul>
-			<ul class="catalog-city col-lg-4 list-unstyled">
-				<h1>Автосервисы в Лобне</h1>
-				<?php
-					$catalog = App\Catalog::lastsByCity('lobnya');
-				?>
-				@foreach($catalog as $item)
-					@include('catalog.partials.list', compact('item'))
-				@endforeach
-			</ul>
-			<ul class="catalog-city col-lg-4 list-unstyled">
-				<h1>Автосервисы в Долгопрудном</h1>
-				<?php
-					$catalog = App\Catalog::lastsByCity('dolgoprudnyy');
-				?>
-				@foreach($catalog as $item)
-					@include('catalog.partials.list', compact('item'))
-				@endforeach
-			</ul>
+		@yield('footer')
+
+		<div class="col-lg-12">
+			<div class="catalog row">
+				<ul class="catalog-city col-lg-4 list-unstyled">
+					<h1>Автосервисы в Одинцово</h1>
+					<?php
+						$catalog = App\Catalog::lastsByCity('odintsovo');
+					?>
+					@foreach($catalog as $item)
+						@include('catalog.partials.list', compact('item'))
+					@endforeach
+				</ul>
+				<ul class="catalog-city col-lg-4 list-unstyled">
+					<h1>Автосервисы в Лобне</h1>
+					<?php
+						$catalog = App\Catalog::lastsByCity('lobnya');
+					?>
+					@foreach($catalog as $item)
+						@include('catalog.partials.list', compact('item'))
+					@endforeach
+				</ul>
+				<ul class="catalog-city col-lg-4 list-unstyled">
+					<h1>Автосервисы в Долгопрудном</h1>
+					<?php
+						$catalog = App\Catalog::lastsByCity('dolgoprudnyy');
+					?>
+					@foreach($catalog as $item)
+						@include('catalog.partials.list', compact('item'))
+					@endforeach
+				</ul>
+			</div>
 		</div>
 
 		<div class="col-lg-12">

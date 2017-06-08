@@ -102,11 +102,33 @@ class MapController extends Controller
 		return abort(404);
 	}
 
-	public function city($slug) {
-		$city = City::whereSlug($slug)
-			->first();
+	public function city($city) {
+		/*$city = City::whereSlug($slug)
+			->first();*/
 
-		return view('map-all', compact('city'));
+		if ($city) {
+			// dd('odintsovo', $city);
+			/*$catalog = Catalog::whereCityId($city->id)
+				->orderBy('sort', 'desc')
+				->limit(6)
+				->get();*/
+
+			/*$city->with(['catalog' => function($q) {
+				return $q->orderBy('sort', 'desc')
+					->limit(6)
+					->get();
+			}]);*/
+
+			$catalog = $city->catalog()->orderBy('sort', 'desc')
+					->limit(6)
+					->get();
+
+			// dd($catalog);
+
+			return view('map-all', compact('city', 'catalog'));
+		} 
+
+		
 	}
 
 	public function cityService($city, $service) {
