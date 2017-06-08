@@ -18,10 +18,14 @@
 
 
 .catalog-item {
-	
+	padding-bottom: 20px;
 	/*margin-bottom: 45px;*/
 	/*padding: 10px;*/
 	/*border-bottom: 1px solid #ececec;*/
+}
+
+.catalog-item:hover {
+    outline: 1px solid lightgray;
 }
 
 .catalog-item h1, 

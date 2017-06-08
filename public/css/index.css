@@ -12,7 +12,8 @@ body {
 body.container-fluid {
 	margin-left: 15px;
 	margin-right: 15px;
-	background-color: #dcdcdc;
+	/*background-color: #dcdcdc;*/
+	background-color: #f3f1f1;
 }
 
 header {

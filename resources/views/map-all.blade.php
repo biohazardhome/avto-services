@@ -7,11 +7,19 @@
 	<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 	<script src="/js/map.js" type="text/javascript"></script>
 	<script src="/js/map-all.js" type="text/javascript"></script>
+
+	<?php $city = isset($city) ? $city : null; ?>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var promise = mapCity('{{ $city->slug }}')/*.done(function(data) {
-				console.log(data)
-			})*/;
+			var city = '{{ ($city && isset($city->slug)) ? $city->slug : '' }}';
+			var promise;
+
+			if (city) {
+				promise = mapCity(city);
+			} else {
+				promise = mapAll()
+			}
 
 			console.log(promise)
 
@@ -68,10 +76,16 @@
 
 @section('content')
 	<section class="col-lg-12">
-		<h1>Автосервисы в {{ $city->name }}</h1>
+		@if ($city)
+			<h1>Автосервисы в {{ $city->name }}</h1>
 
-		<div id="map-all"></div>
-		<a href="/{{ $city->slug }}" title="">Все автосервисы в {{ $city->name }}</a>
+			<div id="map-all"></div>
+			<a href="/{{ $city->slug }}" title="">Все автосервисы в {{ $city->name }}</a>
+		@else
+			<h1>Все Автосервисы</h1>
+
+			<div id="map-all"></div>
+		@endif
 		<!-- <p></p><p></p><p></p><p></p><p></p><p></p> -->
 	</section>
 @stop
@@ -86,15 +100,17 @@
 			}
 		</style>
 
-		<ul class="catalog-list-similar row">
-			@foreach($catalog as $item)
-				<li class="col-lg-4">
-					<article class="catalog-item">
-						@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
-						@include('catalog.partials.item-address-anchor', $item->getAttributesOnly(['slug', 'name', 'address']))
-					</article>
-				</li>
-			@endforeach
-		</ul>
+		@if (isset($catalog) && $catalog)
+			<ul class="catalog-list-similar row">
+				@foreach($catalog as $item)
+					<li class="col-lg-4">
+						<article class="catalog-item">
+							@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))
+							@include('catalog.partials.item-address-anchor', $item->getAttributesOnly(['slug', 'name', 'address']))
+						</article>
+					</li>
+				@endforeach
+			</ul>
+		@endif
 	</section>
 @stop

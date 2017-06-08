@@ -18,9 +18,12 @@
 			Breadcrumbs::add($catalog->name, '/'. $catalog->slug);
 		?>
 
-		{!! Breadcrumbs::render() !!}
+		
 
-		<article class="catalog-item bg-gray">
+		<article class="catalog-item ">
+
+			{!! Breadcrumbs::render() !!}
+
 			<div class="catalog-item-well">
 				@include('catalog.partials.item-header', $catalog->getAttributesOnly(['name']) + ['city' => $catalog->city])
 				@include('catalog.partials.item-address-short', ['item' => $catalog])
