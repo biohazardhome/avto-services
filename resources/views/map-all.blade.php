@@ -59,6 +59,10 @@
         header {
         	height: auto;
         }
+
+        footer {
+        	margin-top: 80px !important;
+        }
     </style>
 @stop
 
@@ -68,13 +72,12 @@
 
 		<div id="map-all"></div>
 		<a href="/{{ $city->slug }}" title="">Все автосервисы в {{ $city->name }}</a>
-		<p></p><p></p><p></p><p></p><p></p><p></p>
+		<!-- <p></p><p></p><p></p><p></p><p></p><p></p> -->
 	</section>
+@stop
 
+@section('footer')
 	<section class="col-lg-12">
-		@inject('catalog', 'App\Catalog')
-		
-		<!-- <h3>Популярные {{ $catalog->addressCityShort }}</h3> -->
 		<style>
 			.catalog-list-similar li {
 				float: none;
@@ -84,7 +87,7 @@
 		</style>
 
 		<ul class="catalog-list-similar row">
-			@foreach($catalog->whereCityId($city->id)->orderBy('sort', 'desc')->limit(6)->get() as $item)
+			@foreach($catalog as $item)
 				<li class="col-lg-4">
 					<article class="catalog-item">
 						@include('catalog.partials.item-header-link', $item->getAttributesOnly(['name', 'slug']))

@@ -12,12 +12,9 @@ use App\Catalog;
 class AddressController extends Controller
 {
     
-<<<<<<< HEAD
-	public function index() {
-=======
 	public function __construct() {
 
-		// Замена конструкции __call()
+		// Замена конструкции __call
 		$parameters = \Route::getCurrentRoute()->parameters();
 		if ($parameters) {
 			$action = key($parameters);
@@ -27,7 +24,6 @@ class AddressController extends Controller
 			$this->callAction($action, [$value]);
 		}
 
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 
 	}
 
@@ -54,28 +50,16 @@ class AddressController extends Controller
 		}
 	}*/
 
-<<<<<<< HEAD
-	public function region($region) {
-		$entities = $this->findAddressSegment('region', $region);
-=======
 	public function index() {
 
 	}
 
 	public function region($region) {
 		/*$entities = $this->findAddressSegment('region', $region);
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 		// dd($entities->count());
 		if ($entities->count()) {
 			$entities = Catalog::paginateCollection($entities);
 			return view('catalog.address', ['catalog' => $entities] + compact(''));
-<<<<<<< HEAD
-		}
-	}
-
-	public function district($district) {
-		$entities = $this->findAddressSegment('district', $district);
-=======
 		}*/
 
 		return $this->sameAction('region', $region);
@@ -83,38 +67,22 @@ class AddressController extends Controller
 
 	public function district($district) {
 		/*$entities = $this->findAddressSegment('district', $district);
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 		// dd($entities->count());
 		if ($entities->count()) {
 			$entities = Catalog::paginateCollection($entities);
 			return view('catalog.address', ['catalog' => $entities] + compact(''));
-<<<<<<< HEAD
-		}
-=======
 		}*/
 
 		return $this->sameAction('district', $district);
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 	}
 
 	public function street($street) {
 		// $entities = $this->findAddressSegment('streetShort', $street);
-<<<<<<< HEAD
-		$entities = $this->findAddressSegment('street', $street);
-=======
 		/*$entities = $this->findAddressSegment('street', $street);
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 		// dd($entities->count());
 		if ($entities->count()) {
 			$entities = Catalog::paginateCollection($entities);
 			return view('catalog.address', ['catalog' => $entities] + compact(''));
-<<<<<<< HEAD
-		}
-	}
-
-	public function build($build) {
-		$entities = $this->findAddressSegment('building', $build);
-=======
 		}*/
 
 		return $this->sameAction('street', $street);
@@ -122,16 +90,10 @@ class AddressController extends Controller
 
 	public function build($build) {
 		/*$entities = $this->findAddressSegment('building', $build);
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 		// dd($entities->count());
 		if ($entities->count()) {
 			$entities = Catalog::paginateCollection($entities);
 			return view('catalog.address', ['catalog' => $entities] + compact(''));
-<<<<<<< HEAD
-		}
-	}
-
-=======
 		}*/
 
 		return $this->sameAction('building', $build);
@@ -147,7 +109,6 @@ class AddressController extends Controller
 		return abort(404);
 	} 
 
->>>>>>> b687a396cd009e159ec825ebd5b93514b3f71297
 	private function findAddressSegment($segmentName, $value) {
 		if (empty($value)) {
 			return null;

@@ -108,7 +108,7 @@ Route::group(['as' => 'map.', /*'namespace' => '',*/ 'prefix' => 'map'], functio
 	Route::get('/', 'MapController@index')->name('index');
 	Route::any('/all-ajax/', 'MapController@allAjax')->name('all-ajax');
 	Route::any('/service-city-ajax/{service}/{city}', 'MapController@serviceCityAjax')->name('service-city-ajax');
-	Route::any('/city-ajax/{city}', 'MapController@cityAjax')->name('city-ajax');
+	Route::any('/city-ajax/{slug}', 'MapController@cityAjax')->name('city-ajax');
 	Route::any('/service-ajax/{service}', 'MapController@serviceAjax')->name('service-ajax');
 	Route::any('/{city}', 'MapController@city')->name('city');
 	// Route::any('/city/{city}', 'MapController@city')->name('city');
