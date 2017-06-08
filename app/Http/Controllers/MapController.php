@@ -14,9 +14,9 @@ class MapController extends Controller
 {
     
     public function index() {
-		$catalog = Catalog::get();
+		/*$catalog = Catalog::get();
 
-		$catalog = Catalog::transformForMap($catalog);
+		$catalog = Catalog::transformForMap($catalog);*/
 
 		return view('map-all', compact('catalog'));
 	}
