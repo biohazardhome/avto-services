@@ -30,6 +30,8 @@
 
 				<div class="catalog-description">{!! $catalog->description !!}</div>
 
+				@include('catalog.marks', compact('catalog'))
+
 				@include('catalog.partials.item-info', $catalog->getAttributesOnly(['phones', 'site', 'email', 'name']))
 
 				<div class="catalog-content">{!! $catalog->content !!}</div>

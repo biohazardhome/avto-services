@@ -63,3 +63,16 @@ form textarea[required] {
 .bg-gray {
 	background-color: gainsboro;
 }
+
+
+
+ul.list-separator-comma li a:after {
+	content: ",";
+}
+
+ul.list-separator-comma li:last-child a:after {
+	content: "";
+}
+
+
+	
