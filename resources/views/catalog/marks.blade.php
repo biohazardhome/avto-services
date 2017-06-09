@@ -19,7 +19,7 @@
 	} */
 </style>
 
-@if ($catalog->marks)
+@if ($catalog->marks->count())
 	<div class="marks">
 		<span title="Работаем с марками автомобилей">Марки:</span> <ul class="list-unstyled list-inline list-separator-comma">
 
