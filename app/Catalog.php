@@ -63,6 +63,10 @@ class Catalog extends Model
 		return $this->hasMany(Comment::class, 'catalog_id');
 	}
 
+	public function marks() {
+		return $this->belongsToMany(Mark::class, 'catalog_marks', 'catalog_id', 'mark_id');
+	}
+
 	/*public function city() {
 		return $this->belongsToMany(City::class, 'catalog_cities', 'catalog_id', 'city_id');
 	}*/

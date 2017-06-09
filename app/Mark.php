@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 
 class Mark extends Model
 {
@@ -14,7 +14,19 @@ class Mark extends Model
 			'name',
 			'title',
 			'description',
-		];
+		],
+		$rules = [
+			'name' => 'required|unique:marks',
+            // 'title' => 'email',
+            // 'description' => 'required',
+		],
+		$searchable = [
+            'columns' => [
+                'title' => 10,
+                'description' => 10,
+                'name' => 9,
+            ]
+        ];
 
 
 

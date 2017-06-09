@@ -20,10 +20,6 @@ use App\City;
 
 Route::auth();
 
-function routeSame($name, $controller, array $params = [], $type = 'get') { // параметры
-	Route::$type('/'. $name .'/{' . $name . '}', $controller .'@'. $name)->name($name);
-}
-
 /*Route::group(['as' => 'kladr.', 'prefix' => 'kladr'], function() {
 	Route::get('/{region}/{district}/{city}/{street}/{building}', 'KladrController@index')->name('index');
 	Route::get('/region/{region}', 'KladrController@region')->name('region');
@@ -45,7 +41,7 @@ Route::group(['as' => 'catalog.', 'namespace' => 'Catalog', 'prefix' => 'catalog
 		Route::get('/{city}', 'PhoneController@city')->name('city');
 	});
 
-	Route::group(['as' => 'address', 'prefix' => 'address'], function() {
+	Route::group(['as' => 'address.', 'prefix' => 'address'], function() {
 		Route::get('/', 'AddressController@index')->name('index');
 		Route::get('/region/{region}', 'AddressController@region')->name('region');
 		Route::get('/district/{district}', 'AddressController@district')->name('district');
@@ -101,6 +97,20 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', /*
 		Route::get('/edit/{id}', 'CityController@edit')->name('edit');
 		Route::post('/update/{id}', 'CityController@update')->name('update');
 		Route::get('/delete/{id}', 'CityController@delete')->name('delete');
+	});
+
+	Route::group(['as' => 'mark.', 'prefix' => 'mark'], function () {
+		Route::get('/', 'MarkController@index')->name('index');
+		// routeSame('show', 'MarkController', ['id']);
+		Route::get('/show/{id}', 'MarkController@show')->name('show');
+		Route::get('/create', 'MarkController@create')->name('create');
+		Route::put('/store', 'MarkController@store')->name('store');
+		
+		routeSame('edit', 'MarkController', ['id']);
+		// Route::post('/update/{id}', 'MarkController@update')->name('update');
+		routeSame('update', 'MarkController', ['id'], 'post');
+		// Route::get('/delete/{id}', 'MarkController@delete')->name('delete');
+		routeSame('delete', 'MarkController', ['id']);
 	});
 });
 

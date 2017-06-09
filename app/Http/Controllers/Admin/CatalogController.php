@@ -13,6 +13,7 @@ use App\Model;
 use App\Catalog;
 use App\City;
 use App\Service;
+use App\Mark;
 use My\Model\Image;
 use My\Command\ImageUploadCommand;
 
@@ -39,21 +40,22 @@ class CatalogController extends Controller
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="'. route('admin.catalog.show', [$value]) . '">' . $value . '</a>';
+                    return '<a href="'. route('admin.catalog.show', $value) .'" title="Show admin">' . $value . '</a>';
                 }
             ])
             ->setColumn('name', 'Name', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="/admin/catalog/edit/' . $row->id . '">' . $value . '</a>';
+                    return '<a href="'. route('admin.catalog.edit', $row->id) .'" title="Edit">' . $value . '</a>';
                 }
             ])
             ->setColumn('slug', 'URL', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="/catalog/' . $value . '">' . $value . '</a>';
+                    // return '<a href="/catalog/' . $value . '">' . $value . '</a>';
+                    return '<a href="'. route('catalog.show', $value) .'" title="Show">' . $value . '</a>';
                 }
             ])
             ->setColumn('email', 'Email', [
@@ -81,8 +83,8 @@ class CatalogController extends Controller
                 ],
             ])*/->setActionColumn([
                 'wrapper' => function($value, $row) {
-                    return '<a href="' . route('admin.catalog.edit', [$row->id]) . '" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="' . route('admin.catalog.delete', [$row->id]) . '" title="Delete" data-method="DELETE" class="btn btn-xs text-danger" data-confirm="Are you sure?">Delete<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
+                    return '<a href="' . route('admin.catalog.edit', $row->id) . '" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a href="' . route('admin.catalog.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-xs text-danger" data-confirm="Are you sure?">Delete<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
                 }
             ]);
 
@@ -101,23 +103,25 @@ class CatalogController extends Controller
     public function create() {
         $cities = City::all();
         $services = Service::all();
+        $marks = Mark::all();
 
-        return view('admin.catalog.create', compact('cities', 'services'));
+        return view('admin.catalog.create', compact('cities', 'services', 'marks'));
     }
 
     public function store(CatalogRequest $request) {
-        /*$this->validate($request, [
-            'city_id' => 'required|exists:cities,id',
-            'images.*.file' => 'image:jpeg,png,gif|size:3145728|dimensions:min_width=200,min_height=200',
-        ]);*/
 
-        // $entity = Catalog::create($request->except('city_id'));
         $entity = Catalog::create($request->all());
         if ($entity->isInvalid()) {
             return back()->withErrors($entity->getErrors())
                 ->withInput();
         }
-        // $entity->city()->attach($request->get('city_id'));
+
+        if ($request->has('marks')) {
+            $marks = $request->get('marks');
+            // dd($marks);
+            $entity->marks()->attach($marks);
+        }
+        
 
         $files = $request->file('images', []);
         $folder = self::FOLDER_IMAGE .'/'. $entity->slug;
@@ -146,16 +150,18 @@ class CatalogController extends Controller
         }
 
         return redirect()
-            ->route('admin.catalog.show', [$entity->id]);
+            ->route('admin.catalog.show', $entity->id);
     }
 
     public function edit($id) {
-        $item = Catalog::with('city')
+        $item = Catalog::with('city', 'marks')
             ->find($id);
 
         $cities = City::all();
         $services = Service::all();
-        return view('admin.catalog.edit', compact('item', 'cities', 'services'));
+        $marks = Mark::all();
+
+        return view('admin.catalog.edit', compact('item', 'cities', 'services', 'marks'));
     }
 
     public function update(CatalogRequest $request, $id) {
@@ -180,12 +186,15 @@ class CatalogController extends Controller
             $entity->getSlugOptions()->regenerateOnUpdate = true;
         }
 
-        $entity->update($request->except(['regenerateSlug'/*, 'city_id'*/]));
-        // $entity->city()->detach($entity->city->first()->id);
-        // $entity->city()->attach($request->get('city_id'));
+        $entity->update($request->except(['regenerateSlug']));
+
+        if ($request->has('marks')) {
+            $marks = $request->get('marks');
+            $entity->marks()->sync($marks);
+        }
 
         return redirect()
-            ->route('admin.catalog.show', [$id]);
+            ->route('admin.catalog.show', $id);
     }
 
     public function delete($id) {

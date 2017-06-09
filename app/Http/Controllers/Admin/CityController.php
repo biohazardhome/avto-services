@@ -24,14 +24,14 @@ class CityController extends Controller
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="' . route('admin.city.show', [$value]) . '">' . $value . '</a>';
+                    return '<a href="' . route('admin.city.show', $value) . '">' . $value . '</a>';
                 }
             ])
             ->setColumn('name', 'Name', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="' . route('admin.city.edit', [$row->id]) . '">' . $value . '</a>';
+                    return '<a href="' . route('admin.city.edit', $row->id) . '">' . $value . '</a>';
                 }
             ])
             ->setColumn('slug', 'Slug', [
@@ -48,8 +48,8 @@ class CityController extends Controller
             ])
             ->setActionColumn([
                 'wrapper' => function($value, $row) {
-                    return '<a href="' . route('admin.city.edit', [$row->id]) . '" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="' . route('admin.city.delete', [$row->id]) . '" title="Delete" data-method="DELETE" class="btn btn-xs text-danger" data-confirm="Are you sure?">Delete<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
+                    return '<a href="' . route('admin.city.edit', $row->id) . '" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a href="' . route('admin.city.delete', $row->id) . '" title="Delete" data-method="DELETE" class="btn btn-xs text-danger" data-confirm="Are you sure?">Delete<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
                 }
             ]);
 
@@ -65,19 +65,19 @@ class CityController extends Controller
 		return view('admin.show', ['model' => $city]);
 	}
 
-	public function create(Request $request) {
+	public function create(/*Request $request*/) {
 		return view('admin.city.create');
 	}
 
 	public function store(Request $request) {
-		$this->validate($request, [
+		/*$this->validate($request, [
 			'name' => 'required',
-		]);
+		]);*/
 
 		$city = City::create($request->all());
 
 		return redirect()
-			->route('admin.city.show', [$city->id]);	
+			->route('admin.city.show', $city->id);	
 	}
 
 	public function edit($id) {
@@ -87,9 +87,9 @@ class CityController extends Controller
 	}
 
 	public function update(Request $request, $id) {
-		$this->validate($request, [
+		/*$this->validate($request, [
 			'name' => 'required',
-		]);
+		]);*/
 
 		City::find($id)
 			->update($request->all());

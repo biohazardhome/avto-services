@@ -17,11 +17,11 @@ class MarksSeederTable extends Seeder
     	$marks = [
 			"Avia",
 			"Baw",
-			"Byd",
+			// "Byd",
 			"CFmoto",
 			"Chance",
 			"DAF",
-			"Faw",
+			// "Faw",
 			"Freightliner",
 			"General Motors",
 			"Hidromek",

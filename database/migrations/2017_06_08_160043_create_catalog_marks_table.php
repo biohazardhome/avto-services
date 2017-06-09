@@ -18,6 +18,8 @@ class CreateCatalogMarksTable extends Migration
             $t->integer('catalog_id')->unsigned();
             $t->integer('mark_id')->unsigned();
 
+            $t->unique(['catalog_id', 'mark_id']);
+
             $t->foreign('catalog_id')
                 ->references('id')
                 ->on('catalog')

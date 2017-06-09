@@ -28,13 +28,13 @@ class CommentController extends Controller
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="' . route('admin.comment.show', [$value]) . '">' . $value . '</a>';
+                    return '<a href="'. route('admin.comment.show', $value) .'">' . $value . '</a>';
                 }
             ])->setColumn('catalog_id', 'Catalog ID', [
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="' . route('admin.catalog.show', [$value]) . '">' . $value . '</a>';
+                    return '<a href="'. route('admin.catalog.show', $value) .'">' . $value . '</a>';
                 }
             ])
             ->setColumn('name', 'Name', [
@@ -45,7 +45,7 @@ class CommentController extends Controller
                 'sortable'    => true,
                 'has_filters' => true,
                 'wrapper'     => function($value, $row) {
-                    return '<a href="mailto:' . $value . '">' . $value . '</a>';
+                    return '<a href="mailto:'. $value .'">' . $value . '</a>';
                 }
             ])
             ->setColumn('msg', 'Message', [
@@ -54,8 +54,8 @@ class CommentController extends Controller
             ])
             ->setActionColumn([
                 'wrapper' => function($value, $row) {
-                    return '<a href="' . route('admin.comment.edit', [$row->id]) . '" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            <a href="' . route('admin.comment.delete', [$row->id]) . '" title="Delete" data-method="DELETE" class="btn btn-xs text-danger" data-confirm="Are you sure?">Delete<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
+                    return '<a href="'. route('admin.comment.edit', $row->id) .'" title="Edit" class="btn btn-xs">Edit<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                            <a href="'. route('admin.comment.delete', $row->id) .'" title="Delete" data-method="DELETE" class="btn btn-xs text-danger" data-confirm="Are you sure?">Delete<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
                 }
             ]);
 
@@ -86,7 +86,7 @@ class CommentController extends Controller
 		$comment = Comment::create($request->all());
 
         return redirect()
-            ->route('admin.comment.show', [$comment->id]);
+            ->route('admin.comment.show', $comment->id);
 	}
 
 	public function edit($id) {
@@ -108,7 +108,7 @@ class CommentController extends Controller
             ->update($request->all());
 
         return redirect()
-            ->route('admin.comment.show', [$id]);
+            ->route('admin.comment.show', $id);
 	}
 
     public function delete($id) {

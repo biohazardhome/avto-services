@@ -39,6 +39,8 @@
 	</div>
 @endif
 
+<br>
+
 <div class="form-group">
 	<label>
 		<span>City: </span>
@@ -58,6 +60,27 @@
 		</label>
 	</div>
 @endif
+
+<div class="form-group">
+	<label>
+		<span>Marks: </span>
+	</label>
+
+	@if ($type === 'edit')
+		<?php $selectMarks = $item->marks ? $item->marks->pluck('id')->toArray() : []; ?>
+	@endif
+	<select name="marks[]" multiple="multiple">
+		@foreach($marks as $mark)
+			<?php $selected = '';
+			if (in_array($mark->id, $selectMarks)) {
+				$selected = 'selected';
+			}?>
+			<option value="{{ $mark->id }}" {{ $selected }}>{{ $mark->name }}</option>
+		@endforeach
+	</select>
+	<span>Выбрано: {{ count($selectMarks) }} элементов</span>
+
+</div>
 
 <div class="form-group">
 	<label>

@@ -39,12 +39,13 @@
 	            <div class="collapse navbar-collapse" id="app-navbar-collapse">
 	                <!-- Left Side Of Navbar -->
 	                <ul class="nav navbar-nav">
-	                    <li><a href="{{ url('/admin') }}">Admin</a></li>
-	                    <li><a href="{{ url('/admin/catalog') }}">Catalog</a></li>
-	                    <li><a href="{{ url('/admin/comment') }}">Comments</a></li>
-	                    <li><a href="{{ url('/admin/city') }}">Cities</a></li>
+	                    <li><a href="{{ route('admin.index') }}">Admin</a></li>
+	                    <li><a href="{{ route('admin.catalog.index') }}">Catalog</a></li>
+	                    <li><a href="{{ route('admin.comment.index') }}">Comments</a></li>
+	                    <li><a href="{{ route('admin.city.index') }}">Cities</a></li>
 	                    <li><a href="{{ url('/admin/city-catalog') }}">Cities Catalog</a></li>
-	                    <li><a href="{{ url('/admin') }}">Images</a></li>
+	                    <li><a href="{{ url('/admin/image') }}">Images</a></li>
+	                    <li><a href="{{ route('admin.mark.index') }}">Marks</a></li>
 	                </ul>
 
 	                <!-- Right Side Of Navbar -->

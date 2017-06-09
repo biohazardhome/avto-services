@@ -1,5 +1,23 @@
 <?php
 
+function routeSame($name, $controller, array $params = [], $type = 'get') { // параметры
+	$routeSegments = [];
+	$routeSegments[] = $name;
+
+	if (count($params)) {
+		$params = collect($params)->map(function($param) {
+			return '{'. $param .'}';
+		})/*->implode('/')*/;
+		// dump($params);
+
+		$routeSegments = array_merge($routeSegments, $params->toArray());
+	}
+	$route = '/'. implode('/', $routeSegments);
+	// dump($routeSegments, $route, $controller);
+
+	Route::$type($route, $controller .'@'. $name)->name($name);
+}
+
 function call(callable $fn) {
     $args = [];
     $argsNum = func_num_args();

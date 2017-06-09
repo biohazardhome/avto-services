@@ -11,7 +11,26 @@ class City extends Model
 
     protected
     	$table = 'cities',
-        $fillable = ['id', 'name', 'slug', 'title', 'description', 'text'];
+        $fillable = [
+            'id',
+            'name',
+            'slug',
+            'title',
+            'description',
+            'text'
+        ],
+        $rules = [
+            'name' => 'required|unique:cities,id',
+        ],
+        $searchable = [
+            'columns' => [
+                'title' => 10,
+                'description' => 10,
+                'text' => 10,
+                'name' => 9,
+                'slug' => 8,
+            ]
+        ];
 
     public static function slugGenerate() {
         return static::slugOptions()

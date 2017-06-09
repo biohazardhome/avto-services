@@ -4,9 +4,10 @@
 	<?php $table = str_singular($model->getTable()); ?>
 	<a class="btn btn-success" href="{{ route('admin.'. $table .'.create') }}" title="">Create</a>
 	<a class="btn btn-success" href="{{ route('admin.'. $table .'.edit', [$model->id]) }}" title="">Edit</a>
+	<a class="btn btn-danger" href="{{ route('admin.'. $table .'.delete', [$model->id]) }}" title="">Delete</a>
 	
 	<?php $routeName = $table .'.show'; ?>
-	@if(Route::has($routeName))
+	@if (Route::has($routeName))
 		<?php
 			$params = [];
 			$params[] = $table === 'catalog' ? $model->slug : $model->id;

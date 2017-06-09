@@ -14,7 +14,7 @@ class CreateMarksTable extends Migration
     {
         Schema::create('marks', function (Blueprint $t) {
             $t->increments('id');
-            $t->string('name');
+            $t->string('name')->unique();
             $t->string('title')->default('');
             $t->text('description')->default('');
             
