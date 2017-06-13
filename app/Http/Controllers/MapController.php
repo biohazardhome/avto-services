@@ -23,7 +23,7 @@ class MapController extends Controller
 
 	public function show($slug, $address) {
 		$catalog = Catalog::whereSlug($slug)
-			->where('address', $address)
+			->whereAddress($address)
 			->first();
 
 		// dump(123);
@@ -35,7 +35,7 @@ class MapController extends Controller
 				->first();
 
 			if ($catalog) {
-				return redirect()->route('map.show', $catalog->getAttributesOnly(['slug', 'address']));
+				return redirect()->route('map.show', $catalog->getAttributesOnly(['slug', 'address']), 301);
 			}
 		}
 
@@ -135,7 +135,7 @@ class MapController extends Controller
 		$city = City::whereSlug($slug)
 			->first();
 
-		dd(123);
+		// dd(123);
 
 		return view('map-all', compact('city'));
 	}

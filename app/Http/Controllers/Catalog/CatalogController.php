@@ -31,7 +31,7 @@ class CatalogController extends Controller
 			->first();
 
 		if ($catalog) {
-			return redirect()->route('main', [$slug]);
+			return redirect()->route('main', [$slug], 301);
 		}
 		return abort(404);
 	}
