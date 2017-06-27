@@ -1,8 +1,11 @@
 @extends('layouts.admin')
 
+@section('assetsCSS')
+	<link rel="stylesheet" type="text/css" href="/tokenize2/tokenize2.min.css">
+@stop
+
 @section('assetsJS')
 	@include('admin.catalog.kladr')
-	<link rel="stylesheet" type="text/css" href="/tokenize2/tokenize2.min.css">
 
 	<script src="/js/upload.js" type="text/javascript"></script>
 	<script src="/tokenize2/tokenize2.min.js" type="text/javascript"></script>

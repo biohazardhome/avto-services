@@ -72,7 +72,7 @@
 	<select name="marks[]" multiple="multiple">
 		@foreach($marks as $mark)
 			<?php $selected = '';
-			if (in_array($mark->id, $selectMarks)) {
+			if ($type === 'edit' && in_array($mark->id, $selectMarks)) {
 				$selected = 'selected';
 			}?>
 			<option value="{{ $mark->id }}" {{ $selected }}>{{ $mark->name }}</option>
