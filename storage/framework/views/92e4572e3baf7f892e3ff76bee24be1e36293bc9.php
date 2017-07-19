@@ -1,1 +1,0 @@
-<h1><small>Автосервис</small> "<?php echo e($name); ?>" <small>в <?php echo e($city->name); ?></small></h1>
